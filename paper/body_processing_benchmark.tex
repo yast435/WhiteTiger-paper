@@ -97,15 +97,17 @@ Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoin
 
 Because Baihu v2.0 is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Joint MSE and ALL MSE than the no-training baseline.
 
-\begin{table}[p]
+\begin{table}[t]
 \centering
-\caption{Per-platform offline zero-shot evaluation results. The table reports the unweighted mean over paired task-dataset records for each evaluated platform.}
+\caption{Per-platform offline zero-shot evaluation results. The table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower MSE is better.}
 \label{tab:per-platform}
-\scriptsize
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lrrrrrrr}
 \toprule
-Platform & N tasks & Joint MSE ckpt-1 $\downarrow$ & Joint MSE ckpt-390000 $\downarrow$ & Joint improvement & ALL MSE ckpt-1 $\downarrow$ & ALL MSE ckpt-390000 $\downarrow$ & ALL improvement \\
+Platform & N & Joint-1 & Joint-Baihu & $\Delta$Joint & ALL-1 & ALL-Baihu & $\Delta$ALL \\
 \midrule
 Qinglong & 6 & 0.157132 & 0.000572 & 99.64\% & 0.180542 & 0.002733 & 98.49\% \\
 Zhiyuan A2 & 3 & 0.132757 & 0.000896 & 99.33\% & 0.225461 & 0.007562 & 96.65\% \\
@@ -125,7 +127,7 @@ Zhiyuan G1 & 3 & 0.135167 & 0.000282 & 99.79\% & 0.167769 & 0.015057 & 91.02\% \
 \end{adjustbox}
 \end{table}
 
-The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single dominant embodiment. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus.
+The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single dominant embodiment. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus. Here, Joint-1 and ALL-1 denote the no-training checkpoint, Joint-Baihu and ALL-Baihu denote the Baihu-trained checkpoint, and $\Delta$ denotes relative improvement.
 
 \subsection{Task-level analysis}
 
