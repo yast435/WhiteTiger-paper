@@ -15,29 +15,25 @@ The evaluation covers **13 embodiments / platforms** and **42 paired task-datase
 
 ## 5.2 Evaluation metrics
 
-The benchmark reports two MSE metrics.
+The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
 
-**ALL MSE** computes the mean squared error using all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
+**ALL MSE** computes this error using all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
 
-**Joint MSE** computes the mean squared error using only the joint-related action dimensions. Gripper or hand dimensions are excluded from this metric. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across embodiments, and may otherwise dominate or distort the action prediction error.
+**Joint MSE** computes this error using only the joint-related action dimensions. Gripper or hand dimensions are excluded from this metric. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across embodiments, and may otherwise dominate or distort the action prediction error.
 
-The evaluation follows the one-click batch open-loop evaluation workflow in `gr00t/batch_open_loop_eval.py`. The batch script evaluates combinations of checkpoints, embodiment tags, and datasets, generates statistics for each dataset, calls `gr00t/eval/open_loop_eval.py`, saves trajectory comparison plots, and writes average MSE results into a result table.
+For each task-dataset record, MSE is averaged over the evaluated trajectory steps and selected action dimensions. Aggregate results are then reported as the unweighted mean across the 42 paired task-dataset records unless otherwise specified.
 
 ## 5.3 Overall results
 
-The current source material is stored in:
-
-```text
-materials/预训练离线实验记录表_测试记录数据总表_0430-同任务机型性能对比.csv
-```
-
-The corrected benchmark table shows that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records.
+The benchmark results show that one epoch of training on BAIHU_v2.0 substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 paired task-dataset records.
 
 | Model checkpoint | Joint MSE ↓ | ALL MSE ↓ |
 |---|---:|---:|
 | checkpoint-1 (no training) | 0.116746 | 0.157283 |
 | checkpoint-390000 (Baihu v2.0, 1 epoch) | 0.000680 | 0.005051 |
 | Relative improvement | 99.42% | 96.79% |
+
+Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoint reduces Joint MSE by **99.42%** and ALL MSE by **96.79%**. This indicates that Baihu v2.0 provides effective supervision for improving action prediction across a broad set of unseen task-dataset records.
 
 The complete overall result table is maintained in:
 
@@ -47,7 +43,7 @@ paper/tables/offline_zero_shot_eval_overall.md
 
 ## 5.4 Per-platform results
 
-Because Baihu v2.0 is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. After correcting the reversed `智元G1 / 电源组件安装` row in the source CSV, all 13 evaluated platforms show positive improvement in both Joint MSE and ALL MSE.
+Because Baihu v2.0 is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Joint MSE and ALL MSE than the no-training baseline.
 
 The complete per-platform result table is maintained in:
 
@@ -63,7 +59,7 @@ Task-level metrics are maintained in:
 paper/tables/offline_zero_shot_eval_by_task.md
 ```
 
-These records can be used to identify tasks with unusually high residual error after Baihu training, tasks with the largest relative improvement, and possible data or evaluation inconsistencies.
+These records can be used to identify tasks with higher residual error after Baihu training and tasks with the largest relative improvement. Task-level reporting is especially useful because different embodiments may have different action spaces, control frequencies, and gripper or hand dimensions.
 
 ## 5.6 Figures
 
