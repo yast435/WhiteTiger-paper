@@ -33,7 +33,3 @@ See [`sections/06_discussion.md`](sections/06_discussion.md).
 ## 7. Conclusion
 
 See [`sections/07_conclusion.md`](sections/07_conclusion.md).
-
-## Draft status
-
-This is a v0.2 Markdown draft. The main structure, abstract, dataset overview, HDF5-to-LeRobot v2.1 processing description, offline zero-shot benchmark, discussion, and conclusion have been drafted. Remaining work includes verifying the final Baihu v2.0 source description, adding formal citations, refining figure/table captions, confirming platform descriptions, and converting the Markdown draft into the target submission format.
