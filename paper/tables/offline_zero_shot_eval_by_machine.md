@@ -1,6 +1,6 @@
 # Offline zero-shot evaluation: per-machine results
 
-The table reports the unweighted mean across paired task-dataset records for each machine/platform.
+The table reports the unweighted mean across paired task-dataset records for each machine/platform. The `智元G1 / 电源组件安装` row has been corrected after confirming that checkpoint-1 and checkpoint-390000 MSE values were originally reversed.
 
 | Machine | N tasks | Joint MSE checkpoint-1 ↓ | Joint MSE checkpoint-390000 ↓ | Joint improvement | ALL MSE checkpoint-1 ↓ | ALL MSE checkpoint-390000 ↓ | ALL improvement |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -16,9 +16,9 @@ The table reports the unweighted mean across paired task-dataset records for eac
 | 方舟无限arx-acone | 3 | 0.138172 | 0.001076 | 99.22% | 0.161330 | 0.001803 | 98.88% |
 | 天机 | 3 | 0.017828 | 0.000612 | 96.57% | 0.096915 | 0.002092 | 97.84% |
 | Dwheel | 3 | 0.176382 | 0.000208 | 99.88% | 0.203833 | 0.005157 | 97.47% |
-| 智元G1 | 3 | 0.090175 | 0.045274 | 49.79% | 0.116793 | 0.066033 | 43.46% |
+| 智元G1 | 3 | 0.135167 | 0.000282 | 99.79% | 0.167769 | 0.015057 | 91.02% |
 
 ## Notes
 
 - Improvement is computed as `(checkpoint-1 MSE - checkpoint-390000 MSE) / checkpoint-1 MSE`.
-- 智元G1 shows a much smaller average improvement than the other machines because one task (`电源组件安装`) has substantially higher MSE after training. This task should be checked before finalizing the paper results.
+- After correcting the reversed `智元G1 / 电源组件安装` row, all machines show positive improvement in both Joint MSE and ALL MSE.
