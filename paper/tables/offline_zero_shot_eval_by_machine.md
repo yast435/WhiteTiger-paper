@@ -1,6 +1,6 @@
-# Offline zero-shot evaluation: per-machine results
+# Table 4. Per-platform offline zero-shot evaluation results
 
-The table reports the unweighted mean across paired task-dataset records for each machine/platform. The `智元G1 / 电源组件安装` row has been corrected after confirming that checkpoint-1 and checkpoint-390000 MSE values were originally reversed.
+The table reports the unweighted mean across paired task-dataset records for each evaluated platform. Lower MSE is better. Improvement is computed as `(checkpoint-1 MSE - checkpoint-390000 MSE) / checkpoint-1 MSE`.
 
 | Machine | N tasks | Joint MSE checkpoint-1 ↓ | Joint MSE checkpoint-390000 ↓ | Joint improvement | ALL MSE checkpoint-1 ↓ | ALL MSE checkpoint-390000 ↓ | ALL improvement |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -17,8 +17,3 @@ The table reports the unweighted mean across paired task-dataset records for eac
 | 天机 | 3 | 0.017828 | 0.000612 | 96.57% | 0.096915 | 0.002092 | 97.84% |
 | Dwheel | 3 | 0.176382 | 0.000208 | 99.88% | 0.203833 | 0.005157 | 97.47% |
 | 智元G1 | 3 | 0.135167 | 0.000282 | 99.79% | 0.167769 | 0.015057 | 91.02% |
-
-## Notes
-
-- Improvement is computed as `(checkpoint-1 MSE - checkpoint-390000 MSE) / checkpoint-1 MSE`.
-- After correcting the reversed `智元G1 / 电源组件安装` row, all machines show positive improvement in both Joint MSE and ALL MSE.
