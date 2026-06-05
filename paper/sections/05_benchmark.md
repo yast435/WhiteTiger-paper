@@ -11,7 +11,7 @@ Open-loop evaluation provides an offline assessment by comparing the model's pre
 | GR00T N1.6 / checkpoint-1 | No-training checkpoint, used as the baseline |
 | GR00T N1.6 / checkpoint-390000 | Complete 1-epoch checkpoint trained on BAIHU_v2.0 |
 
-The evaluation covers **13 embodiments / platforms** and **42 paired task-dataset records**. This setting is designed to measure whether Baihu v2.0 pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
+The evaluation covers **13 platforms** and **42 paired task-dataset records**. This setting is designed to measure whether Baihu v2.0 pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
 
 ## 5.2 Evaluation metrics
 
@@ -35,48 +35,19 @@ The benchmark results show that one epoch of training on BAIHU_v2.0 substantiall
 
 Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoint reduces Joint MSE by **99.42%** and ALL MSE by **96.79%**. This indicates that Baihu v2.0 provides effective supervision for improving action prediction across a broad set of unseen task-dataset records.
 
-The complete overall result table is maintained in:
-
-```text
-paper/tables/offline_zero_shot_eval_overall.md
-```
-
 ## 5.4 Per-platform results
 
 Because Baihu v2.0 is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Joint MSE and ALL MSE than the no-training baseline.
 
-The complete per-platform result table is maintained in:
-
-```text
-paper/tables/offline_zero_shot_eval_by_machine.md
-```
+The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single dominant embodiment. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus.
 
 ## 5.5 Task-level analysis
 
-Task-level metrics are maintained in:
+Task-level results further show that Baihu training improves offline prediction across the 42 paired task-dataset records. Task-level reporting is especially useful because different embodiments may have different action spaces, control frequencies, and gripper or hand dimensions.
 
-```text
-paper/tables/offline_zero_shot_eval_by_task.md
-```
+The strongest improvements are observed on tasks where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
 
-These records can be used to identify tasks with higher residual error after Baihu training and tasks with the largest relative improvement. Task-level reporting is especially useful because different embodiments may have different action spaces, control frequencies, and gripper or hand dimensions.
-
-## 5.6 Figures
-
-Editable HTML/SVG figures for the benchmark are maintained in:
-
-```text
-paper/figures/offline_zero_shot_eval_editable.html
-```
-
-The recommended paper figures are:
-
-1. Bar chart of overall ALL MSE and Joint MSE for checkpoint-1 vs checkpoint-390000.
-2. Per-platform relative improvement plot.
-3. Scatter plot comparing ALL MSE and Joint MSE across tasks.
-4. Sorted task-level improvement plot for the 42 paired task-dataset records.
-
-## 5.7 Additional benchmark extensions
+## 5.6 Additional benchmark extensions
 
 The current benchmark already provides a useful offline zero-shot comparison. Future versions can extend the benchmark with:
 
