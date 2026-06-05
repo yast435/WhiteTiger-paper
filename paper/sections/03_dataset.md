@@ -22,7 +22,7 @@ Based on the total frame count and total duration, Baihu v2.0 has an average rec
 
 ## 3.3 Data sources
 
-Baihu v2.0 integrates robot manipulation data from multiple sources, including internally collected model-demand data and externally delivered or filtered datasets. The current version management document records two descriptions of the v2.0 data source: one refers to internally required model data and delivered data, while another refers to internally required model data and Dwheel-filtered data. This source definition should be finalized before publication. In this draft, we refer to the data sources generally as multi-source robot manipulation data curated for model training.
+Baihu v2.0 integrates multi-source robot manipulation data curated for model training. Source trajectories are first stored as HDF5 records and are then standardized into the LeRobot v2.1 format. This design separates source data ingestion from the final model-training format, allowing heterogeneous robot data to be processed under a unified dataset pipeline.
 
 ## 3.4 Embodiment distribution
 
@@ -31,8 +31,6 @@ Baihu v2.0 contains data from 14 embodiment tags, covering a diverse set of robo
 The largest embodiment subset is **genie1**, which contains 4253.51 hours of data and accounts for 44.67% of the total dataset duration. The next largest subsets are **gr2** with 959.40 hours, **xinghaitu_r1** with 896.88 hours, **qinlongros1** with 747.41 hours, and **zhiyuana2** with 646.74 hours. Together, the top five embodiment tags contribute approximately 78.81% of the total dataset duration. This distribution suggests that Baihu v2.0 provides both large-scale high-resource training data and a long tail of lower-resource embodiments for studying cross-embodiment generalization.
 
 Because the dataset distribution is imbalanced, benchmark evaluation should report not only aggregate performance but also per-embodiment performance. In particular, evaluating models separately on high-resource and low-resource embodiments can reveal whether a policy benefits from the full multi-embodiment dataset or primarily learns from the dominant embodiment subsets.
-
-The complete embodiment-level statistics table is maintained in [`../tables/embodiment_distribution.md`](../tables/embodiment_distribution.md). The final paper should include this table directly or convert it to the target publication format. Platform descriptions for each embodiment tag still need to be added.
 
 ## 3.5 Scenario and task coverage
 
@@ -64,5 +62,3 @@ A typical Baihu trajectory can be represented as:
 - robot actions;
 - episode metadata;
 - frame-level timestamps or ordering information.
-
-The exact modality fields, action dimensions, and robot embodiment definitions should be specified for each data subset in the final release.
