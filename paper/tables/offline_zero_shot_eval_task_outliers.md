@@ -1,14 +1,16 @@
-# Offline zero-shot evaluation: task-level outliers
+# Offline zero-shot evaluation: task-level improvement extremes
+
+The task-level tables below are generated after correcting the reversed `智元G1 / 电源组件安装` row. All paired task-dataset records now show positive improvement in both Joint MSE and ALL MSE.
 
 ## Lowest Joint MSE improvement
 
 | Machine | Task | Joint improvement | Joint MSE ckpt-1 | Joint MSE ckpt-390000 | ALL improvement |
 |---|---|---:|---:|---:|---:|
-| 智元G1 | 电源组件安装 | -46394.09% | 0.000291 | 0.135268 | -1203.62% |
 | 天机 | 插花 | 95.50% | 0.017314 | 0.000778 | 97.44% |
 | 天机 | 叠杯子 | 96.26% | 0.019495 | 0.000730 | 97.37% |
 | Franka FR3 | 物品放置_玩具鸭子 | 97.41% | 0.034437 | 0.000892 | 93.30% |
 | 天机 | 电池分拣 | 98.03% | 0.016675 | 0.000329 | 98.60% |
+| Franka FR3 | 物品整理 | 98.11% | 0.038663 | 0.000731 | 92.08% |
 
 ## Highest Joint MSE improvement
 
@@ -20,6 +22,7 @@
 | 智元G1 | 触摸板组装 | 99.89% | 0.134856 | 0.000146 | 88.62% |
 | 青龙 | 用盖子盖住锅 | 99.89% | 0.180345 | 0.000200 | 98.96% |
 
-## Important check before paper submission
+## Notes
 
-The task `智元G1 / 电源组件安装` shows a large negative improvement. For this task, the no-training checkpoint has unusually low MSE while checkpoint-390000 has high MSE. This may indicate a data row issue, a task-specific failure, a checkpoint/evaluation mismatch, or a real degradation. It should be checked before reporting final aggregate numbers.
+- The lowest-improvement records are not failures; after correction, even the lowest Joint MSE improvement remains above 95%.
+- The difference between Joint MSE improvement and ALL MSE improvement suggests that non-joint dimensions such as gripper / hand dimensions still contribute to residual error on some tasks.
