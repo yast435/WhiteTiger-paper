@@ -1,0 +1,31 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{hyperref}
+
+\title{Baihu: A Billion-Frame Multi-Embodiment Robot Manipulation Dataset for Embodied Foundation Models}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large-scale robot data is becoming a core prerequisite for training embodied foundation models and generalist robot policies. However, robot learning still lacks pretraining-scale datasets that combine broad task coverage, multi-embodiment diversity, standardized data organization, and model-oriented evaluation. In this work, we introduce Baihu v2.0, a billion-frame, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu v2.0 contains 9521.75 hours of robot data, 2989 tasks, 513575 episodes, and 1028349814 frames across 14 embodiment tags. The dataset integrates multi-source robot operation data and converts HDF5 source records into the LeRobot v2.1 format to support scalable imitation learning and vision-language-action model training.
+
+Beyond dataset construction, Baihu is designed as a reusable data foundation for evaluating embodied model pretraining. We characterize the dataset scale, version history, and long-tailed embodiment distribution, where the largest embodiment contributes 44.67\% of the total duration and the top five embodiments contribute approximately 78.81\%. To evaluate the utility of Baihu v2.0, we conduct offline open-loop zero-shot evaluation with GR00T N1.6 across 13 platforms and 42 paired task-dataset records. Compared with a no-training checkpoint, a checkpoint trained on Baihu v2.0 for one epoch reduces Joint MSE by 99.42\% and ALL MSE by 96.79\%. These results suggest that Baihu v2.0 provides effective large-scale supervision for robot action prediction and can serve as a practical data infrastructure for embodied foundation model development.
+\end{abstract}
+
+\section{Introduction}
+
+This file is an initial LaTeX scaffold. The current complete Markdown draft is maintained in \texttt{full\_draft.md}. The bibliography is stored separately in \texttt{references.bib}; future conversion work should move the polished Markdown content into this file section by section.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
