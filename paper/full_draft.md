@@ -16,7 +16,7 @@ To address this need, we present **Baihu v2.0**, a large-scale, multi-embodiment
 
 The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. **Figure 1** provides an overview of the Baihu v2.0 construction and evaluation pipeline. We first introduce the data sources and version definition of Baihu v2.0. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu v2.0 through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records. Compared with the no-training checkpoint, Baihu training reduces Joint MSE by **99.42%** and ALL MSE by **96.79%**.
 
-**Figure 1. Overview of the Baihu v2.0 construction and evaluation pipeline.** Multi-source robot demonstrations are stored as HDF5 trajectory records, pass through quality control and schema alignment, are converted into LeRobot v2.1 format, and are then used for GR00T N1.6 pretraining and offline zero-shot open-loop evaluation. Editable source: `paper/figures/baihu_pipeline_editable.html`.
+**Figure 1. Overview of the Baihu v2.0 construction and evaluation pipeline.** Multi-source robot demonstrations are stored as HDF5 trajectory records, pass through quality control and schema alignment, are converted into LeRobot v2.1 format, and are then used for GR00T N1.6 pretraining and offline zero-shot open-loop evaluation.
 
 The main contributions of this work are as follows:
 
@@ -165,67 +165,33 @@ A typical Baihu trajectory can be represented as:
 
 # 4. Data Processing Pipeline
 
-Baihu v2.0 is constructed through a multi-stage data processing pipeline that converts heterogeneous robot operation records into a consistent, model-trainable dataset. The source records are stored in HDF5 format and are converted into the LeRobot v2.1 format for downstream training and evaluation. The pipeline is designed around two goals: preserving embodiment-specific control information and producing a standardized dataset representation that can be used by large-scale imitation-learning and vision-language-action training pipelines. The overall construction and evaluation workflow is summarized in **Figure 1**.
+Baihu v2.0 converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems. The overall construction and evaluation workflow is summarized in **Figure 1**.
 
-Because Baihu v2.0 integrates data from multiple robot platforms, the processing pipeline must handle differences in sensor configurations, robot states, action spaces, gripper or hand structures, task metadata, and source-specific recording formats. The pipeline consists of seven major stages: HDF5 ingestion, quality monitoring, trajectory validation, metadata standardization, state/action schema alignment, LeRobot v2.1 conversion, and versioned dataset release.
+## 4.1 HDF5 ingestion and trajectory validation
 
-## 4.1 HDF5 raw data ingestion
+Raw Baihu v2.0 trajectories are first organized as HDF5 records. Each record is associated with an embodiment tag, task identity, episode identity, and available modality fields. Depending on the source platform and task setup, a trajectory may include visual observations, robot proprioceptive states, robot actions, task annotations, timestamps, and episode-level metadata.
 
-The raw Baihu v2.0 records are first organized in HDF5 files. HDF5 is used as the source container for robot trajectories before conversion. During ingestion, each trajectory is registered with its data source, embodiment tag, task name, episode identity, and available modality fields. This registration step makes it possible to trace each processed episode back to its source platform and task context.
+Because Baihu integrates data from multiple robot platforms, validation is required before data enters the released training corpus. The pipeline checks whether each episode contains temporally ordered observations and actions, usable modality fields, consistent task metadata, valid embodiment information, and aligned observation-action sequences. This validation step removes incomplete, corrupted, or unusable trajectories that would otherwise provide incorrect supervision during model training.
 
-The ingestion stage is designed for heterogeneous robot data. Different embodiments may include full-size humanoid robots, humanoid-like wheeled platforms, dual-arm robots, single-arm manipulators, or portable data collection devices. Rather than assuming a single robot morphology, Baihu preserves platform-specific state and action schemas. This design allows each robot to retain its native control representation while still being organized under a common dataset interface.
+## 4.2 Quality control and metadata standardization
 
-For each ingested episode, the pipeline extracts the available modalities from the source HDF5 record. A typical trajectory may contain visual observations, robot proprioceptive states, robot actions, task annotations, timestamps or frame indices, and episode-level metadata. The exact fields depend on the source embodiment and collection setup.
+Baihu uses a multi-stage quality control workflow covering data acquisition, monitoring, upload, validation, cleaning, review, and final delivery. This workflow is important at the scale of Baihu v2.0 because even a small fraction of invalid trajectories can correspond to a large amount of unusable data. Quality control therefore aims to maintain consistency across heterogeneous sources while preserving the diversity needed for embodied model pretraining.
 
-## 4.2 Multi-stage quality control
+Task and episode metadata are standardized to support dataset analysis and model conditioning. Each episode is associated with task information, embodiment metadata, and source-specific fields when available. These annotations enable analysis by task, embodiment, and data source, and they also provide the language or semantic conditioning signals used by vision-language-action policies.
 
-Baihu uses a multi-stage quality control workflow before data is included in the released training corpus. The workflow can be summarized as a collection-to-delivery chain: data acquisition, real-time quality monitoring, cloud upload, trajectory validation, data cleaning, manual review, and final dataset delivery.
+## 4.3 State and action schema alignment
 
-During collection, real-time monitoring is used to detect obvious acquisition failures as early as possible. This helps reduce large deviations at the data source, such as missing streams, failed recording, abnormal robot states, or incomplete task execution. After collection, data is uploaded for more detailed validation and cleaning. The validation stage checks whether the trajectory, modality fields, and metadata are usable for downstream model training. After automated or semi-automated checks, professional review is used to further ensure that delivered data satisfies the required collection standard.
+State and action representations differ across robot embodiments. Platforms may have different joint layouts, gripper or hand structures, control frequencies, and action semantics. Baihu therefore preserves embodiment-specific schemas that define which dimensions correspond to arm joints, grippers, hands, or other controllable components.
 
-This quality-control design is important because Baihu v2.0 contains 513575 episodes and more than 1.03 billion frames. Even a small percentage of invalid trajectories can correspond to a large amount of unusable data. The multi-stage workflow therefore aims to prevent low-quality trajectories from entering the training corpus and to maintain consistent quality across heterogeneous sources.
+This schema alignment is important for both training and evaluation. It allows each platform to retain its native control representation while enabling unified dataset loading. It also supports metric definitions such as Joint MSE and ALL MSE: Joint MSE uses only joint-related action dimensions, while ALL MSE uses the full action vector for each embodiment.
 
-## 4.3 Trajectory validation and filtering
+For grippers and hands, values are stored according to the actual physical travel range of each platform. Baihu does not impose a single universal gripper or hand scale across robots. This design keeps the stored action values faithful to the original robot control space and avoids forcing heterogeneous end-effectors into an artificial shared range.
 
-Episode validation is used to remove incomplete, corrupted, or invalid trajectories before model training. A valid episode should contain temporally ordered observations and actions, consistent task metadata, and usable modality fields. For robot learning, trajectory validity is not only a file integrity issue; it also affects whether the model receives correct observation-action supervision.
+## 4.4 HDF5-to-LeRobot v2.1 conversion and versioning
 
-The validation process checks the consistency between observations, actions, and metadata. For example, a processed episode should have aligned observation and action sequences, a valid task label or task identifier, a valid embodiment tag, and complete files for the required modalities. When visual observations are stored as image or video streams, the corresponding frame count should be consistent with the trajectory metadata. When state/action arrays are stored separately from videos, their temporal ordering should match the episode timeline.
+After validation and schema alignment, Baihu v2.0 is converted from the source HDF5 format into LeRobot v2.1. This conversion separates the source storage format from the model-training format: HDF5 provides the raw trajectory container, while LeRobot v2.1 provides the standardized dataset interface used by downstream training and evaluation pipelines.
 
-## 4.4 Task annotation and metadata standardization
-
-Baihu v2.0 contains 2989 tasks across multiple robot embodiments. To make the dataset usable for policy training and evaluation, task information is standardized into a consistent metadata representation. Each episode is associated with a task label or language instruction, an embodiment tag, an episode identifier, and source-specific metadata when available.
-
-Task metadata standardization enables dataset analysis by task, embodiment, and data source. It also supports downstream evaluation settings such as held-out task evaluation, per-platform evaluation, and task-level error analysis. In addition to task names, Baihu can organize trajectories according to higher-level scenario categories, task families, temporal horizons, and atomic skill composition when such annotations are available.
-
-For model training, task annotations provide the language or semantic conditioning signal used by vision-language-action policies. Therefore, task naming and task normalization are important parts of the dataset construction process.
-
-## 4.5 State and action schema alignment
-
-Because Baihu integrates multiple robot embodiments, state and action representations must be aligned before training. Different platforms may have different numbers of joints, different gripper or hand structures, different control frequencies, and different action semantics. Baihu therefore uses embodiment-specific schemas to describe which dimensions correspond to arm joints, grippers, hands, or other controllable components.
-
-This schema alignment is necessary for two reasons. First, it allows each embodiment to preserve its native control structure rather than being forced into an overly simplified universal action vector. Second, it enables evaluation metrics such as Joint MSE and ALL MSE to select the appropriate action dimensions for each platform. Joint MSE uses only joint-related action dimensions, while ALL MSE uses all available action dimensions for the embodiment.
-
-In practice, each embodiment defines its state dimension ordering, action dimension ordering, joint fields, gripper or hand fields, and any additional controllable components. This schema-level description is also necessary for training reusable policies across multiple robots because the model must know how to interpret each dimension in the action vector.
-
-## 4.6 Gripper and hand dimension handling
-
-For each robot embodiment, gripper and hand data are stored according to the actual physical travel range of that platform. Baihu does not assume a single universal gripper or hand range across all robots. A parallel-jaw gripper, a dexterous hand, and a robot-specific end-effector may have different mechanical limits and different action semantics, so their values are preserved according to the corresponding embodiment's real motion range.
-
-This design avoids forcing heterogeneous end-effectors into an artificial shared scale during dataset construction. It also makes the dataset more faithful to the original robot control space. During evaluation, Joint MSE can be computed using only joint-related dimensions, while ALL MSE includes the full action vector, including gripper or hand dimensions when they are present. This distinction is important because gripper and hand dimensions may have different numerical ranges, sparsity patterns, and task relevance across embodiments.
-
-## 4.7 HDF5-to-LeRobot v2.1 conversion
-
-After validation and schema alignment, Baihu v2.0 is converted from the source HDF5 format into the LeRobot v2.1 format. This conversion standardizes heterogeneous robot trajectories into a common representation for model training and evaluation. The converted dataset stores observation-action trajectories, task information, embodiment metadata, and episode-level indexing in a LeRobot-compatible structure.
-
-This conversion step separates the source storage format from the training format. HDF5 provides the raw trajectory container, while LeRobot v2.1 provides the standardized dataset interface used by downstream imitation-learning and vision-language-action training pipelines.
-
-## 4.8 Version management and reproducibility
-
-Baihu is maintained as a versioned dataset. Version management is important because large-scale robot datasets often require iterative fixes to action mappings, gripper or hand representations, task annotations, and metadata. By tracking dataset versions, Baihu makes it possible to reproduce training runs and understand which data corrections or additions are included in each release.
-
-Earlier Baihu releases corrected issues such as effector mapping range inconsistencies and gripper value reconstruction. These examples show why quality control is essential for robot foundation model pretraining: small errors in action dimensions or end-effector values can affect many downstream model updates. Baihu v2.0 is therefore treated as a completed and stable dataset version for the experiments in this paper.
-
-The versioned release design also separates completed dataset versions from in-progress versions. This paper focuses on Baihu v2.0 because it is a stable completed version with fixed statistics and an associated offline benchmark. Later versions can expand the dataset, but they should be reported separately to avoid mixing training and evaluation records across dataset releases.
+Baihu is maintained as a versioned dataset. Versioning makes it possible to track data additions, data cleaning, action mapping updates, and embodiment-specific fixes over time. This paper focuses on Baihu v2.0 because it is a completed and stable dataset version with fixed statistics and an associated offline benchmark.
 
 # 5. Benchmark Experiments
 
@@ -338,86 +304,51 @@ Future work will extend Baihu with additional versions, broader benchmark protoc
 
 **Table 5. Task-level offline zero-shot evaluation results.** The table reports Joint MSE, ALL MSE, and relative improvement for each of the 42 paired task-dataset records. Lower MSE is better.
 
-| Platform | Task | Dataset ID | Task type | Steps | Joint MSE ckpt-1 | Joint MSE ckpt-390000 | Joint improvement | ALL MSE ckpt-1 | ALL MSE ckpt-390000 | ALL improvement |
-|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| Qinglong | 圆珠笔放入笔筒 | `69e47d6e377a4953960d9c90a90b704d` |  | 3000 | 0.179469 | 0.000248 | 99.86% | 0.201477 | 0.003823 | 98.10% |
-| Qinglong | 水果蔬菜分类筐 | `9440958e5b604b24be9008daec947348` |  | 3000 | 0.183410 | 0.000527 | 99.71% | 0.207567 | 0.005064 | 97.56% |
-| Qinglong | 把垃圾丢到垃圾罐中 | `79b05db8ac8f4ebebde2c2534e273b39` | 双臂 | 3000 | 0.132497 | 0.000339 | 99.74% | 0.160485 | 0.000669 | 99.58% |
-| Qinglong | 用盖子盖住锅 | `5623ecb56a594c799084543f9134c3ba` |  | 3000 | 0.180345 | 0.000200 | 99.89% | 0.202733 | 0.002103 | 98.96% |
-| Qinglong | 鸡蛋放置 | `6df85a4d00b249169f5ab91443a084d2` | 双臂 | 3000 | 0.133400 | 0.001388 | 98.96% | 0.162696 | 0.001901 | 98.83% |
-| Qinglong | 食品打包 | `6e779b63d6a946c1ae9b89e77d441834` | 双臂 | 3000 | 0.133672 | 0.000732 | 99.45% | 0.148295 | 0.002839 | 98.09% |
-| Zhiyuan A2 | 茄子香蕉分类_桌面背景泛化_黄格子 | `d69be408d6514322a4e8f8bf1937afc6` | 双臂 | 6000 | 0.132409 | 0.000713 | 99.46% | 0.222947 | 0.006068 | 97.28% |
-| Zhiyuan A2 | 黑白胶带分类_桌面背景泛化_小鱼方巾 | `bf436fb9d6fd4319ad4eef98c351188d` | 双臂 | 6000 | 0.133624 | 0.001356 | 98.99% | 0.227667 | 0.011405 | 94.99% |
-| Zhiyuan A2 | 十字体圆柱积木分类_桌面背景泛化_红色 | `1031fa122eb74232a4382656905d2338` | 双臂 | 6000 | 0.132239 | 0.000620 | 99.53% | 0.225768 | 0.005214 | 97.69% |
-| Fourier GR-2 | 物品放置_玩具鸭子 | `9f4cd8915a824c429816ca7a1e072eb9` | 双臂 | 3000 | 0.137008 | 0.001172 | 99.14% | 0.244131 | 0.003854 | 98.42% |
-| Fourier GR-2 | 玩具分类 | `c542ba09a28e49d098f807a374f9babf` | 双臂 | 3000 | 0.139023 | 0.001794 | 98.71% | 0.231410 | 0.003836 | 98.34% |
-| Fourier GR-2 | 绿黄鸭梨分类 | `e620eda4ce88489ebac00c4e24ac6e5a` | 双臂 | 3000 | 0.137948 | 0.002447 | 98.23% | 0.226048 | 0.003783 | 98.33% |
-| Xinghaitu R1 | 汤匙入盘 | `66332e1ef1064a9c8b87ee148b38515b` | 单臂_右 | 默认最大 | 0.068287 | 0.000107 | 99.84% | 0.110777 | 0.005057 | 95.44% |
-| Xinghaitu R1 | 苹果和梨分类 | `ade47aa3b9fe4e0a92c8b105d051ea88` | 双臂 | 默认最大 | 0.082550 | 0.000211 | 99.74% | 0.124586 | 0.003934 | 96.84% |
-| Xinghaitu R1 | 把T恤放到篮子里 | `2110f6dd503b47fb96eef4da2f2fc966` | 单臂_右 | 默认最大 | 0.075271 | 0.000274 | 99.64% | 0.117380 | 0.005601 | 95.23% |
-| Leju KUAVO | 热水壶放置 | `8f9da6aeac0b4d5a8b3c6d6ce393a9f9` | 单臂_左 | 默认最大 | 0.133692 | 0.000806 | 99.40% | 0.158527 | 0.004078 | 97.43% |
-| Leju KUAVO | 鸡蛋放置 | `473e0adf47c54f7d9e74b2aa83421204` | 单臂_右 | 默认最大 | 0.133315 | 0.000456 | 99.66% | 0.155686 | 0.004150 | 97.33% |
-| Leju KUAVO | 打开抽屉放入物体后关闭 | `ce04377a52344e58aae94f674642bc04` | 双臂 | 默认最大 | 0.133361 | 0.000969 | 99.27% | 0.157571 | 0.004777 | 96.97% |
-| Songling Aloha | 蔬菜块入碗与容器居中 | `ec37fad6f7364a99916be6ea31597232` |  |  | 0.133895 | 0.000616 | 99.54% | 0.159897 | 0.001871 | 98.83% |
-| Songling Aloha | 抽屉筷子取放与餐具对齐 | `1d7fe9a4cacd4f66b689fd931356c0e7` |  |  | 0.134391 | 0.001479 | 98.90% | 0.151264 | 0.002772 | 98.17% |
-| Songling Aloha | 草莓入盘并叠杯 | `06911227af864ee4be3665b01ba48de1` |  |  | 0.133619 | 0.000752 | 99.44% | 0.158443 | 0.002277 | 98.56% |
-| Franka FR3 | 叠杯子 | `0f25153abb0d4101a25f155b8ce9b25d` | 双臂 | 3000 | 0.051757 | 0.000510 | 99.02% | 0.086843 | 0.002837 | 96.73% |
-| Franka FR3 | 物品整理 | `66c3ffc1521342ad9f9e1cd2fb3439ce` | 双臂 | 3000 | 0.038663 | 0.000731 | 98.11% | 0.074911 | 0.005935 | 92.08% |
-| Franka FR3 | 物品放置_玩具鸭子 | `9be0f4a5ab99436999e92001c48358fa` | 双臂 | 3000 | 0.034437 | 0.000892 | 97.41% | 0.071658 | 0.004803 | 93.30% |
-| Astribot S1 | 碗放盘中_桌面背景泛化_绿色 | `a52b8a1f1f6b4f27aa0df348cee0876f` | 单臂_右 | 3000 | 0.134600 | 0.000700 | 99.48% | 0.159800 | 0.003900 | 97.56% |
-| Astribot S1 | 预 - 汤匙入碗_桌面背景泛化_绿格子 | `698f93b7a4754ccbae02f5ab897579bc` | 单臂_右 | 3000 | 0.135232 | 0.000892 | 99.34% | 0.155694 | 0.007153 | 95.41% |
-| Astribot S1 | 预-杯碟放置_桌面背景泛化_橙色 | `9b795273e5874d9984e3eb0fdda3bb3d` | 单臂_右 | 3000 | 0.135401 | 0.000875 | 99.35% | 0.160526 | 0.006405 | 96.01% |
-| UR5e | 硬币放入存钱罐_补充 | `44cd7ef348ba4e63ab0e56d1ec3152be` | 单臂_右 | 6000 | 0.062034 | 0.000031 | 99.95% | 0.085492 | 0.010285 | 87.97% |
-| UR5e | 堆积木 | `0f55fc9678ad4dd3bd1d6ee430bc827a` | 双臂 | 6000 | 0.062204 | 0.000131 | 99.79% | 0.081088 | 0.008773 | 89.18% |
-| UR5e | 语义测试 | `5df79740a10d4784b04975f9af3c558c` | 双臂 | 6000 | 0.062930 | 0.000041 | 99.94% | 0.084983 | 0.004632 | 94.55% |
-| ARX | 叠衣服 | `d9986c2261804ea791e4989874eee8c6` | 双臂 | 3000 | 0.137219 | 0.000791 | 99.42% | 0.156832 | 0.001914 | 98.78% |
-| ARX | 叠衣服_修改流程 | `45b85d75f5154a939e293480af93b6a1` | 双臂 | 3000 | 0.140643 | 0.002073 | 98.53% | 0.166439 | 0.002632 | 98.42% |
-| ARX | 叠衣服_强化细节 | `3b305b19f662438088646cd4e9e5e631` | 双臂 | 3000 | 0.136654 | 0.000363 | 99.73% | 0.160718 | 0.000862 | 99.46% |
-| Tianji | 插花 | `69d89b55781b487f8bfa2a65ec53cd23` | 双臂 | 3000 | 0.017314 | 0.000778 | 95.50% | 0.089298 | 0.002285 | 97.44% |
-| Tianji | 电池分拣 | `0fd9a046f966439fb1e915a5fed94581` | 双臂 | 3000 | 0.016675 | 0.000329 | 98.03% | 0.106140 | 0.001487 | 98.60% |
-| Tianji | 叠杯子 | `de4561f3e74d494fac81e7e39d61f58a` | 双臂 | 3000 | 0.019495 | 0.000730 | 96.26% | 0.095306 | 0.002505 | 97.37% |
-| Dwheel | 预-章鱼玩具分类_桌面背景泛化_小鱼方巾 | `555d81b30669478fae7072f4c2293197` | 双臂 | 1924 | 0.176082 | 0.000165 | 99.91% | 0.203914 | 0.005410 | 97.35% |
-| Dwheel | 预-绿黄鸭梨分类_桌面背景泛化_蓝格子 | `138e0f85edc24dd3a2cd9e4caf03cee2` | 双臂 | 2420 | 0.176593 | 0.000242 | 99.86% | 0.203826 | 0.006220 | 96.95% |
-| Dwheel | 预-圆柱立方体积木分类_桌面背景泛化_绿格子 | `d4e90e8481be4440882499681d8eea70` | 双臂 | 1951 | 0.176471 | 0.000217 | 99.88% | 0.203759 | 0.003841 | 98.11% |
-| Zhiyuan G1 | 支架安装 | `129dd0dd602145a1aa17f4385c7a63a8` | 单臂_右 | 6000 | 0.135378 | 0.000409 | 99.70% | 0.167892 | 0.013138 | 92.17% |
-| Zhiyuan G1 | 电源组件安装 | `f850372cd2b44bc297522657729d9dd2` | 双臂 | 6000 | 0.135268 | 0.000291 | 99.78% | 0.165634 | 0.012706 | 92.33% |
-| Zhiyuan G1 | 触摸板组装 | `f6fb6e44374c47fd95dac7661b8143cb` | 双臂 | 6000 | 0.134856 | 0.000146 | 99.89% | 0.169781 | 0.019328 | 88.62% |
+| Platform | Task | Task type | Joint MSE ckpt-1 | Joint MSE ckpt-390000 | Joint improvement | ALL MSE ckpt-1 | ALL MSE ckpt-390000 | ALL improvement |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| Qinglong | Put a ballpoint pen into a pen holder |  | 0.179469 | 0.000248 | 99.86% | 0.201477 | 0.003823 | 98.10% |
+| Qinglong | Sort fruits and vegetables into baskets |  | 0.183410 | 0.000527 | 99.71% | 0.207567 | 0.005064 | 97.56% |
+| Qinglong | Throw trash into a trash can | Dual-arm | 0.132497 | 0.000339 | 99.74% | 0.160485 | 0.000669 | 99.58% |
+| Qinglong | Cover a pot with a lid |  | 0.180345 | 0.000200 | 99.89% | 0.202733 | 0.002103 | 98.96% |
+| Qinglong | Place an egg | Dual-arm | 0.133400 | 0.001388 | 98.96% | 0.162696 | 0.001901 | 98.83% |
+| Qinglong | Pack food | Dual-arm | 0.133672 | 0.000732 | 99.45% | 0.148295 | 0.002839 | 98.09% |
+| Zhiyuan A2 | Sort eggplants and bananas with a yellow-grid tabletop background | Dual-arm | 0.132409 | 0.000713 | 99.46% | 0.222947 | 0.006068 | 97.28% |
+| Zhiyuan A2 | Sort black and white tape with a small-fish-towel tabletop background | Dual-arm | 0.133624 | 0.001356 | 98.99% | 0.227667 | 0.011405 | 94.99% |
+| Zhiyuan A2 | Sort cross-shaped and cylindrical blocks with a red tabletop background | Dual-arm | 0.132239 | 0.000620 | 99.53% | 0.225768 | 0.005214 | 97.69% |
+| Fourier GR-2 | Place a toy duck | Dual-arm | 0.137008 | 0.001172 | 99.14% | 0.244131 | 0.003854 | 98.42% |
+| Fourier GR-2 | Sort toys | Dual-arm | 0.139023 | 0.001794 | 98.71% | 0.231410 | 0.003836 | 98.34% |
+| Fourier GR-2 | Sort green and yellow pears | Dual-arm | 0.137948 | 0.002447 | 98.23% | 0.226048 | 0.003783 | 98.33% |
+| Xinghaitu R1 | Put a spoon into a plate | Right-arm | 0.068287 | 0.000107 | 99.84% | 0.110777 | 0.005057 | 95.44% |
+| Xinghaitu R1 | Sort apples and pears | Dual-arm | 0.082550 | 0.000211 | 99.74% | 0.124586 | 0.003934 | 96.84% |
+| Xinghaitu R1 | Put a T-shirt into a basket | Right-arm | 0.075271 | 0.000274 | 99.64% | 0.117380 | 0.005601 | 95.23% |
+| Leju KUAVO | Place a kettle | Left-arm | 0.133692 | 0.000806 | 99.40% | 0.158527 | 0.004078 | 97.43% |
+| Leju KUAVO | Place an egg | Right-arm | 0.133315 | 0.000456 | 99.66% | 0.155686 | 0.004150 | 97.33% |
+| Leju KUAVO | Open a drawer, place an object inside, and close it | Dual-arm | 0.133361 | 0.000969 | 99.27% | 0.157571 | 0.004777 | 96.97% |
+| Songling Aloha | Put vegetable blocks into a bowl and center the container |  | 0.133895 | 0.000616 | 99.54% | 0.159897 | 0.001871 | 98.83% |
+| Songling Aloha | Pick and place chopsticks in a drawer and align tableware |  | 0.134391 | 0.001479 | 98.90% | 0.151264 | 0.002772 | 98.17% |
+| Songling Aloha | Put strawberries on a plate and stack cups |  | 0.133619 | 0.000752 | 99.44% | 0.158443 | 0.002277 | 98.56% |
+| Franka FR3 | Stack cups | Dual-arm | 0.051757 | 0.000510 | 99.02% | 0.086843 | 0.002837 | 96.73% |
+| Franka FR3 | Organize objects | Dual-arm | 0.038663 | 0.000731 | 98.11% | 0.074911 | 0.005935 | 92.08% |
+| Franka FR3 | Place a toy duck | Dual-arm | 0.034437 | 0.000892 | 97.41% | 0.071658 | 0.004803 | 93.30% |
+| Astribot S1 | Put a bowl onto a plate with a green tabletop background | Right-arm | 0.134600 | 0.000700 | 99.48% | 0.159800 | 0.003900 | 97.56% |
+| Astribot S1 | Put a spoon into a bowl with a green-grid tabletop background | Right-arm | 0.135232 | 0.000892 | 99.34% | 0.155694 | 0.007153 | 95.41% |
+| Astribot S1 | Place a cup and saucer with an orange tabletop background | Right-arm | 0.135401 | 0.000875 | 99.35% | 0.160526 | 0.006405 | 96.01% |
+| UR5e | Put a coin into a piggy bank | Right-arm | 0.062034 | 0.000031 | 99.95% | 0.085492 | 0.010285 | 87.97% |
+| UR5e | Stack blocks | Dual-arm | 0.062204 | 0.000131 | 99.79% | 0.081088 | 0.008773 | 89.18% |
+| UR5e | Semantic test | Dual-arm | 0.062930 | 0.000041 | 99.94% | 0.084983 | 0.004632 | 94.55% |
+| ARX | Fold clothes | Dual-arm | 0.137219 | 0.000791 | 99.42% | 0.156832 | 0.001914 | 98.78% |
+| ARX | Fold clothes with revised procedure | Dual-arm | 0.140643 | 0.002073 | 98.53% | 0.166439 | 0.002632 | 98.42% |
+| ARX | Fold clothes with detailed handling | Dual-arm | 0.136654 | 0.000363 | 99.73% | 0.160718 | 0.000862 | 99.46% |
+| Tianji | Arrange flowers | Dual-arm | 0.017314 | 0.000778 | 95.50% | 0.089298 | 0.002285 | 97.44% |
+| Tianji | Sort batteries | Dual-arm | 0.016675 | 0.000329 | 98.03% | 0.106140 | 0.001487 | 98.60% |
+| Tianji | Stack cups | Dual-arm | 0.019495 | 0.000730 | 96.26% | 0.095306 | 0.002505 | 97.37% |
+| Dwheel | Sort octopus toys with a small-fish-towel tabletop background | Dual-arm | 0.176082 | 0.000165 | 99.91% | 0.203914 | 0.005410 | 97.35% |
+| Dwheel | Sort green and yellow pears with a blue-grid tabletop background | Dual-arm | 0.176593 | 0.000242 | 99.86% | 0.203826 | 0.006220 | 96.95% |
+| Dwheel | Sort cylindrical and cuboid blocks with a green-grid tabletop background | Dual-arm | 0.176471 | 0.000217 | 99.88% | 0.203759 | 0.003841 | 98.11% |
+| Zhiyuan G1 | Install a bracket | Right-arm | 0.135378 | 0.000409 | 99.70% | 0.167892 | 0.013138 | 92.17% |
+| Zhiyuan G1 | Install a power module | Dual-arm | 0.135268 | 0.000291 | 99.78% | 0.165634 | 0.012706 | 92.33% |
+| Zhiyuan G1 | Assemble a touchpad | Dual-arm | 0.134856 | 0.000146 | 99.89% | 0.169781 | 0.019328 | 88.62% |
 
 # References
 
-```bibtex
-@article{wu2024robomind,
-  title        = {{RoboMIND}: Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation},
-  author       = {Wu, Kun and Hou, Chengkai and Liu, Jiaming and Che, Zhengping and Ju, Xiaozhu and Yang, Zhuqin and Li, Meng and Zhao, Yinuo and Xu, Zhiyuan and Yang, Guang and Fan, Shichao and Wang, Xinhua and Liao, Fei and Zhao, Zhen and Li, Guangyu and Jin, Zhao and Wang, Lecheng and Mao, Jilei and Liu, Ning and Ren, Pei and Zhang, Qiang and Lyu, Yaoxu and Liu, Mengzhen and He, Jingyang and Luo, Yulin and Gao, Zeyu and Li, Chenxuan and Gu, Chenyang and Fu, Yankai and Wu, Di and Wang, Xingyu and Chen, Sixiang and Wang, Zhenyu and An, Pengju and Qian, Siyuan and Zhang, Shanghang and Tang, Jian},
-  journal      = {arXiv preprint arXiv:2412.13877},
-  year         = {2024}
-}
-
-@article{khazatsky2024droid,
-  title        = {{DROID}: A Large-Scale In-The-Wild Robot Manipulation Dataset},
-  author       = {Khazatsky, Alexander and Pertsch, Karl and Nair, Suraj and Balakrishna, Ashwin and Dasari, Sudeep and Karamcheti, Siddharth and Nasiriany, Soroush and Srirama, Mohan Kumar and Chen, Lawrence Yunliang and Ellis, Kirsty and others},
-  journal      = {arXiv preprint arXiv:2403.12945},
-  year         = {2024}
-}
-
-@article{oneill2023openx,
-  title        = {Open X-Embodiment: Robotic Learning Datasets and {RT-X} Models},
-  author       = {{Open X-Embodiment Collaboration} and O'Neill, Abby and Rehman, Abdul and Gupta, Abhinav and Maddukuri, Abhiram and Gupta, Abhishek and Padalkar, Abhishek and Lee, Abraham and Pooley, Acorn and Gupta, Agrim and others},
-  journal      = {arXiv preprint arXiv:2310.08864},
-  year         = {2023}
-}
-
-@article{walke2023bridgedatav2,
-  title        = {{BridgeData V2}: A Dataset for Robot Learning at Scale},
-  author       = {Walke, Homer and Black, Kevin and Lee, Abraham and Kim, Moo Jin and Du, Max and Zheng, Chongyi and Zhao, Tony and Hansen-Estruch, Philippe and Vuong, Quan and He, Andre and Myers, Vivek and Fang, Kuan and Finn, Chelsea and Levine, Sergey},
-  journal      = {arXiv preprint arXiv:2308.12952},
-  year         = {2023}
-}
-
-@article{cadene2026lerobot,
-  title        = {{LeRobot}: An Open-Source Library for End-to-End Robot Learning},
-  author       = {Cadene, Remi and Aliberts, Simon and Capuano, Francesco and Aractingi, Michel and Zouitine, Adil and Kooijmans, Pepijn and Choghari, Jade and Russi, Martino and Pascal, Caroline and Palma, Steven and Shukor, Mustafa and Moss, Jess and Soare, Alexander and Aubakirova, Dana and Lhoest, Quentin and Gallou{\'e}dec, Quentin and Wolf, Thomas},
-  journal      = {arXiv preprint arXiv:2602.22818},
-  year         = {2026}
-}
-```
+References are maintained in `paper/references.bib`.
