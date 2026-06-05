@@ -1,4 +1,6 @@
-# Baihu v2.0 Embodiment Distribution
+# Table 2. Embodiment-level distribution of Baihu v2.0
+
+The table reports tasks, episodes, frames, hours, and duration percentage for each of the 14 embodiment tags.
 
 | Embodiment tag | Tasks | Episodes | Frames | Hours | Hours percent |
 |---|---:|---:|---:|---:|---:|
@@ -18,4 +20,4 @@
 | zhiyuana2 | 119 | 34675 | 69847611 | 646.74 | 6.79% |
 | **Total** | **2989** | **513575** | **1028349814** | **9521.75** | **100.01%** |
 
-Note: the percentage sum is 100.01% due to rounding to two decimal places.
+The percentage sum is 100.01% due to rounding to two decimal places.
