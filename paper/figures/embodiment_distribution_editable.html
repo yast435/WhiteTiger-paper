@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baihu v2.0 Embodiment Distribution Editable Figure</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --grid: #e5e7eb;
+      --bar: #4f80ff;
+      --bar2: #9bb6ff;
+      --accent: #111827;
+    }
+    body {
+      margin: 0;
+      background: #f8fafc;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .panel {
+      background: var(--bg);
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+    h1 { font-size: 24px; margin: 0 0 8px; }
+    h2 { font-size: 18px; margin: 0 0 12px; }
+    p { margin: 8px 0; color: var(--muted); }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 14px 0 4px;
+    }
+    button {
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    button:hover { background: #f1f5f9; }
+    .note { font-size: 13px; }
+    .svg-wrap {
+      overflow-x: auto;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: white;
+    }
+    svg {
+      display: block;
+      background: white;
+      user-select: none;
+    }
+    .draggable { cursor: move; }
+    .axis text { fill: #4b5563; font-size: 13px; }
+    .axis line, .axis path { stroke: #cbd5e1; }
+    .grid-line { stroke: var(--grid); stroke-width: 1; }
+    .bar { fill: var(--bar); opacity: 0.86; }
+    .bar.secondary { fill: var(--bar2); }
+    .label { fill: #111827; font-size: 14px; }
+    .value-label { fill: #111827; font-size: 13px; }
+    .small-label { fill: #4b5563; font-size: 12px; }
+    .title { fill: #111827; font-size: 22px; font-weight: 700; }
+    .subtitle { fill: #6b7280; font-size: 14px; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 8px 10px;
+      text-align: right;
+    }
+    th:first-child, td:first-child { text-align: left; }
+    th { background: #f3f4f6; }
+    tfoot td { font-weight: 700; background: #f9fafb; }
+    textarea {
+      width: 100%;
+      min-height: 160px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel">
+      <h1>Baihu v2.0 Embodiment Distribution</h1>
+      <p>This is an editable HTML/SVG figure. Drag the title, subtitle, axis label, and value labels directly in the SVG to adjust the layout. Use the export button to copy or download the edited SVG.</p>
+      <div class="controls">
+        <button id="resetBtn">Reset label positions</button>
+        <button id="copySvgBtn">Copy SVG markup</button>
+        <button id="downloadSvgBtn">Download SVG</button>
+      </div>
+      <p class="note">Recommended for the paper: use the horizontal bar chart rather than the pie chart, because 14 categories are easier to read in a sorted bar chart.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Editable SVG Figure: duration percentage by embodiment</h2>
+      <div class="svg-wrap">
+        <svg id="chart" width="1120" height="760" viewBox="0 0 1120 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Baihu v2.0 embodiment duration distribution">
+          <rect x="0" y="0" width="1120" height="760" fill="#ffffff"/>
+          <text id="title" class="title draggable" x="80" y="54">Baihu v2.0 data duration distribution by embodiment</text>
+          <text id="subtitle" class="subtitle draggable" x="80" y="80">9521.75 hours, 2989 tasks, 513575 episodes, 1.03B frames; percentages are rounded.</text>
+          <g id="plot"></g>
+          <text id="xAxisLabel" class="small-label draggable" x="505" y="716">Duration percentage of total Baihu v2.0 hours (%)</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Source table</h2>
+      <table id="dataTable">
+        <thead>
+          <tr><th>embodiment_tag</th><th>tasks</th><th>episodes</th><th>frames</th><th>hours/h</th><th>hours_percent</th></tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr><td>sum</td><td>2989</td><td>513575</td><td>1028349814</td><td>9521.75</td><td>100.01%</td></tr>
+        </tfoot>
+      </table>
+      <p class="note">The total percentage is 100.01% because values are rounded to two decimal places.</p>
+    </section>
+
+    <section class="panel">
+      <h2>SVG markup</h2>
+      <p>After editing the SVG labels, click “Copy SVG markup” or “Download SVG”.</p>
+      <textarea id="svgText" readonly></textarea>
+    </section>
+  </main>
+
+  <script>
+    const rawData = [
+      {tag: "arx_loong", tasks: 3, episodes: 842, frames: 2223107, hours: 20.58, percent: 0.22},
+      {tag: "astribots1", tasks: 100, episodes: 29889, frames: 40932735, hours: 379.01, percent: 3.98},
+      {tag: "cobotmagic", tasks: 112, episodes: 33098, frames: 55115692, hours: 510.33, percent: 5.36},
+      {tag: "dualur5e", tasks: 49, episodes: 14805, frames: 22939047, hours: 212.40, percent: 2.23},
+      {tag: "dwheel", tasks: 231, episodes: 13485, frames: 36172626, hours: 334.93, percent: 3.52},
+      {tag: "fr3", tasks: 9, episodes: 2090, frames: 4037181, hours: 37.38, percent: 0.39},
+      {tag: "genie1", tasks: 1512, episodes: 140718, frames: 459379181, hours: 4253.51, percent: 44.67},
+      {tag: "gr2", tasks: 319, episodes: 96686, frames: 103615634, hours: 959.40, percent: 10.08},
+      {tag: "lejukuaihu", tasks: 123, episodes: 29095, frames: 42586155, hours: 394.32, percent: 4.14},
+      {tag: "qinlongros1", tasks: 145, episodes: 39401, frames: 80720445, hours: 747.41, percent: 7.85},
+      {tag: "qinlongros2", tasks: 22, episodes: 7105, frames: 11189034, hours: 103.60, percent: 1.09},
+      {tag: "tianji", tasks: 6, episodes: 1575, frames: 2727875, hours: 25.26, percent: 0.27},
+      {tag: "xinghaitu_r1", tasks: 239, episodes: 70111, frames: 96863491, hours: 896.88, percent: 9.42},
+      {tag: "zhiyuana2", tasks: 119, episodes: 34675, frames: 69847611, hours: 646.74, percent: 6.79}
+    ];
+
+    const data = [...rawData].sort((a, b) => b.percent - a.percent);
+    const svg = document.getElementById("chart");
+    const plot = document.getElementById("plot");
+    const svgText = document.getElementById("svgText");
+
+    function svgEl(name, attrs = {}) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    }
+
+    function drawChart() {
+      plot.innerHTML = "";
+      const margin = {left: 210, top: 120, right: 155, bottom: 80};
+      const width = 1120 - margin.left - margin.right;
+      const rowH = 38;
+      const maxP = 50;
+      const x = p => margin.left + (p / maxP) * width;
+      const y = i => margin.top + i * rowH;
+      const barH = 23;
+
+      // Gridlines and axis
+      [0, 10, 20, 30, 40, 50].forEach(tick => {
+        const gx = x(tick);
+        plot.appendChild(svgEl("line", {x1: gx, y1: margin.top - 14, x2: gx, y2: y(data.length - 1) + 34, class: "grid-line"}));
+        const txt = svgEl("text", {x: gx, y: y(data.length - 1) + 62, class: "small-label", "text-anchor": "middle"});
+        txt.textContent = String(tick);
+        plot.appendChild(txt);
+      });
+
+      data.forEach((d, i) => {
+        const yy = y(i);
+        const isTop5 = i < 5;
+        const tag = svgEl("text", {x: margin.left - 16, y: yy + 17, class: "label", "text-anchor": "end"});
+        tag.textContent = d.tag;
+        plot.appendChild(tag);
+
+        const bar = svgEl("rect", {
+          x: margin.left, y: yy, width: Math.max(1, x(d.percent) - margin.left), height: barH,
+          rx: 4, ry: 4, class: isTop5 ? "bar" : "bar secondary"
+        });
+        plot.appendChild(bar);
+
+        const val = svgEl("text", {
+          x: x(d.percent) + 10, y: yy + 17, class: "value-label draggable",
+          "data-default-x": x(d.percent) + 10,
+          "data-default-y": yy + 17
+        });
+        val.textContent = `${d.percent.toFixed(2)}% (${d.hours.toFixed(2)} h)`;
+        plot.appendChild(val);
+      });
+
+      const yAxis = svgEl("line", {x1: margin.left, y1: margin.top - 14, x2: margin.left, y2: y(data.length - 1) + 34, stroke: "#94a3b8", "stroke-width": 1});
+      const xAxis = svgEl("line", {x1: margin.left, y1: y(data.length - 1) + 34, x2: margin.left + width, y2: y(data.length - 1) + 34, stroke: "#94a3b8", "stroke-width": 1});
+      plot.appendChild(yAxis);
+      plot.appendChild(xAxis);
+
+      const note = svgEl("text", {x: 80, y: 744, class: "small-label draggable", "data-default-x": 80, "data-default-y": 744});
+      note.textContent = "Note: top five embodiments contribute approximately 78.81% of the total duration.";
+      plot.appendChild(note);
+
+      makeDraggable();
+      updateSvgText();
+    }
+
+    function fillTable() {
+      const tbody = document.querySelector("#dataTable tbody");
+      tbody.innerHTML = "";
+      rawData.forEach(d => {
+        const tr = document.createElement("tr");
+        [d.tag, d.tasks, d.episodes, d.frames, d.hours.toFixed(2), `${d.percent.toFixed(2)}%`].forEach(v => {
+          const td = document.createElement("td");
+          td.textContent = v;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    function makeDraggable() {
+      let selected = null;
+      let offset = {x: 0, y: 0};
+      function clientToSvg(evt) {
+        const pt = svg.createSVGPoint();
+        pt.x = evt.clientX;
+        pt.y = evt.clientY;
+        return pt.matrixTransform(svg.getScreenCTM().inverse());
+      }
+      svg.querySelectorAll(".draggable").forEach(el => {
+        el.addEventListener("pointerdown", evt => {
+          selected = el;
+          selected.setPointerCapture(evt.pointerId);
+          const p = clientToSvg(evt);
+          offset.x = p.x - Number(selected.getAttribute("x"));
+          offset.y = p.y - Number(selected.getAttribute("y"));
+        });
+      });
+      svg.addEventListener("pointermove", evt => {
+        if (!selected) return;
+        const p = clientToSvg(evt);
+        selected.setAttribute("x", (p.x - offset.x).toFixed(1));
+        selected.setAttribute("y", (p.y - offset.y).toFixed(1));
+        updateSvgText();
+      });
+      svg.addEventListener("pointerup", () => { selected = null; });
+      svg.addEventListener("pointerleave", () => { selected = null; });
+    }
+
+    function serializeSvg() {
+      const clone = svg.cloneNode(true);
+      clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      return new XMLSerializer().serializeToString(clone);
+    }
+
+    function updateSvgText() {
+      svgText.value = serializeSvg();
+    }
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      document.getElementById("title").setAttribute("x", 80);
+      document.getElementById("title").setAttribute("y", 54);
+      document.getElementById("subtitle").setAttribute("x", 80);
+      document.getElementById("subtitle").setAttribute("y", 80);
+      document.getElementById("xAxisLabel").setAttribute("x", 505);
+      document.getElementById("xAxisLabel").setAttribute("y", 716);
+      svg.querySelectorAll("[data-default-x]").forEach(el => {
+        el.setAttribute("x", el.getAttribute("data-default-x"));
+        el.setAttribute("y", el.getAttribute("data-default-y"));
+      });
+      updateSvgText();
+    });
+
+    document.getElementById("copySvgBtn").addEventListener("click", async () => {
+      updateSvgText();
+      await navigator.clipboard.writeText(svgText.value);
+      alert("SVG markup copied to clipboard.");
+    });
+
+    document.getElementById("downloadSvgBtn").addEventListener("click", () => {
+      updateSvgText();
+      const blob = new Blob([svgText.value], {type: "image/svg+xml;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "baihu_v2_embodiment_distribution.svg";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    fillTable();
+    drawChart();
+  </script>
+</body>
+</html>
