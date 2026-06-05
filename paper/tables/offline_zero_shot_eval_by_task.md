@@ -1,6 +1,6 @@
-# Offline zero-shot evaluation: per-task paired results
+# Table 5. Task-level offline zero-shot evaluation results
 
-The table lists all **42 paired task-dataset records** in the uploaded CSV. The `智元G1 / 电源组件安装` row has been corrected after confirming that checkpoint-1 and checkpoint-390000 MSE values were originally reversed.
+The table reports Joint MSE, ALL MSE, and relative improvement for each of the 42 paired task-dataset records. Lower MSE is better.
 
 | Machine | Task | Dataset ID | Task type | Steps | Joint MSE ckpt-1 | Joint MSE ckpt-390000 | Joint improvement | ALL MSE ckpt-1 | ALL MSE ckpt-390000 | ALL improvement |
 |---|---|---|---|---:|---:|---:|---:|---:|---:|---:|
