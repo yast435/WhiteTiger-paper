@@ -41,9 +41,27 @@ The platform composition in Table~\ref{tab:platform-comp} shows that Baihu integ
 
 \subsection{Scenario and task coverage}
 
-Beyond scale and embodiment diversity, Baihu is designed to cover a broad range of manipulation scenarios and task structures. The dataset is intended to support robot learning in both daily-life and production-oriented environments. Representative scenario families include industrial manufacturing, household service, catering or food handling, retail or pharmacy-like environments, and other generalization scenarios. These scenario categories provide a practical organization for analyzing how robot policies transfer across environments and object distributions.
+Beyond scale and embodiment diversity, Baihu is designed to cover a broad range of manipulation scenarios and task structures. The dataset is organized into five major scenario categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose scenarios. Table~\ref{tab:scenario-coverage} summarizes the task count in each scenario category.
 
-At the task level, Baihu contains 2989 tasks. These tasks include both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
+\begin{table}[t]
+\centering
+\caption{Scenario-level task coverage of Baihu. The table reports the number of tasks in each scenario category.}
+\label{tab:scenario-coverage}
+\begin{tabular}{lr}
+\toprule
+Scenario category & Tasks \\
+\midrule
+Household service & 1564 \\
+Other & 476 \\
+Retail and pharmacy & 418 \\
+Catering service & 288 \\
+Industrial manufacturing & 243 \\
+\textbf{Total} & \textbf{2989} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These scenario categories provide a practical organization for analyzing how robot policies transfer across environments, object types, and manipulation contexts. At the task level, Baihu contains 2989 tasks, including both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
 
 \subsection{Object and interaction diversity}
 
