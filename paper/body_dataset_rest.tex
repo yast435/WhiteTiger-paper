@@ -1,3 +1,11 @@
+\subsection{Data collection protocol}
+
+All trajectories in Baihu are collected through human teleoperation. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
+
+Task annotations are provided manually by the task requester when the collection requirement is proposed. The task label or instruction therefore reflects the intended task specification before data collection, rather than being generated automatically from the robot logs after collection. The task description defines the expected scene setup, objects or tools, target state, and manipulation procedure for each collection requirement.
+
+Because Baihu spans 13 robot platforms, the observation and action spaces are platform-specific. Camera count, camera viewpoint, camera model, and sensor configuration depend on the robot platform and collection setup. Similarly, action representations are not forced into a single universal schema. Different platforms may use different combinations of arm joints, end-effector commands, gripper or hand commands, and other platform-specific control dimensions. Baihu therefore preserves platform-level schema information while converting the data into a standardized training format.
+
 \subsection{Skill taxonomy}
 
 Baihu covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
@@ -8,7 +16,7 @@ Table~\ref{tab:skill-taxonomy} summarizes the 64 skills according to seven actio
 
 \subsection{Robot platform composition}
 
-Baihu contains data from 13 robot platforms, covering a diverse set of robot embodiments and data sources. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset source composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
+Baihu contains human-teleoperated data from 13 robot platforms, covering diverse robot embodiments, sensor configurations, and task settings. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
 
 \begin{table}[t]
 \centering
@@ -37,7 +45,7 @@ Agibot A2 & 119 & 34675 & 69847611 & 646.74 \\
 \end{tabular}
 \end{table}
 
-The platform composition in Table~\ref{tab:platform-comp} shows that Baihu integrates robot operation data from multiple platforms with different embodiments, control interfaces, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
+The platform composition in Table~\ref{tab:platform-comp} shows that Baihu integrates human-teleoperated robot data from multiple platforms with different embodiments, control interfaces, sensor configurations, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
 
 \subsection{Scenario and task coverage}
 
@@ -77,6 +85,6 @@ This temporal diversity is important for embodied foundation model training. Sho
 
 \subsection{Data format}
 
-Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the original robot platform and task setup, each trajectory may include visual observations, robot state information, action commands, task labels, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems.
+Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
 
 A typical Baihu trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, episode metadata, and frame-level timestamps or ordering information.
