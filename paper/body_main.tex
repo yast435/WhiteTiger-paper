@@ -1,7 +1,7 @@
 \begin{abstract}
-Large-scale robot data is becoming a core prerequisite for training embodied foundation models and generalist robot policies. However, robot learning still lacks pretraining-scale datasets that combine broad task coverage, multi-embodiment diversity, standardized data organization, and model-oriented evaluation. In this work, we introduce \textbf{Baihu v2.0}, a billion-frame, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu v2.0 contains \textbf{9521.75 hours} of robot data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}. The dataset integrates multi-source robot operation data and converts HDF5 source records into the LeRobot v2.1 format to support scalable imitation learning and vision-language-action model training.
+Large-scale robot data is becoming a core prerequisite for training embodied foundation models and generalist robot policies. However, robot learning still lacks pretraining-scale datasets that combine broad task coverage, multi-embodiment diversity, standardized data organization, and model-oriented evaluation. In this work, we introduce \textbf{Baihu}, a billion-frame, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu contains \textbf{9521.75 hours} of robot data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}. The dataset integrates multi-source robot operation data and converts HDF5 source records into the LeRobot v2.1 format to support scalable imitation learning and vision-language-action model training.
 
-Beyond dataset construction, Baihu is designed as a reusable data foundation for evaluating embodied model pretraining. We characterize the dataset scale, version history, platform coverage, and standardized data organization. To evaluate the utility of Baihu v2.0, we conduct offline open-loop zero-shot evaluation with GR00T N1.6 across \textbf{13 platforms} and \textbf{42 paired task-dataset records}. Compared with a no-training checkpoint, a checkpoint trained on Baihu v2.0 for one epoch reduces \textbf{Joint MSE by 99.42\%} and \textbf{ALL MSE by 96.79\%}. These results suggest that Baihu v2.0 provides effective large-scale supervision for robot action prediction and can serve as a practical data infrastructure for embodied foundation model development.
+Beyond dataset construction, Baihu is designed as a reusable data foundation for evaluating embodied model pretraining. We characterize the dataset scale, platform coverage, task composition, and standardized data organization. To evaluate the utility of Baihu, we conduct offline open-loop zero-shot evaluation with GR00T N1.6 across \textbf{13 platforms} and \textbf{42 paired task-dataset records}. Compared with a no-training checkpoint, a checkpoint trained on Baihu for one epoch reduces \textbf{Joint MSE by 99.42\%} and \textbf{ALL MSE by 96.79\%}. These results suggest that Baihu provides effective large-scale supervision for robot action prediction and can serve as a practical data infrastructure for embodied foundation model development.
 \end{abstract}
 
 \section{Introduction}
@@ -10,17 +10,17 @@ Recent progress in large language models and vision-language models has shown th
 
 Vision-language-action models and embodied foundation models require large-scale robot interaction data to learn generalizable mappings from visual observations, language instructions, robot states, and actions. Recent efforts such as RoboMIND~\cite{wu2024robomind}, DROID~\cite{khazatsky2024droid}, BridgeData V2~\cite{walke2023bridgedatav2}, and Open X-Embodiment~\cite{oneill2023openx} have demonstrated the importance of large-scale robot manipulation datasets for imitation learning and generalist policy training. These datasets show that diverse real-world robot trajectories, multi-view observations, language annotations, and standardized data protocols can substantially improve robot policy learning. However, there remains a need for larger, standardized, pretraining-oriented robot datasets that can support industrial-scale model development and systematic evaluation.
 
-To address this need, we present \textbf{Baihu v2.0}, a large-scale, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu v2.0 contains \textbf{9521.75 hours} of robot data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames}. Compared with small task-specific datasets, Baihu is designed to support large-scale multi-task policy learning. Compared with unstructured data collections, Baihu emphasizes version management, format standardization, and model-oriented data organization. The dataset is converted from HDF5 source records into the LeRobot v2.1 format~\cite{cadene2026lerobot}, making it compatible with modern robot learning pipelines and scalable training workflows.
+To address this need, we present \textbf{Baihu}, a large-scale, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Baihu contains \textbf{9521.75 hours} of robot data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames}. Compared with small task-specific datasets, Baihu is designed to support large-scale multi-task policy learning. Compared with unstructured data collections, Baihu emphasizes data management, format standardization, and model-oriented data organization. The dataset is converted from HDF5 source records into the LeRobot v2.1 format~\cite{cadene2026lerobot}, making it compatible with modern robot learning pipelines and scalable training workflows.
 
-The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the data sources and version definition of Baihu v2.0. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu v2.0 through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records. Compared with the no-training checkpoint, Baihu training reduces Joint MSE by \textbf{99.42\%} and ALL MSE by \textbf{96.79\%}.
+The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the data sources, scale, platform coverage, and task composition of Baihu. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records. Compared with the no-training checkpoint, Baihu training reduces Joint MSE by \textbf{99.42\%} and ALL MSE by \textbf{96.79\%}.
 
 The main contributions of this work are as follows:
 \begin{enumerate}
-  \item We introduce \textbf{Baihu v2.0}, a billion-frame, multi-embodiment robot manipulation dataset containing 9521.75 hours of data, 2989 tasks, 513575 episodes, and 1028349814 frames across 13 robot platforms for embodied foundation model pretraining.
+  \item We introduce \textbf{Baihu}, a billion-frame, multi-embodiment robot manipulation dataset containing 9521.75 hours of data, 2989 tasks, 513575 episodes, and 1028349814 frames across 13 robot platforms for embodied foundation model pretraining.
   \item We present a standardized robot data organization pipeline that converts multi-source HDF5 robot operation records into a unified LeRobot v2.1 format, enabling scalable training of robot policies and vision-language-action models.
-  \item We characterize the platform coverage and task composition of Baihu v2.0, providing a clear view of the robot embodiments, manipulation skills, and task categories represented in the dataset.
-  \item We provide an offline zero-shot benchmark across 13 platforms and 42 paired task-dataset records, showing that a GR00T N1.6 checkpoint trained on Baihu v2.0 substantially reduces action prediction error compared with a no-training checkpoint.
-  \item We provide a versioned dataset management framework that supports continuous dataset expansion from Baihu v1 to Baihu v2 and future large-scale versions, making the dataset suitable for iterative model development.
+  \item We characterize the platform coverage and task composition of Baihu, providing a clear view of the robot embodiments, manipulation skills, and task categories represented in the dataset.
+  \item We provide an offline zero-shot benchmark across 13 platforms and 42 paired task-dataset records, showing that a GR00T N1.6 checkpoint trained on Baihu substantially reduces action prediction error compared with a no-training checkpoint.
+  \item We provide a structured dataset management framework for large-scale robot data organization, making the dataset suitable for iterative model development.
 \end{enumerate}
 
 \section{Related Work}
@@ -29,7 +29,7 @@ The main contributions of this work are as follows:
 
 Large-scale robot manipulation datasets have become a central resource for training generalist robot policies. Recent datasets differ in their collection setting, robot coverage, task diversity, and degree of standardization. RoboMIND focuses on multi-embodiment manipulation data and benchmark evaluation, providing 107k demonstration trajectories across 479 tasks and 96 object classes~\cite{wu2024robomind}. DROID emphasizes in-the-wild real-world robot data, collecting 76k trajectories, 350 hours of data, and manipulation demonstrations across many scenes~\cite{khazatsky2024droid}. BridgeData V2 provides 60,096 trajectories across 24 environments and supports goal-image and language-conditioned manipulation learning~\cite{walke2023bridgedatav2}. Open X-Embodiment aggregates robot data across many institutions and robots to study cross-embodiment learning at scale~\cite{oneill2023openx}.
 
-Baihu follows the same broad direction of building large-scale robot data for embodied intelligence, but differs in its focus on pretraining-scale dataset construction, versioned data management, and HDF5-to-LeRobot v2.1 standardization. Baihu v2.0 contains 9521.75 hours of robot data, 2989 tasks, 513575 episodes, and 1028349814 frames. This makes Baihu not only a task collection, but a large-scale data foundation for embodied foundation model pretraining.
+Baihu follows the same broad direction of building large-scale robot data for embodied intelligence, but differs in its focus on pretraining-scale dataset construction, structured data management, and HDF5-to-LeRobot v2.1 standardization. Baihu contains 9521.75 hours of robot data, 2989 tasks, 513575 episodes, and 1028349814 frames. This makes Baihu not only a task collection, but a large-scale data foundation for embodied foundation model pretraining.
 
 \begin{table}[t]
 \centering
@@ -62,19 +62,19 @@ BRMData~\cite{zhang2024brmdata} & 0.5k & 10 & 7 \\
 Dobb-E~\cite{shafiullah2023dobbe} & 5.6k & 109 & 6 \\
 Open X-Embodiment~\cite{oneill2023openx} & 1.4M & 160k & 217 \\
 RoboMIND~\cite{wu2024robomind} & 107k & 479 & 38 \\
-\textbf{Baihu v2.0} & \textbf{513.6k} & \textbf{2989} & \textbf{64} \\
+\textbf{Baihu} & \textbf{513.6k} & \textbf{2989} & \textbf{64} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-Table~\ref{tab:dataset-comparison} highlights Baihu's scale in terms of episode count, task coverage, and skill diversity. Baihu v2.0 contains 513,575 episodes, 2989 tasks, and 64 manipulation skills.
+Table~\ref{tab:dataset-comparison} highlights Baihu's scale in terms of episode count, task coverage, and skill diversity. Baihu contains 513,575 episodes, 2989 tasks, and 64 manipulation skills.
 
 \subsection{Multi-embodiment robot learning}
 
 Multi-embodiment learning aims to train policies that can benefit from data collected on different robot platforms. This is challenging because different robots often have different action spaces, joint configurations, camera viewpoints, gripper designs, control frequencies, and task distributions. Open X-Embodiment and RoboMIND both show that cross-robot data can be useful for training more general policies, but they also highlight the need for careful data standardization and evaluation~\cite{oneill2023openx,wu2024robomind}.
 
-Baihu v2.0 is explicitly multi-embodiment. It covers 13 robot platforms with different robot embodiments, task settings, and action-state schemas. This platform coverage makes Baihu suitable for studying robot data standardization, multi-platform policy training, and cross-embodiment action prediction.
+Baihu is explicitly multi-embodiment. It covers 13 robot platforms with different robot embodiments, task settings, and action-state schemas. This platform coverage makes Baihu suitable for studying robot data standardization, multi-platform policy training, and cross-embodiment action prediction.
 
 \subsection{Vision-language-action models}
 
@@ -86,39 +86,29 @@ Baihu is designed to support this training paradigm by organizing robot trajecto
 
 Robot data is inherently heterogeneous. Different data sources may use different state definitions, action dimensions, camera streams, gripper conventions, control rates, and metadata schemas. Without standardization, it is difficult to train and evaluate a unified robot policy across multiple robots and tasks.
 
-Baihu addresses this challenge through versioned dataset management and HDF5-to-LeRobot v2.1 standardization. Versioned releases make it possible to track data additions, data cleaning, normalization changes, and embodiment-specific fixes. This is especially important for large-scale robot pretraining datasets, where small inconsistencies in state/action mapping can affect many downstream training runs.
+Baihu addresses this challenge through structured dataset management and HDF5-to-LeRobot v2.1 standardization. Structured data management makes it possible to track data additions, data cleaning, normalization changes, and embodiment-specific fixes. This is especially important for large-scale robot pretraining datasets, where small inconsistencies in state/action mapping can affect many downstream training runs.
 
 \subsection{Positioning of Baihu}
 
-Compared with prior datasets, Baihu v2.0 is positioned as a billion-frame, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Its key distinction is not only its scale, but the combination of four properties: multi-source data integration, multi-platform coverage, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with a foundation-model checkpoint. This positioning makes Baihu complementary to existing robot datasets and benchmarks, while targeting the specific need for large-scale embodied model pretraining infrastructure.
+Compared with prior datasets, Baihu is positioned as a billion-frame, multi-embodiment robot manipulation dataset for embodied foundation model pretraining and evaluation. Its key distinction is not only its scale, but the combination of four properties: multi-source data integration, multi-platform coverage, HDF5-to-LeRobot v2.1 standardization, and direct offline evaluation with a foundation-model checkpoint. This positioning makes Baihu complementary to existing robot datasets and benchmarks, while targeting the specific need for large-scale embodied model pretraining infrastructure.
 
 \section{Baihu Dataset}
 
-\subsection{Dataset version}
-
-This paper focuses on \textbf{Baihu v2.0}, the first completed large-scale version of the Baihu dataset designed for embodied foundation model pretraining. Baihu v2.0 was constructed from robot data available up to April 1, 2026, and was released as a completed dataset version on April 25, 2026. It contains \textbf{9521.75 hours} of robot manipulation data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}.
-
-Although later versions such as Baihu v3 and Baihu v4 are under development, they are not used as the primary dataset in this paper because they remain in progress. Baihu v2.0 is therefore selected as the main experimental and analytical version due to its completed status and stable data scale.
-
 \subsection{Dataset scale}
 
-Baihu v2.0 provides a large-scale robot data foundation for embodied model pretraining. Its overall statistics are summarized in Table~\ref{tab:version-stats}.
+Baihu provides a large-scale robot data foundation for embodied model pretraining. It contains \textbf{9521.75 hours} of robot manipulation data, \textbf{2989 tasks}, \textbf{513575 episodes}, and \textbf{1028349814 frames} across \textbf{13 robot platforms}. These statistics are summarized in Table~\ref{tab:scale-stats}.
 
 \begin{table}[t]
 \centering
-\caption{Baihu dataset version statistics. The table compares completed Baihu dataset versions by duration, task count, episode count, and frame count.}
-\label{tab:version-stats}
+\caption{Baihu dataset scale. The table reports the total duration, task count, episode count, and frame count of the dataset.}
+\label{tab:scale-stats}
 \begin{tabular}{lrrrr}
 \toprule
-Dataset version & Hours & Tasks & Episodes & Frames \\
+Dataset & Hours & Tasks & Episodes & Frames \\
 \midrule
-Baihu v1.0 & 2693.34 & 2120 & 144141 & 290880109 \\
-Baihu v1.1 / v1.2 & 2451.51 & 1287 & 96474 & 264763101 \\
-\textbf{Baihu v2.0} & \textbf{9521.75} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} \\
+\textbf{Baihu} & \textbf{9521.75} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Compared with Baihu v1, Baihu v2.0 significantly increases the dataset scale in terms of total duration, task number, episode number, and frame count. This expansion makes Baihu v2.0 suitable for large-scale pretraining of robot policies, rather than only task-specific imitation learning.
-
-Based on the total frame count and total duration, Baihu v2.0 has an average recording rate of approximately 30 frames per second. Each episode contains approximately 2002 frames on average, corresponding to about 66.7 seconds per episode.
+This scale makes Baihu suitable for large-scale pretraining of robot policies, rather than only task-specific imitation learning. Based on the total frame count and total duration, Baihu has an average recording rate of approximately 30 frames per second. Each episode contains approximately 2002 frames on average, corresponding to about 66.7 seconds per episode.
