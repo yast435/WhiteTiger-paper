@@ -1,6 +1,6 @@
 # 4. Data Processing Pipeline
 
-Baihu v2.0 converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems. The overall construction and evaluation workflow is summarized in **Figure 1**.
+Baihu v2.0 converts heterogeneous robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
 
 ## 4.1 HDF5 ingestion and trajectory validation
 
