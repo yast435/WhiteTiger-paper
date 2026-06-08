@@ -32,31 +32,15 @@ To demonstrate the value of Baihu for embodied foundation model training, we eva
 
 \subsection{Offline open-loop zero-shot evaluation}
 
-Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against ground-truth actions from robot demonstration data. In this benchmark, we compare two GR00T N1.6 checkpoints:
-
-\begin{table}[t]
-\centering
-\caption{GR00T N1.6 checkpoints compared in the offline open-loop benchmark.}
-\label{tab:checkpoints}
-\begin{tabular}{ll}
-\toprule
-Checkpoint & Description \\
-\midrule
-GR00T N1.6 / checkpoint-1 & No-training checkpoint, used as the baseline \\
-GR00T N1.6 / checkpoint-390000 & Complete 1-epoch checkpoint trained on Baihu \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records}. This setting is designed to measure whether Baihu pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
+Open-loop evaluation provides an offline assessment by comparing the model's predicted actions against ground-truth actions from robot demonstration data. In this benchmark, we compare a no-training GR00T N1.6 checkpoint, checkpoint-1, with checkpoint-390000, which was trained on Baihu for one epoch. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records}. This setting is designed to measure whether Baihu pretraining improves cross-task offline prediction performance without additional task-specific finetuning on the evaluation tasks.
 
 \subsection{Evaluation metrics}
 
 The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
 
-\textbf{ALL MSE} computes this error using all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
+\textbf{ALL MSE} is used as the primary evaluation metric because it computes the error over all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
 
-\textbf{Joint MSE} computes this error using only the joint-related action dimensions. Gripper or hand dimensions are excluded from this metric. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across platforms, and may otherwise dominate or distort the action prediction error.
+\textbf{Joint MSE} is reported as an auxiliary diagnostic metric. It computes the error using only joint-related action dimensions and excludes gripper or hand dimensions. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across platforms, and may otherwise dominate or distort the full action prediction error.
 
 For each task-dataset record, MSE is averaged over the evaluated trajectory steps and selected action dimensions. Aggregate results are then reported as the unweighted mean across the 42 paired task-dataset records unless otherwise specified.
 
@@ -68,9 +52,9 @@ The benchmark results show that one epoch of training on Baihu substantially red
   \centering
   \fbox{\parbox{0.92\linewidth}{\centering
   \vspace{0.75em}
-  Benchmark result placeholder. Joint MSE decreases from 0.116746 to 0.000680, and ALL MSE decreases from 0.157283 to 0.005051.
+  Benchmark result placeholder. ALL MSE decreases from 0.157283 to 0.005051, and Joint MSE decreases from 0.116746 to 0.000680.
   \vspace{0.75em}}}
-  \caption{Offline zero-shot open-loop evaluation results. The figure compares GR00T N1.6/checkpoint-1 and GR00T N1.6/checkpoint-390000 on Joint MSE and ALL MSE across 42 paired task-dataset records from 13 evaluated platforms.}
+  \caption{Offline zero-shot open-loop evaluation results. The figure compares GR00T N1.6/checkpoint-1 and GR00T N1.6/checkpoint-390000 on ALL MSE and Joint MSE across 42 paired task-dataset records from 13 evaluated platforms.}
   \label{fig:benchmark-results}
 \end{figure}
 
@@ -80,20 +64,20 @@ The benchmark results show that one epoch of training on Baihu substantially red
 \label{tab:overall-results}
 \begin{tabular}{lrr}
 \toprule
-Model checkpoint & Joint MSE $\downarrow$ & ALL MSE $\downarrow$ \\
+Model checkpoint & ALL MSE $\downarrow$ & Joint MSE $\downarrow$ \\
 \midrule
-checkpoint-1 (no training) & 0.116746 & 0.157283 \\
-checkpoint-390000 (Baihu, 1 epoch) & 0.000680 & 0.005051 \\
-Relative improvement & 99.42\% & 96.79\% \\
+checkpoint-1 (no training) & 0.157283 & 0.116746 \\
+checkpoint-390000 (Baihu, 1 epoch) & 0.005051 & 0.000680 \\
+Relative improvement & 96.79\% & 99.42\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoint reduces Joint MSE by \textbf{99.42\%} and ALL MSE by \textbf{96.79\%}. This indicates that Baihu provides effective supervision for improving action prediction across a broad set of unseen task-dataset records.
+Compared with the no-training checkpoint-1 baseline, the Baihu-trained checkpoint reduces ALL MSE by \textbf{96.79\%} and Joint MSE by \textbf{99.42\%}. This indicates that Baihu provides effective supervision for improving full-vector action prediction while also improving joint-related action prediction across a broad set of unseen task-dataset records.
 
 \subsection{Per-platform results}
 
-Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Joint MSE and ALL MSE than the no-training baseline.
+Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower ALL MSE and Joint MSE than the no-training baseline.
 
 \begin{table}[t]
 \centering
@@ -105,33 +89,33 @@ Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insuffi
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lrrrrrrr}
 \toprule
-Platform & N & Joint-1 & Joint-Baihu & $\Delta$Joint & ALL-1 & ALL-Baihu & $\Delta$ALL \\
+Platform & N & ALL-1 & ALL-Baihu & $\Delta$ALL & Joint-1 & Joint-Baihu & $\Delta$Joint \\
 \midrule
-QingLong & 6 & 0.157132 & 0.000572 & 99.64\% & 0.180542 & 0.002733 & 98.49\% \\
-Agibot A2 & 3 & 0.132757 & 0.000896 & 99.33\% & 0.225461 & 0.007562 & 96.65\% \\
-Fourier GR-2 & 3 & 0.137993 & 0.001805 & 98.69\% & 0.233863 & 0.003824 & 98.36\% \\
-Galaxea R1 & 3 & 0.075369 & 0.000197 & 99.74\% & 0.117581 & 0.004864 & 95.86\% \\
-Leju KUAVO & 3 & 0.133456 & 0.000743 & 99.44\% & 0.157261 & 0.004335 & 97.24\% \\
-Agilex Cobot Magic & 3 & 0.133968 & 0.000949 & 99.29\% & 0.156535 & 0.002307 & 98.53\% \\
-Franka & 3 & 0.041619 & 0.000711 & 98.29\% & 0.077804 & 0.004525 & 94.18\% \\
-Astribot S1 & 3 & 0.135078 & 0.000822 & 99.39\% & 0.158673 & 0.005819 & 96.33\% \\
-UR5e & 3 & 0.062389 & 0.000068 & 99.89\% & 0.083854 & 0.007897 & 90.58\% \\
-ARX\_Loong & 3 & 0.138172 & 0.001076 & 99.22\% & 0.161330 & 0.001803 & 98.88\% \\
-Tianji & 3 & 0.017828 & 0.000612 & 96.57\% & 0.096915 & 0.002092 & 97.84\% \\
-D-Wheel & 3 & 0.176382 & 0.000208 & 99.88\% & 0.203833 & 0.005157 & 97.47\% \\
-Agibot GO-1 & 3 & 0.135167 & 0.000282 & 99.79\% & 0.167769 & 0.015057 & 91.02\% \\
+QingLong & 6 & 0.180542 & 0.002733 & 98.49\% & 0.157132 & 0.000572 & 99.64\% \\
+Agibot A2 & 3 & 0.225461 & 0.007562 & 96.65\% & 0.132757 & 0.000896 & 99.33\% \\
+Fourier GR-2 & 3 & 0.233863 & 0.003824 & 98.36\% & 0.137993 & 0.001805 & 98.69\% \\
+Galaxea R1 & 3 & 0.117581 & 0.004864 & 95.86\% & 0.075369 & 0.000197 & 99.74\% \\
+Leju KUAVO & 3 & 0.157261 & 0.004335 & 97.24\% & 0.133456 & 0.000743 & 99.44\% \\
+Agilex Cobot Magic & 3 & 0.156535 & 0.002307 & 98.53\% & 0.133968 & 0.000949 & 99.29\% \\
+Franka & 3 & 0.077804 & 0.004525 & 94.18\% & 0.041619 & 0.000711 & 98.29\% \\
+Astribot S1 & 3 & 0.158673 & 0.005819 & 96.33\% & 0.135078 & 0.000822 & 99.39\% \\
+UR5e & 3 & 0.083854 & 0.007897 & 90.58\% & 0.062389 & 0.000068 & 99.89\% \\
+ARX\_Loong & 3 & 0.161330 & 0.001803 & 98.88\% & 0.138172 & 0.001076 & 99.22\% \\
+Tianji & 3 & 0.096915 & 0.002092 & 97.84\% & 0.017828 & 0.000612 & 96.57\% \\
+D-Wheel & 3 & 0.203833 & 0.005157 & 97.47\% & 0.176382 & 0.000208 & 99.88\% \\
+Agibot GO-1 & 3 & 0.167769 & 0.015057 & 91.02\% & 0.135167 & 0.000282 & 99.79\% \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single platform. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus. Here, Joint-1 and ALL-1 denote the no-training checkpoint, Joint-Baihu and ALL-Baihu denote the Baihu-trained checkpoint, and $\Delta$ denotes relative improvement.
+The per-platform results show consistent improvement across all evaluated robot platforms, suggesting that the pretraining effect is not limited to a single platform. This is important for Baihu because the dataset is explicitly designed as a multi-embodiment training corpus. Here, ALL-1 and Joint-1 denote the no-training checkpoint, ALL-Baihu and Joint-Baihu denote the Baihu-trained checkpoint, and $\Delta$ denotes relative improvement.
 
 \subsection{Task-level analysis}
 
 Task-level results further show that Baihu training improves offline prediction across the 42 paired task-dataset records. Task-level reporting is especially useful because different platforms may have different action spaces, control frequencies, and gripper or hand dimensions.
 
-Table~\ref{tab:task-level} reports Joint MSE, ALL MSE, and relative improvement for each of the 42 paired task-dataset records. The full task-level table is provided in Appendix~\ref{app:task-level}.
+Table~\ref{tab:task-level} reports ALL MSE, Joint MSE, and relative improvement for each of the 42 paired task-dataset records. The full task-level table is provided in Appendix~\ref{app:task-level}.
 
 The strongest improvements are observed on tasks where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
 
