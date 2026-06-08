@@ -6,47 +6,38 @@ Table~\ref{tab:skill-taxonomy} summarizes the 64 skills according to seven actio
 
 \input{tables/skill_taxonomy}
 
-\subsection{Robot platform distribution}
+\subsection{Robot platform composition}
 
-Baihu v2.0 contains data from 13 robot platforms, covering a diverse set of robot embodiments and data sources. Table~\ref{tab:platform-dist} summarizes the platform-level distribution. The dataset is not uniformly distributed across platforms. Instead, it follows a long-tailed distribution in which a few high-resource platforms contribute the majority of the data, while several low-resource platforms provide additional embodiment diversity.
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/baihu_duration_embodiment.jpg}
-  \caption{Duration distribution across the 13 robot platforms in Baihu v2.0. The figure illustrates the long-tailed nature of the dataset, where a small number of platforms contribute most of the data while lower-resource platforms provide additional embodiment diversity.}
-  \label{fig:platform-duration}
-\end{figure}
+Baihu v2.0 contains data from 13 robot platforms, covering a diverse set of robot embodiments and data sources. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset source composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
 
 \begin{table}[t]
 \centering
-\caption{Platform-level distribution of Baihu v2.0. The table reports tasks, episodes, frames, hours, and duration percentage for each of the 13 robot platforms.}
-\label{tab:platform-dist}
+\caption{Platform-level composition of Baihu v2.0. The table reports tasks, episodes, frames, and hours for each of the 13 robot platforms.}
+\label{tab:platform-comp}
 \scriptsize
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrr}
 \toprule
-Robot platform & Tasks & Episodes & Frames & Hours & Hours percent \\
+Robot platform & Tasks & Episodes & Frames & Hours \\
 \midrule
-ARX\_Loong & 3 & 842 & 2223107 & 20.58 & 0.22\% \\
-Astribot S1 & 100 & 29889 & 40932735 & 379.01 & 3.98\% \\
-Agilex Cobot Magic & 112 & 33098 & 55115692 & 510.33 & 5.36\% \\
-UR5e & 49 & 14805 & 22939047 & 212.40 & 2.23\% \\
-D-Wheel & 231 & 13485 & 36172626 & 334.93 & 3.52\% \\
-Franka & 9 & 2090 & 4037181 & 37.38 & 0.39\% \\
-Agibot GO-1 & 1512 & 140718 & 459379181 & 4253.51 & 44.67\% \\
-Fourier GR-2 & 319 & 96686 & 103615634 & 959.40 & 10.08\% \\
-Leju KUAVO & 123 & 29095 & 42586155 & 394.32 & 4.14\% \\
-QingLong & 167 & 46506 & 91909479 & 851.01 & 8.94\% \\
-Tianji & 6 & 1575 & 2727875 & 25.26 & 0.27\% \\
-Galaxea R1 & 239 & 70111 & 96863491 & 896.88 & 9.42\% \\
-Agibot A2 & 119 & 34675 & 69847611 & 646.74 & 6.79\% \\
-\textbf{Total} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} & \textbf{9521.75} & \textbf{100.01\%} \\
+ARX\_Loong & 3 & 842 & 2223107 & 20.58 \\
+Astribot S1 & 100 & 29889 & 40932735 & 379.01 \\
+Agilex Cobot Magic & 112 & 33098 & 55115692 & 510.33 \\
+UR5e & 49 & 14805 & 22939047 & 212.40 \\
+D-Wheel & 231 & 13485 & 36172626 & 334.93 \\
+Franka & 9 & 2090 & 4037181 & 37.38 \\
+Agibot GO-1 & 1512 & 140718 & 459379181 & 4253.51 \\
+Fourier GR-2 & 319 & 96686 & 103615634 & 959.40 \\
+Leju KUAVO & 123 & 29095 & 42586155 & 394.32 \\
+QingLong & 167 & 46506 & 91909479 & 851.01 \\
+Tianji & 6 & 1575 & 2727875 & 25.26 \\
+Galaxea R1 & 239 & 70111 & 96863491 & 896.88 \\
+Agibot A2 & 119 & 34675 & 69847611 & 646.74 \\
+\textbf{Total} & \textbf{2989} & \textbf{513575} & \textbf{1028349814} & \textbf{9521.75} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The percentage sum in Table~\ref{tab:platform-dist} is 100.01\% due to rounding to two decimal places. The largest platform is Agibot GO-1, which contains 4253.51 hours of data and accounts for 44.67\% of the total dataset duration. The next largest platforms are Fourier GR-2 with 959.40 hours, Galaxea R1 with 896.88 hours, QingLong with 851.01 hours, and Agibot A2 with 646.74 hours. Together, the top five platforms contribute approximately 79.90\% of the total dataset duration. This distribution suggests that Baihu v2.0 provides both large-scale high-resource training data and a long tail of lower-resource platforms for studying cross-embodiment generalization.
-
-Because the dataset distribution is imbalanced, benchmark evaluation should report not only aggregate performance but also per-platform performance. In particular, evaluating models separately on high-resource and low-resource platforms can reveal whether a policy benefits from the full multi-embodiment dataset or primarily learns from the dominant platform subsets.
+The platform composition in Table~\ref{tab:platform-comp} shows that Baihu v2.0 integrates robot operation data from multiple platforms with different embodiments, control interfaces, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
 
 \subsection{Scenario and task coverage}
 
