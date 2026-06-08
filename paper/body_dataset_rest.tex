@@ -1,3 +1,11 @@
+\subsection{Skill taxonomy}
+
+Baihu v2.0 covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
+
+Table~\ref{tab:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. This structure helps characterize the manipulation diversity of Baihu v2.0 beyond simple task count.
+
+\input{tables/skill_taxonomy}
+
 \subsection{Embodiment distribution}
 
 Baihu v2.0 contains data from 14 embodiment tags, covering a diverse set of robot platforms and data sources. Table~\ref{tab:embodiment-dist} summarizes the embodiment-level distribution. The dataset is not uniformly distributed across embodiments. Instead, it follows a long-tailed distribution in which a few high-resource embodiments contribute the majority of the data, while several low-resource embodiments provide additional embodiment diversity.
