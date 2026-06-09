@@ -38,31 +38,31 @@ Open-loop evaluation provides an offline assessment by comparing the model's pre
 
 \subsection{Evaluation protocol}
 
-For each task-dataset record, five trajectories are selected from the corresponding external evaluation dataset. The model predicts actions from the recorded observations of each trajectory, and the prediction error is measured against the associated human-teleoperation actions. The task-level result is obtained by averaging the trajectory-level MSE values over the five trajectories. Both checkpoints are evaluated on the same trajectories, providing a paired comparison between the no-training baseline and the Baihu-trained model.
+For each task-dataset record, five trajectories are selected from the corresponding external evaluation dataset. The model predicts actions from the recorded observations of each trajectory, and the prediction error is measured against the associated human-teleoperation actions. Predictions are generated with an action horizon of 30, and each trajectory is evaluated over its available length up to a maximum of 3000 steps. The task-level result is obtained by averaging the trajectory-level MSE values over the five trajectories. Both checkpoints are evaluated on the same trajectories, providing a paired comparison between the no-training baseline and the Baihu-trained model.
 
 Per-platform results are computed as the unweighted mean over the task-dataset records associated with each platform. The overall benchmark result is then reported as the unweighted mean across all 42 paired task-dataset records. This evaluation design gives each task-dataset record equal weight, independent of the amount of data available for a particular platform or task.
 
 \subsection{Evaluation metrics}
 
-The benchmark reports two mean squared error metrics. For each trajectory, the policy predicts an action sequence from the recorded observations. The predicted action values are compared with the corresponding demonstration actions from the evaluation dataset. For a selected set of action dimensions and evaluated timesteps, MSE is the average squared difference between the predicted action and the dataset action.
+All reported MSE values are normalized by action range to make errors more comparable across platforms with different action scales. For each action dimension, the prediction error is divided by the corresponding action range before squaring and averaging over evaluated timesteps and dimensions. The same action normalization statistics are used for checkpoint-1 and checkpoint-390000, ensuring that the two checkpoints are compared under an identical metric scale.
 
-\textbf{ALL MSE} is used as the primary evaluation metric because it computes the error over all action dimensions available in the dataset. This metric reflects the model's full action prediction error, including arm, gripper, hand, or other action dimensions when they are present.
+\textbf{Normalized ALL MSE} is used as the primary evaluation metric. It computes the normalized error over the complete action vector, including robot joint actions and end-effector actuation dimensions such as grippers or dexterous hands.
 
-\textbf{Joint MSE} is reported as an auxiliary diagnostic metric. It computes the error using only joint-related action dimensions and excludes gripper or hand dimensions. This metric is useful because hand and gripper dimensions may have different scales, semantics, or sparsity patterns across platforms, and may otherwise dominate or distort the full action prediction error.
+\textbf{Normalized Joint MSE} is reported as an auxiliary diagnostic metric. It computes the normalized error using only robot joint action dimensions and excludes end-effector actuation dimensions, which may correspond to a gripper or a dexterous hand depending on the platform. This separation enables joint-motion prediction to be analyzed independently from platform-specific end-effector control.
 
 \subsection{Overall results}
 
-The benchmark results show that one epoch of training on Baihu substantially reduces offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The detailed per-platform results are reported in Table~\ref{tab:per-platform}.
+The benchmark results show that one epoch of training on Baihu substantially reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the Baihu-trained checkpoint reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative improvement. It also reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative improvement. The detailed per-platform results are reported in Table~\ref{tab:per-platform}.
 
 This indicates that Baihu provides effective supervision for improving full-vector and joint-related action prediction on evaluation data that were not included in the Baihu training corpus.
 
 \subsection{Per-platform results}
 
-Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower ALL MSE and Joint MSE than the no-training baseline.
+Because Baihu is a multi-embodiment dataset, aggregate metrics alone are insufficient. We therefore also report per-platform results. Across all 13 evaluated platforms, the Baihu-trained checkpoint achieves lower Normalized ALL MSE and Normalized Joint MSE than the no-training baseline.
 
 \begin{table}[t]
 \centering
-\caption{Per-platform offline zero-shot evaluation results on datasets external to Baihu. The table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower MSE is better.}
+\caption{Per-platform offline zero-shot evaluation results on datasets external to Baihu. All values are normalized MSE, and the table reports the unweighted mean over paired task-dataset records for each evaluated platform. Lower is better.}
 \label{tab:per-platform}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -94,11 +94,11 @@ The per-platform results show consistent improvement across all evaluated robot 
 
 \subsection{Task-level analysis}
 
-Task-level results further show that Baihu training improves offline prediction across the 42 external paired task-dataset records. Task-level reporting is especially useful because different platforms may have different action spaces, control frequencies, and gripper or hand dimensions.
+Task-level results further show that Baihu training improves normalized offline prediction across the 42 external paired task-dataset records. Task-level reporting is especially useful because different platforms may have different action spaces, control frequencies, and end-effector structures.
 
-Table~\ref{tab:task-level} reports ALL MSE, Joint MSE, and relative improvement for each of the 42 paired task-dataset records. The full task-level table is provided in Appendix~\ref{app:task-level}.
+Table~\ref{tab:task-level} reports Normalized ALL MSE, Normalized Joint MSE, and relative improvement for each of the 42 paired task-dataset records. The full task-level table is provided in Appendix~\ref{app:task-level}.
 
-The strongest improvements are observed on records where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action scale, end-effector representation, and task dynamics.
+The strongest improvements are observed on records where the no-training checkpoint has relatively large action prediction error. The remaining residual errors after Baihu training are small in absolute value, but they can still vary across platforms and tasks due to differences in action representation and task dynamics.
 
 \subsection{Additional benchmark extensions}
 
