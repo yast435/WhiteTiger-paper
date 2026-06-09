@@ -1,0 +1,86 @@
+{
+  "state": {
+    "left_arm_qpos": {
+      "start": 0,
+      "end": 7
+    },
+    "right_arm_qpos": {
+      "start": 7,
+      "end": 14
+    },
+    "left_gripper": {
+      "start": 14,
+      "end": 15
+    },
+    "right_gripper": {
+      "start": 15,
+      "end": 16
+    },
+    "left_eef": {
+      "start": 16,
+      "end": 19
+    },
+    "right_eef": {
+      "start": 19,
+      "end": 22
+    },
+    "left_quaternion": {
+      "start": 22,
+      "end": 26
+    },
+    "right_quaternion": {
+      "start": 26,
+      "end": 30
+    }
+  },
+  "action": {
+    "left_arm_qpos": {
+      "start": 0,
+      "end": 7
+    },
+    "right_arm_qpos": {
+      "start": 7,
+      "end": 14
+    },
+    "left_gripper": {
+      "start": 14,
+      "end": 15
+    },
+    "right_gripper": {
+      "start": 15,
+      "end": 16
+    },
+    "left_eef": {
+      "start": 16,
+      "end": 19
+    },
+    "right_eef": {
+      "start": 19,
+      "end": 22
+    },
+    "left_quaternion": {
+      "start": 22,
+      "end": 26
+    },
+    "right_quaternion": {
+      "start": 26,
+      "end": 30
+    }
+  },
+  "video": {
+    "cam_high": {
+      "original_key": "observation.images.head"
+    },
+    "cam_left_wrist": {
+      "original_key": "observation.images.hand_left"
+    },
+    "cam_right_wrist": {
+      "original_key": "observation.images.hand_right"
+    }
+  },
+  "annotation": {
+    "human.task_description": {
+      "original_key": "task_index"
+    }
+  }
+}
