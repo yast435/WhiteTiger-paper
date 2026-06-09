@@ -44,11 +44,26 @@ Per-platform results are computed as the unweighted mean over the task-dataset r
 
 \subsection{Evaluation metrics}
 
-All reported MSE values are normalized by action range to make errors more comparable across platforms with different action scales. For each action dimension, the prediction error is divided by the corresponding action range before squaring and averaging over evaluated timesteps and dimensions. The same action normalization statistics are used for checkpoint-1 and checkpoint-390000, ensuring that the two checkpoints are compared under an identical metric scale.
+All reported MSE values are normalized by action range to make errors more comparable across platforms with different action scales. For a trajectory with $T$ evaluated timesteps and a selected set of $D$ action dimensions, the normalized MSE is defined as
 
-\textbf{Normalized ALL MSE} is used as the primary evaluation metric. It computes the normalized error over the complete action vector, including robot joint actions and end-effector actuation dimensions such as grippers or dexterous hands.
+\begin{equation}
+\mathrm{NMSE}
+=
+\frac{1}{TD}
+\sum_{t=1}^{T}
+\sum_{d=1}^{D}
+\left(
+\frac{\hat{a}_{t,d}-a_{t,d}}
+{a_{d}^{\max}-a_{d}^{\min}}
+\right)^{2},
+\label{eq:normalized-mse}
+\end{equation}
 
-\textbf{Normalized Joint MSE} is reported as an auxiliary diagnostic metric. It computes the normalized error using only robot joint action dimensions and excludes end-effector actuation dimensions, which may correspond to a gripper or a dexterous hand depending on the platform. This separation enables joint-motion prediction to be analyzed independently from platform-specific end-effector control.
+where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action values for dimension $d$ at timestep $t$, respectively, and $a_{d}^{\max}-a_{d}^{\min}$ is the corresponding action range. The same action normalization statistics are used for checkpoint-1 and checkpoint-390000, ensuring that the two checkpoints are compared under an identical metric scale.
+
+\textbf{Normalized ALL MSE} is used as the primary evaluation metric. In Eq.~\ref{eq:normalized-mse}, $D$ includes the complete action vector, consisting of robot joint actions and end-effector actuation dimensions such as grippers or dexterous hands.
+
+\textbf{Normalized Joint MSE} is reported as an auxiliary diagnostic metric. In this case, $D$ includes only robot joint action dimensions and excludes end-effector actuation dimensions, which may correspond to a gripper or a dexterous hand depending on the platform. This separation enables joint-motion prediction to be analyzed independently from platform-specific end-effector control.
 
 \subsection{Overall results}
 
