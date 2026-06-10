@@ -11,7 +11,7 @@
 \setlength{\LTright}{0pt}
 
 \begin{longtable}{@{}p{0.085\linewidth}p{0.300\linewidth}p{0.070\linewidth}rrrrrr@{}}
-\caption{Task-level offline zero-shot evaluation results. The table reports ALL MSE, Joint MSE, and relative improvement for each of the 42 paired task-dataset records. Lower MSE is better.}\label{tab:task-level}\\
+\caption{Task-level offline zero-shot evaluation results. The table reports Normalized ALL MSE, Normalized Joint MSE, and relative improvement for each of the 42 paired task-dataset records. Lower is better.}\label{tab:task-level}\\
 \toprule
 Platform & Task & Type & ALL-1 & ALL-Baihu & $\Delta$ALL & Joint-1 & Joint-Baihu & $\Delta$Joint \\
 \midrule
@@ -56,18 +56,18 @@ Astribot S1 & Place a cup and saucer with an orange tabletop background & Right-
 UR5e & Put a coin into a piggy bank & Right-arm & 0.085492 & 0.010285 & 87.97\% & 0.062034 & 0.000031 & 99.95\% \\
 UR5e & Stack blocks & Dual-arm & 0.081088 & 0.008773 & 89.18\% & 0.062204 & 0.000131 & 99.79\% \\
 UR5e & Semantic test & Dual-arm & 0.084983 & 0.004632 & 94.55\% & 0.062930 & 0.000041 & 99.94\% \\
-ARX\_Loong & Fold clothes & Dual-arm & 0.156832 & 0.001914 & 98.78\% & 0.137219 & 0.000791 & 99.42\% \\
-ARX\_Loong & Fold clothes with revised procedure & Dual-arm & 0.166439 & 0.002632 & 98.42\% & 0.140643 & 0.002073 & 98.53\% \\
-ARX\_Loong & Fold clothes with detailed handling & Dual-arm & 0.160718 & 0.000862 & 99.46\% & 0.136654 & 0.000363 & 99.73\% \\
+ARX-Loong & Fold clothes & Dual-arm & 0.156832 & 0.001914 & 98.78\% & 0.137219 & 0.000791 & 99.42\% \\
+ARX-Loong & Fold clothes with revised procedure & Dual-arm & 0.166439 & 0.002632 & 98.42\% & 0.140643 & 0.002073 & 98.53\% \\
+ARX-Loong & Fold clothes with detailed handling & Dual-arm & 0.160718 & 0.000862 & 99.46\% & 0.136654 & 0.000363 & 99.73\% \\
 Tianji & Arrange flowers & Dual-arm & 0.089298 & 0.002285 & 97.44\% & 0.017314 & 0.000778 & 95.50\% \\
 Tianji & Sort batteries & Dual-arm & 0.106140 & 0.001487 & 98.60\% & 0.016675 & 0.000329 & 98.03\% \\
 Tianji & Stack cups & Dual-arm & 0.095306 & 0.002505 & 97.37\% & 0.019495 & 0.000730 & 96.26\% \\
 D-Wheel & Sort octopus toys with a small-fish-towel tabletop background & Dual-arm & 0.203914 & 0.005410 & 97.35\% & 0.176082 & 0.000165 & 99.91\% \\
 D-Wheel & Sort green and yellow pears with a blue-grid tabletop background & Dual-arm & 0.203826 & 0.006220 & 96.95\% & 0.176593 & 0.000242 & 99.86\% \\
 D-Wheel & Sort cylindrical and cuboid blocks with a green-grid tabletop background & Dual-arm & 0.203759 & 0.003841 & 98.11\% & 0.176471 & 0.000217 & 99.88\% \\
-Agibot GO-1 & Install a bracket & Right-arm & 0.167892 & 0.013138 & 92.17\% & 0.135378 & 0.000409 & 99.70\% \\
-Agibot GO-1 & Install a power module & Dual-arm & 0.165634 & 0.012706 & 92.33\% & 0.135268 & 0.000291 & 99.78\% \\
-Agibot GO-1 & Assemble a touchpad & Dual-arm & 0.169781 & 0.019328 & 88.62\% & 0.134856 & 0.000146 & 99.89\% \\
+AGIBOT G1 & Install a bracket & Right-arm & 0.167892 & 0.013138 & 92.17\% & 0.135378 & 0.000409 & 99.70\% \\
+AGIBOT G1 & Install a power module & Dual-arm & 0.165634 & 0.012706 & 92.33\% & 0.135268 & 0.000291 & 99.78\% \\
+AGIBOT G1 & Assemble a touchpad & Dual-arm & 0.169781 & 0.019328 & 88.62\% & 0.134856 & 0.000146 & 99.89\% \\
 \end{longtable}
 \end{landscape}
 \endgroup
