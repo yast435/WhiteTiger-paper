@@ -85,11 +85,13 @@ Baihu contains robot interactions with diverse real-world objects. The objects s
 
 The dataset also includes different interaction patterns between robots and objects. Some trajectories involve single-object pick-and-place behaviors, while others involve object sorting, tool use, assembly-like manipulation, container interaction, drawer or door operation, and multi-object organization. This diversity supports the study of generalization across objects, tasks, and physical interaction types.
 
-\subsection{Temporal horizon and skill composition}
+\subsection{Temporal diversity}
 
-Robot manipulation tasks in Baihu span multiple temporal horizons. Short-horizon trajectories typically correspond to local operations such as grasping, pressing, scanning, or simple placement. Medium-horizon trajectories may include object transfer, opening and closing, sorting, or simple multi-step rearrangement. Long-horizon trajectories involve more extended task chains, such as cleaning, assembly, loading or unloading, and multi-stage object organization.
+Baihu contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Table~\ref{tab:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
 
-This temporal diversity is important for embodied foundation model training. Short trajectories provide dense examples of low-level visuomotor control, while longer trajectories expose models to task phases, intermediate goals, action rhythm, and sequential dependencies. As a result, Baihu can support both low-level action prediction and higher-level behavior modeling.
+\input{tables/task_duration_distribution}
+
+This distribution shows that Baihu covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
 
 \subsection{Data format}
 
