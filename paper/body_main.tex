@@ -14,7 +14,7 @@ To address this need, we present \textbf{Baihu}, a large-scale, fully human-tele
 
 Beyond platform count, Baihu exhibits substantial diversity in robot morphology, sensing arrangement, end-effector design, and control space. The dataset includes fixed-base bimanual manipulators, wheeled mobile manipulators, mobile dual-arm platforms, and humanoid robots. The represented action spaces range from arm-and-gripper control to richer whole-body configurations involving dexterous hands, head or neck joints, waist motion, legs, and mobile bases. This diversity distinguishes Baihu from datasets collected with a single hardware stack or a limited number of robot embodiments, and makes it a practical testbed for multi-embodiment data standardization and foundation-model pretraining.
 
-The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the human teleoperation protocol, scale, platform coverage, embodiment diversity, and task composition of Baihu. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint trained on Baihu through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records from datasets that are external to Baihu and excluded from training. Compared with the no-training checkpoint, Baihu training reduces Normalized Joint MSE by \textbf{99.42\%} and Normalized ALL MSE by \textbf{96.79\%}.
+The goal of Baihu is not only to accumulate robot data, but also to establish a reusable data foundation for embodied intelligence. A large-scale robot dataset should answer three questions: what skills are represented, how the data is standardized, and how the data can be used to train and evaluate models. Therefore, this paper describes the Baihu dataset from three perspectives: dataset construction, data standardization, and benchmark evaluation. We first introduce the human teleoperation protocol, scale, platform coverage, embodiment diversity, and task composition of Baihu. We then describe the data processing pipeline, including trajectory validation, task organization, action/state schema alignment, and HDF5-to-LeRobot v2.1 format conversion. Finally, we evaluate a GR00T N1.6 checkpoint~\cite{nvidia2025grootn1} trained on Baihu through offline open-loop zero-shot evaluation across 13 platforms and 42 paired task-dataset records from datasets that are external to Baihu and excluded from training. Compared with the no-training checkpoint, Baihu training reduces Normalized Joint MSE by \textbf{99.42\%} and Normalized ALL MSE by \textbf{96.79\%}.
 
 The main contributions of this work are as follows:
 \begin{enumerate}
@@ -48,7 +48,7 @@ Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Reported skills & Collection
 BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & 13 & Human + scripted \\
 DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & 86 & Human teleoperation \\
 RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & 38 & Human teleoperation \\
-Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & 217 & Aggregated datasets \\
+Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & 527 & Aggregated datasets \\
 \textbf{Baihu} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{64} & \textbf{Fully human teleoperation} \\
 \bottomrule
 \end{tabular}
@@ -67,7 +67,7 @@ Baihu is explicitly multi-embodiment. It covers 13 physical robot platforms span
 
 Vision-language-action models learn to map visual observations, language instructions, robot states, and other context into robot actions. Such models require synchronized observation-action trajectories and task-level annotations. The quality, scale, and diversity of the training data directly affect whether a policy can generalize beyond narrow task-specific demonstrations.
 
-Baihu is designed to support this training paradigm by organizing robot trajectories into standardized observation-action sequences. Its LeRobot v2.1 format enables loading by modern imitation-learning and VLA training pipelines~\cite{cadene2026lerobot}. In this paper, we evaluate this data foundation through offline open-loop zero-shot evaluation using GR00T N1.6 checkpoints on datasets external to Baihu.
+Baihu is designed to support this training paradigm by organizing robot trajectories into standardized observation-action sequences. Its LeRobot v2.1 format enables loading by modern imitation-learning and VLA training pipelines~\cite{cadene2026lerobot}. In this paper, we evaluate this data foundation through offline open-loop zero-shot evaluation using GR00T N1.6 checkpoints~\cite{nvidia2025grootn1} on datasets external to Baihu.
 
 \subsection{Data standardization for robot learning}
 
