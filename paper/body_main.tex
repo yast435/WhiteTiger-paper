@@ -35,27 +35,27 @@ Baihu follows the same broad direction of building large-scale robot data for em
 
 \begin{table}[t]
 \centering
-\caption{Comparison with representative large-scale robot manipulation datasets. ``n/r'' indicates that the corresponding statistic is not reported as a primary dataset-level quantity in the cited paper. Task definitions follow the conventions of each source and are therefore not perfectly interchangeable.}
+\caption{Comparison with representative large-scale robot manipulation datasets. ``n/r'' indicates that the corresponding statistic is not reported as a primary dataset-level quantity in the cited paper. Task and skill definitions follow the conventions of each source and are therefore not directly interchangeable across datasets.}
 \label{tab:dataset-comparison}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.08}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{lrrrrl}
+\begin{tabular}{lrrrrrl}
 \toprule
-Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Collection \\
+Dataset & Traj. / Ep. & Hours & Platforms & Tasks & Reported skills & Collection \\
 \midrule
-BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & Human + scripted \\
-DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & Human teleoperation \\
-RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & Human teleoperation \\
-Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & Aggregated datasets \\
-\textbf{Baihu} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{Fully human teleoperation} \\
+BridgeData V2~\cite{walke2023bridgedatav2} & 60.1k & n/r & 1 & n/r & 13 & Human + scripted \\
+DROID~\cite{khazatsky2024droid} & 76k & 350 & 1 & 84 & 86 & Human teleoperation \\
+RoboMIND~\cite{wu2024robomind} & 107k & n/r & 4 & 479 & 38 & Human teleoperation \\
+Open X-Embodiment~\cite{oneill2023openx} & $>1$M & n/r & 22 & 160266 & 217 & Aggregated datasets \\
+\textbf{Baihu} & \textbf{513.6k} & \textbf{9521.75} & \textbf{13} & \textbf{2989} & \textbf{64} & \textbf{Fully human teleoperation} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \end{table}
 
-Table~\ref{tab:dataset-comparison} highlights the combination of properties that distinguishes Baihu. Relative to single-platform datasets such as BridgeData V2 and DROID, Baihu provides substantially broader embodiment coverage. Relative to RoboMIND, Baihu contains more trajectories, tasks, and physical robot platforms. Open X-Embodiment covers more robot embodiments and aggregates a larger overall trajectory corpus, but it is assembled from heterogeneous datasets collected across many institutions. Baihu instead provides a coherently organized corpus of fully human-teleoperated demonstrations across 13 physical platforms, standardized into LeRobot v2.1. The contribution of Baihu therefore lies in the joint combination of scale, human demonstration, embodiment diversity, standardized organization, and external model-oriented evaluation rather than in any single maximum statistic.
+Table~\ref{tab:dataset-comparison} highlights the combination of properties that distinguishes Baihu. Relative to single-platform datasets such as BridgeData V2 and DROID, Baihu provides substantially broader embodiment coverage. Relative to RoboMIND, Baihu contains more trajectories, tasks, and physical robot platforms. Baihu further provides an explicit taxonomy of 64 manipulation skills, characterizing behavioral diversity beyond the number of task annotations. Open X-Embodiment covers more robot embodiments and aggregates a larger overall trajectory corpus, but it is assembled from heterogeneous datasets collected across many institutions. Baihu instead provides a coherently organized corpus of fully human-teleoperated demonstrations across 13 physical platforms, standardized into LeRobot v2.1. The contribution of Baihu therefore lies in the joint combination of scale, human demonstration, embodiment diversity, skill coverage, standardized organization, and external model-oriented evaluation rather than in any single maximum statistic.
 
 \subsection{Multi-embodiment robot learning}
 
