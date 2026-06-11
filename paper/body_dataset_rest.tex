@@ -10,9 +10,14 @@ Because Baihu spans 13 robot platforms, the observation and action spaces are pl
 
 Baihu covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
 
-Table~\ref{tab:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. This structure helps characterize the manipulation diversity of Baihu beyond simple task count.
+Figure~\ref{fig:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. The category counts indicate the number of defined skill labels rather than their occurrence frequencies in the dataset, helping characterize the manipulation diversity of Baihu beyond simple task count.
 
-\input{tables/skill_taxonomy}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/skill_taxonomy.png}
+\caption{Skill taxonomy of Baihu. The 64 manipulation skills are grouped into seven action-semantic categories used during data collection and annotation. Each skill label can occur across different objects, scenes, and robot embodiments, while a single task may comprise multiple skills. Category counts denote defined skill labels rather than dataset occurrence frequencies.}
+\label{fig:skill-taxonomy}
+\end{figure}
 
 \subsection{Robot platform composition}
 
