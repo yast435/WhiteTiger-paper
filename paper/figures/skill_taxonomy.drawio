@@ -1,0 +1,322 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="baihu-skill-taxonomy" name="Baihu Skill Taxonomy">
+    <mxGraphModel dx="2088" dy="1219" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="background" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7FAFD;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="860" width="1340" x="260" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="Baihu Skill Taxonomy" vertex="1">
+          <mxGeometry height="55" width="650" x="270" y="164" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=18;fontColor=#597086;" value="64 manipulation skills grouped into seven action-semantic categories used during data collection and annotation" vertex="1">
+          <mxGeometry height="35" width="1100" x="272" y="216" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-articulated" edge="1" parent="1" source="card-articulated" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=#7656B7;strokeWidth=3;opacity=65;" target="hub" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontFamily=Arial;fontSize=14;fontColor=#597086;" value="Each skill label is an independent editable object; category counts sum to 64." vertex="1">
+          <mxGeometry height="30" width="800" x="540" y="981" as="geometry" />
+        </mxCell>
+        <mxCell id="hub" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9FB2C3;strokeWidth=3;fontFamily=Arial;fontColor=#17324D;fontSize=22;fontStyle=1;" value="&lt;font style=&quot;font-size: 52px&quot;&gt;64&lt;/font&gt;&lt;br&gt;manipulation skills&lt;br&gt;&lt;font color=&quot;#597086&quot; style=&quot;font-size: 18px;&quot;&gt;7 semantic categories&lt;/font&gt;" vertex="1">
+          <mxGeometry height="240" width="250" x="810" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-6" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="140" width="516" x="450" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="card-material" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EFF9FA;strokeColor=#81C3C7;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="140" width="420" as="geometry" />
+        </mxCell>
+        <mxCell id="title-material" parent="PsbBM6XyjQhkfoi1v4J2-6" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Tool, fluid, and material manipulation" vertex="1">
+          <mxGeometry height="46" width="490" x="26" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-1" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pour" vertex="1">
+          <mxGeometry height="36" width="63" x="18" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-2" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Scoop" vertex="1">
+          <mxGeometry height="36" width="72" x="91" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-3" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Wipe" vertex="1">
+          <mxGeometry height="36" width="63" x="173" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-4" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Water" vertex="1">
+          <mxGeometry height="36" width="76" x="244" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-5" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Brush" vertex="1">
+          <mxGeometry height="36" width="72" x="328" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-6" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Stir" vertex="1">
+          <mxGeometry height="36" width="63" x="255" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-7" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Stick" vertex="1">
+          <mxGeometry height="36" width="72" x="328" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-8" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Tear" vertex="1">
+          <mxGeometry height="36" width="63" x="18" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-9" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Fold" vertex="1">
+          <mxGeometry height="36" width="63" x="91" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-material-10" parent="PsbBM6XyjQhkfoi1v4J2-6" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#81C3C7;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Unfold" vertex="1">
+          <mxGeometry height="36" width="80" x="164" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-7" edge="1" parent="PsbBM6XyjQhkfoi1v4J2-6" source="card-material" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="card-material">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-8" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="152" width="450" x="290" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="card-arrangement" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFF8EC;strokeColor=#E8BA79;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="140" width="450" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="title-arrangement" parent="PsbBM6XyjQhkfoi1v4J2-8" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Spatial arrangement and organization" vertex="1">
+          <mxGeometry height="66" width="360" x="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-1" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Alignment" vertex="1">
+          <mxGeometry height="36" width="105" x="23" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-2" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Adjust" vertex="1">
+          <mxGeometry height="36" width="80" x="138" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-3" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Straighten" vertex="1">
+          <mxGeometry height="36" width="114" x="228" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-4" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Stack" vertex="1">
+          <mxGeometry height="36" width="72" x="352" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-5" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Unstack" vertex="1">
+          <mxGeometry height="36" width="88" x="23" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-6" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pack" vertex="1">
+          <mxGeometry height="36" width="63" x="121" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-7" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Ensure" vertex="1">
+          <mxGeometry height="36" width="80" x="194" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-arrangement-8" parent="PsbBM6XyjQhkfoi1v4J2-8" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8BA79;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Several Times" vertex="1">
+          <mxGeometry height="36" width="139" x="284" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-9" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="140" width="450" x="330" y="432" as="geometry" />
+        </mxCell>
+        <mxCell id="card-acquisition" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EEF7FD;strokeColor=#89BDE1;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="140" width="450" as="geometry" />
+        </mxCell>
+        <mxCell id="title-acquisition" parent="PsbBM6XyjQhkfoi1v4J2-9" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Object acquisition and release" vertex="1">
+          <mxGeometry height="46" width="360" x="69" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-1" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Grasp" vertex="1">
+          <mxGeometry height="36" width="72" x="13" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-2" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pick" vertex="1">
+          <mxGeometry height="36" width="63" x="95" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-3" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pick up" vertex="1">
+          <mxGeometry height="36" width="88" x="168" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-4" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pinch" vertex="1">
+          <mxGeometry height="36" width="72" x="266" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-5" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Suction" vertex="1">
+          <mxGeometry height="36" width="88" x="348" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-6" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Hold" vertex="1">
+          <mxGeometry height="36" width="63" x="61" y="89" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-7" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Lift" vertex="1">
+          <mxGeometry height="36" width="63" x="134" y="89" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-8" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Lower" vertex="1">
+          <mxGeometry height="36" width="72" x="207" y="89" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-acquisition-9" parent="PsbBM6XyjQhkfoi1v4J2-9" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89BDE1;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Release" vertex="1">
+          <mxGeometry height="36" width="88" x="289" y="89" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-10" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="151" width="515" x="677.5" y="251" as="geometry" />
+        </mxCell>
+        <mxCell id="card-articulated" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F6F2FD;strokeColor=#B7A3DD;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="140" width="515" y="11" as="geometry" />
+        </mxCell>
+        <mxCell id="title-articulated" parent="PsbBM6XyjQhkfoi1v4J2-10" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Articulated, container, and electrical interaction" vertex="1">
+          <mxGeometry height="66" width="467" x="33" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-1" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Open" vertex="1">
+          <mxGeometry height="36" width="63" x="24" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-2" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Close" vertex="1">
+          <mxGeometry height="36" width="72" x="97" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-3" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="OpenBox" vertex="1">
+          <mxGeometry height="36" width="88" x="179" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-4" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="CloseBox" vertex="1">
+          <mxGeometry height="36" width="97" x="407" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-5" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="DrawOut" vertex="1">
+          <mxGeometry height="36" width="88" x="7.5" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-6" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Insert" vertex="1">
+          <mxGeometry height="36" width="80" x="100" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-7" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Plug" vertex="1">
+          <mxGeometry height="36" width="63" x="186" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-8" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Unplug" vertex="1">
+          <mxGeometry height="36" width="80" x="254" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-9" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="PressButton" vertex="1">
+          <mxGeometry height="36" width="122" x="277" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-10" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Zip" vertex="1">
+          <mxGeometry height="36" width="62" x="339" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-articulated-11" parent="PsbBM6XyjQhkfoi1v4J2-10" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B7A3DD;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Unzip" vertex="1">
+          <mxGeometry height="36" width="72" x="411" y="53" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-12" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="140" width="425" x="1140" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="card-contact" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFF3F5;strokeColor=#E69AA3;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="140" width="425" as="geometry" />
+        </mxCell>
+        <mxCell id="title-contact" parent="PsbBM6XyjQhkfoi1v4J2-12" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Contact-based motion primitives" vertex="1">
+          <mxGeometry height="46" width="360" x="47" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-1" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Push" vertex="1">
+          <mxGeometry height="36" width="63" x="20" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-2" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Pull" vertex="1">
+          <mxGeometry height="36" width="63" x="93" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-3" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Press" vertex="1">
+          <mxGeometry height="36" width="72" x="166" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-4" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Rotate" vertex="1">
+          <mxGeometry height="36" width="80" x="248" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-5" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Flip" vertex="1">
+          <mxGeometry height="36" width="63" x="338" y="43" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-6" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Stretch" vertex="1">
+          <mxGeometry height="36" width="88" x="38" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-7" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Touch" vertex="1">
+          <mxGeometry height="36" width="72" x="136" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-8" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Swipe" vertex="1">
+          <mxGeometry height="36" width="72" x="218" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-contact-9" parent="PsbBM6XyjQhkfoi1v4J2-12" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E69AA3;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Shake" vertex="1">
+          <mxGeometry height="36" width="72" x="300" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-14" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="200" width="435" x="1090" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="card-transport" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#EFFAF5;strokeColor=#89CDB2;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="190" width="435" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="title-transport" parent="PsbBM6XyjQhkfoi1v4J2-14" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Transport, placement, and handover" vertex="1">
+          <mxGeometry height="66" width="360" x="32" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-1" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Move" vertex="1">
+          <mxGeometry height="36" width="63" x="45" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-2" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Place" vertex="1">
+          <mxGeometry height="36" width="72" x="118" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-3" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Carry" vertex="1">
+          <mxGeometry height="36" width="72" x="200" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-4" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Transfer" vertex="1">
+          <mxGeometry height="36" width="97" x="282" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-5" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="HandOver" vertex="1">
+          <mxGeometry height="36" width="97" x="28" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-6" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="TakeOver" vertex="1">
+          <mxGeometry height="36" width="97" x="135" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-7" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Throw" vertex="1">
+          <mxGeometry height="36" width="72" x="242" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-8" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Discard" vertex="1">
+          <mxGeometry height="36" width="88" x="324" y="99" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-9" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Takeout" vertex="1">
+          <mxGeometry height="36" width="88" x="123" y="147" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-transport-10" parent="PsbBM6XyjQhkfoi1v4J2-14" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#89CDB2;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Remove" vertex="1">
+          <mxGeometry height="36" width="80" x="221" y="147" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-15" edge="1" parent="1" source="hub" style="endArrow=none;html=1;rounded=0;entryX=0.002;entryY=0.886;entryDx=0;entryDy=0;exitX=0.913;exitY=0.223;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#7FAB7C;strokeWidth=3;entryPerimeter=0;opacity=65;" target="card-transport" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="880" y="630" as="sourcePoint" />
+            <mxPoint x="930" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-16" edge="1" parent="1" source="card-acquisition" style="endArrow=none;html=1;rounded=0;entryX=0.117;entryY=0.18;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;strokeColor=#528DCC;exitX=1;exitY=0.929;exitDx=0;exitDy=0;exitPerimeter=0;opacity=65;" target="hub" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="660" y="530" as="sourcePoint" />
+            <mxPoint x="930" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-17" edge="1" parent="1" source="title-material" style="endArrow=none;html=1;rounded=0;strokeWidth=3;strokeColor=#67AB9F;exitX=0.585;exitY=-0.035;exitDx=0;exitDy=0;exitPerimeter=0;opacity=65;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="732.7261146496817" y="804.5" as="sourcePoint" />
+            <mxPoint x="831" y="749" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-18" edge="1" parent="1" source="hub" style="endArrow=none;html=1;rounded=0;strokeColor=#526FA8;strokeWidth=3;exitX=0.905;exitY=0.802;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.322;entryY=0.288;entryDx=0;entryDy=0;entryPerimeter=0;opacity=65;" target="title-navigation" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="880" y="630" as="sourcePoint" />
+            <mxPoint x="1270" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-4" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="151" width="502" x="960" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="card-navigation" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#F1F4FA;strokeColor=#93A7CE;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="141" width="470" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="title-navigation" parent="PsbBM6XyjQhkfoi1v4J2-4" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;fontColor=#18324B;whiteSpace=wrap;" value="Navigation, perception, and expressive actions" vertex="1">
+          <mxGeometry height="66" width="490" x="12" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-1" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Navigate" vertex="1">
+          <mxGeometry height="36" width="97" x="49" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-2" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Point" vertex="1">
+          <mxGeometry height="36" width="72" x="156" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-3" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Scan" vertex="1">
+          <mxGeometry height="36" width="63" x="238" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-4" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Check" vertex="1">
+          <mxGeometry height="36" width="72" x="311" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-5" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Hang" vertex="1">
+          <mxGeometry height="36" width="63" x="80" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-6" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Armretract" vertex="1">
+          <mxGeometry height="36" width="114" x="153" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="skill-navigation-7" parent="PsbBM6XyjQhkfoi1v4J2-4" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93A7CE;strokeWidth=1.5;fontFamily=Arial;fontColor=#334E68;fontSize=15;" value="Wave" vertex="1">
+          <mxGeometry height="36" width="63" x="280" y="101" as="geometry" />
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-20" edge="1" parent="1" source="card-arrangement" style="endArrow=none;html=1;rounded=0;strokeColor=#D88728;strokeWidth=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.53;entryDx=0;entryDy=0;entryPerimeter=0;opacity=65;" target="hub" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="880" y="630" as="sourcePoint" />
+            <mxPoint x="930" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PsbBM6XyjQhkfoi1v4J2-22" edge="1" parent="1" source="hub" style="endArrow=none;html=1;rounded=0;strokeColor=#D65C6A;strokeWidth=3;opacity=65;exitX=1.01;exitY=0.566;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="card-contact" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1090" y="730" as="sourcePoint" />
+            <mxPoint x="1140" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
