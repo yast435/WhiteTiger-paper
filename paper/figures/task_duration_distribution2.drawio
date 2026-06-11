@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="task-duration-distribution" name="Task Duration Distribution">
+    <mxGraphModel dx="1984" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1020" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="duration-sector-1" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22381.91%22%20height%3D%22688.65%22%20viewBox%3D%220%200%20381.91%20688.65%22%3E%3Cpath%20d%3D%22M%206.00%20376.00%20L%206.00%206.00%20L%2025.63%206.52%20L%2045.20%208.08%20L%2064.67%2010.68%20L%2083.97%2014.31%20L%20103.05%2018.95%20L%20121.85%2024.61%20L%20140.33%2031.25%20L%20158.43%2038.86%20L%20176.10%2047.42%20L%20193.30%2056.91%20L%20209.96%2067.29%20L%20226.05%2078.55%20L%20241.52%2090.64%20L%20256.33%20103.54%20L%20270.43%20117.20%20L%20283.79%20131.60%20L%20296.37%20146.68%20L%20308.12%20162.41%20L%20319.03%20178.74%20L%20329.05%20195.62%20L%20338.17%20213.01%20L%20346.35%20230.87%20L%20353.57%20249.13%20L%20359.81%20267.75%20L%20365.05%20286.67%20L%20369.29%20305.84%20L%20372.50%20325.22%20L%20374.68%20344.73%20L%20375.82%20364.34%20L%20375.91%20383.97%20L%20374.97%20403.59%20L%20372.99%20423.12%20L%20369.97%20442.53%20L%20365.93%20461.74%20L%20360.87%20480.72%20L%20354.82%20499.40%20L%20347.78%20517.73%20L%20339.78%20535.66%20L%20330.84%20553.14%20L%20320.98%20570.13%20L%20310.24%20586.57%20L%20298.64%20602.41%20L%20286.22%20617.62%20L%20273.00%20632.14%20L%20259.04%20645.95%20L%20244.36%20658.99%20L%20229.01%20671.24%20L%20213.03%20682.65%20Z%22%20fill%3D%22%23C4D8ED%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="688.65" width="381.91" x="924" y="129" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-sector-2" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22414.32%22%20height%3D%22381.99%22%20viewBox%3D%220%200%20414.32%20381.99%22%3E%3Cpath%20d%3D%22M%20201.29%206.00%20L%20408.32%20312.65%20L%20391.23%20323.53%20L%20373.56%20333.44%20L%20355.39%20342.38%20L%20336.75%20350.31%20L%20317.70%20357.21%20L%20298.30%20363.05%20L%20278.62%20367.83%20L%20258.70%20371.52%20L%20238.61%20374.11%20L%20218.41%20375.60%20L%20198.16%20375.99%20L%20177.91%20375.26%20L%20157.74%20373.43%20L%20137.70%20370.49%20L%20117.84%20366.47%20L%2098.24%20361.36%20L%2078.95%20355.19%20L%2060.02%20347.97%20L%2041.52%20339.73%20L%2023.49%20330.48%20L%206.00%20320.27%20Z%22%20fill%3D%22%2398C4DA%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="381.99" width="414.32" x="728.71" y="499" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-sector-3" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22381.99%22%20height%3D%22652.40%22%20viewBox%3D%220%200%20381.99%20652.40%22%3E%3Cpath%20d%3D%22M%20375.99%20332.13%20L%20180.71%20646.40%20L%20164.13%20635.47%20L%20148.16%20623.66%20L%20132.84%20611.02%20L%20118.23%20597.57%20L%20104.36%20583.35%20L%2091.27%20568.42%20L%2079.00%20552.80%20L%2067.59%20536.54%20L%2057.06%20519.70%20L%2047.46%20502.32%20L%2038.80%20484.44%20L%2031.11%20466.13%20L%2024.42%20447.43%20L%2018.74%20428.40%20L%2014.09%20409.09%20L%2010.48%20389.56%20L%207.92%20369.86%20L%206.43%20350.06%20L%206.00%20330.20%20L%206.64%20310.35%20L%208.34%20290.57%20L%2011.10%20270.90%20L%2014.91%20251.41%20L%2019.76%20232.15%20L%2025.64%20213.18%20L%2032.53%20194.55%20L%2040.40%20176.32%20L%2049.25%20158.53%20L%2059.04%20141.25%20L%2069.73%20124.52%20L%2081.32%20108.38%20L%2093.75%2092.89%20L%20106.99%2078.09%20L%20121.01%2064.02%20L%20135.76%2050.73%20L%20151.21%2038.24%20L%20167.30%2026.60%20L%20184.00%2015.85%20L%20201.25%206.00%20Z%22%20fill%3D%22%2368A9D1%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="652.4" width="381.99" x="554.01" y="172.87" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-sector-4" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22186.75%22%20height%3D%22380.82%22%20viewBox%3D%220%200%20186.75%20380.82%22%3E%3Cpath%20d%3D%22M%20180.75%20374.82%20L%206.00%2048.69%20L%2023.02%2040.12%20L%2040.46%2032.45%20L%2058.27%2025.68%20L%2076.41%2019.84%20L%2094.82%2014.94%20L%20113.46%2010.99%20L%20132.28%208.01%20L%20151.22%206.00%20Z%22%20fill%3D%22%233787BC%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="380.82" width="186.75" x="749.25" y="130.18" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-sector-5" parent="1" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;aspect=fixed;strokeColor=none;fillColor=none;image=data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2241.52%22%20height%3D%22382.00%22%20viewBox%3D%220%200%2041.52%20382.00%22%3E%3Cpath%20d%3D%22M%2035.52%20376.00%20L%206.00%207.18%20L%209.68%206.90%20L%2013.37%206.66%20L%2017.06%206.46%20L%2020.75%206.30%20L%2024.44%206.17%20L%2028.14%206.07%20L%2031.83%206.02%20L%2035.52%206.00%20Z%22%20fill%3D%22%23155F9F%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E;" value="" vertex="1">
+          <mxGeometry height="382" width="41.52" x="894.48" y="129" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-title-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#202020;" value="&amp;lt; 60 s" vertex="1">
+          <mxGeometry height="55" width="240" x="1050" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-value-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontColor=#666666;" value="&lt;font style=&quot;color: rgb(250, 250, 250);&quot;&gt;40.55%  |  1,212 tasks&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="310" x="990" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-title-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#202020;" value="60-120 s" vertex="1">
+          <mxGeometry height="55" width="260" x="883.03" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-value-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontColor=#666666;" value="&lt;font style=&quot;color: rgb(250, 250, 250);&quot;&gt;18.30%  |  547 tasks&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="300" x="830" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-title-3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#202020;" value="120-300 s" vertex="1">
+          <mxGeometry height="55" width="270" x="640" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-value-3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontColor=#666666;" value="&lt;font style=&quot;color: rgb(247, 247, 247);&quot;&gt;33.32%  |  996 tasks&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="310" x="600" y="452" as="geometry" />
+        </mxCell>
+        <mxCell id="HbskUSQ_YeZTKEjXNe03-1" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="90" width="310" x="600" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-title-4" parent="HbskUSQ_YeZTKEjXNe03-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#202020;" value="300-600 s" vertex="1">
+          <mxGeometry height="55" width="270" x="30.75" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-value-4" parent="HbskUSQ_YeZTKEjXNe03-1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontColor=#666666;" value="6.56%  |  196 tasks" vertex="1">
+          <mxGeometry height="50" width="310" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="HbskUSQ_YeZTKEjXNe03-5" edge="1" parent="HbskUSQ_YeZTKEjXNe03-1" source="duration-title-4" style="endArrow=none;html=1;rounded=0;exitX=0.59;exitY=0.545;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.7;entryY=0.94;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="249" y="30" />
+            </Array>
+            <mxPoint x="180.05999999999995" y="16.02500000000009" as="sourcePoint" />
+            <mxPoint x="249" y="66" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HbskUSQ_YeZTKEjXNe03-2" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="90" width="300" x="1020" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-title-5" parent="HbskUSQ_YeZTKEjXNe03-2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=28;fontStyle=1;fontColor=#202020;" value="≥&amp;nbsp;600 s" vertex="1">
+          <mxGeometry height="55" width="250" x="42" as="geometry" />
+        </mxCell>
+        <mxCell id="duration-value-5" parent="HbskUSQ_YeZTKEjXNe03-2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontColor=#666666;" value="1.27%  |  38 tasks" vertex="1">
+          <mxGeometry height="50" width="300" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="HbskUSQ_YeZTKEjXNe03-3" edge="1" parent="1" source="duration-sector-5" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;strokeWidth=3;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="915" y="93" />
+            </Array>
+            <mxPoint x="930" y="620" as="sourcePoint" />
+            <mxPoint x="1030" y="93" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
