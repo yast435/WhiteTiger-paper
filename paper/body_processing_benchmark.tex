@@ -1,6 +1,13 @@
 \section{Data Processing Pipeline}
 
-Baihu converts heterogeneous human-teleoperated robot operation records into a consistent dataset for large-scale policy training. The source trajectories are stored in HDF5 format and are standardized into LeRobot v2.1 for downstream imitation-learning and vision-language-action training. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid or task-inconsistent trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
+Baihu converts heterogeneous human-teleoperated robot operation records into a consistent dataset for large-scale policy training. As summarized in Fig.~\ref{fig:data-processing-pipeline}, the pipeline transforms platform-specific HDF5 trajectories into a model-ready LeRobot v2.1 dataset through validation, filtering, metadata standardization, embodiment-schema alignment, and format conversion. The processing pipeline emphasizes three requirements: preserving embodiment-specific control information, filtering invalid or task-inconsistent trajectories, and producing a unified representation that can be loaded by modern robot learning systems.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/pipeline2.png}
+\caption{Data processing pipeline of Baihu. Platform-specific HDF5 trajectories collected through human teleoperation are validated and filtered, standardized with task and platform metadata, aligned with embodiment-specific state and action schemas, and converted into LeRobot v2.1. The pipeline rejects trajectories with invalid scene setup, incomplete execution, corrupted recordings, metadata mismatch, missing modality fields, or observation-action misalignment, while preserving native control semantics for downstream imitation learning, vision-language-action pretraining, and benchmark evaluation.}
+\label{fig:data-processing-pipeline}
+\end{figure}
 
 \subsection{HDF5 ingestion and trajectory validation}
 
