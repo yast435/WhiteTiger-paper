@@ -66,8 +66,8 @@ paper/main.tex
 ## Benchmark facts used in the current draft
 
 - Model family: GR00T N1.6
-- Baseline checkpoint: `checkpoint-1` no-training checkpoint
-- Baihu-trained checkpoint: `checkpoint-390000` complete 1-epoch checkpoint fully fine-tuned on `BAIHU_v2.0`
+- Baseline model: no-training GR00T N1.6 baseline
+- Baihu-trained model: GR00T N1.6 fully fine-tuned on `BAIHU_v2.0` for one epoch
 - Evaluation type: offline open-loop zero-shot evaluation
 - Evaluation scope: 13 platforms and 42 paired task-dataset records
 - Overall Normalized ALL MSE reduction: 96.79%
