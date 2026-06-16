@@ -1,10 +1,10 @@
-% CVPR-compatible local style for the Baihu paper draft.
+% CVPR-compatible local style for the WhiteTiger paper draft.
 % This file follows the CVPR/CVF author-kit layout conventions:
 % 10pt Times, letter paper, two columns, CVPR text block, compact headings,
 % CVPR-like captions, numeric compressed citations, and optional review line numbers.
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesPackage{cvpr}[2026/06/16 CVPR-compatible style for Baihu draft]
+\ProvidesPackage{cvpr}[2026/06/16 CVPR-compatible style for WhiteTiger draft]
 
 \RequirePackage{times}
 \RequirePackage{xspace}
@@ -28,16 +28,16 @@
 \newif\ifcvprfinal
 \newif\ifcvprreview
 \newif\ifcvprpagenumbers
-\newif\ifbaihufullwidthfloats
+\newif\ifWhiteTigerfullwidthfloats
 \cvprfinaltrue
 \cvprreviewfalse
 \cvprpagenumbersfalse
-\baihufullwidthfloatsfalse
+\WhiteTigerfullwidthfloatsfalse
 
 \DeclareOption{review}{\cvprfinalfalse\cvprreviewtrue\cvprpagenumberstrue}
 \DeclareOption{final}{\cvprfinaltrue\cvprreviewfalse}
 \DeclareOption{pagenumbers}{\cvprpagenumberstrue}
-\DeclareOption{fullwidthfloats}{\baihufullwidthfloatstrue}
+\DeclareOption{fullwidthfloats}{\WhiteTigerfullwidthfloatstrue}
 \DeclareOption*{\PackageWarning{cvpr}{Unknown option `\CurrentOption'}}
 \ProcessOptions\relax
 
@@ -153,7 +153,7 @@
 % Optional project-specific switch: make ordinary figure/table floats span both
 % CVPR columns. This keeps the body source clean while allowing large charts and
 % tables to use the full page width.
-\ifbaihufullwidthfloats
+\ifWhiteTigerfullwidthfloats
   \RenewDocumentEnvironment{figure}{O{t}}{\begin{figure*}[#1]}{\end{figure*}}
   \RenewDocumentEnvironment{table}{O{t}}{\begin{table*}[#1]}{\end{table*}}
 \fi

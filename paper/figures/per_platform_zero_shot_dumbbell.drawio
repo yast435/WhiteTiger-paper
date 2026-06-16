@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" modified="2026-06-11T02:05:52+00:00" agent="Codex" version="24.7.17" type="device">
-  <diagram id="baihu-zero-shot-dumbbell" name="Page-1">
+  <diagram id="WhiteTiger-zero-shot-dumbbell" name="Page-1">
     <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -20,7 +20,7 @@
         <mxCell id="6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1">
           <mxGeometry x="650.00" y="63.00" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="7" value="Baihu-trained checkpoint" style="text;html=1;whiteSpace=wrap;overflow=hidden;align=left;verticalAlign=middle;fontSize=12;fontColor=#222222;fontFamily=Helvetica;fontStyle=0;strokeColor=none;fillColor=none;spacingLeft=0;spacingRight=0;" vertex="1" parent="1">
+        <mxCell id="7" value="WhiteTiger-trained checkpoint" style="text;html=1;whiteSpace=wrap;overflow=hidden;align=left;verticalAlign=middle;fontSize=12;fontColor=#222222;fontFamily=Helvetica;fontStyle=0;strokeColor=none;fillColor=none;spacingLeft=0;spacingRight=0;" vertex="1" parent="1">
           <mxGeometry x="670.00" y="58.00" width="190.00" height="22.00" as="geometry" />
         </mxCell>
         <mxCell id="8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#AEB7C0;strokeColor=none;" vertex="1" parent="1">
@@ -164,7 +164,7 @@
         <mxCell id="54" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.180542">
           <mxGeometry x="730.82" y="149.96" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="55" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.002733">
+        <mxCell id="55" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.002733">
           <mxGeometry x="520.75" y="149.96" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="56" value="&lt;b&gt;98.49%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.49%">
@@ -179,7 +179,7 @@
         <mxCell id="59" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.225461">
           <mxGeometry x="741.95" y="191.88" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="60" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.007562">
+        <mxCell id="60" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.007562">
           <mxGeometry x="571.77" y="191.88" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="61" value="&lt;b&gt;96.65%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 96.65%">
@@ -194,7 +194,7 @@
         <mxCell id="64" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.233863">
           <mxGeometry x="743.79" y="233.81" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="65" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.003824">
+        <mxCell id="65" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.003824">
           <mxGeometry x="537.59" y="233.81" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="66" value="&lt;b&gt;98.36%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.36%">
@@ -209,7 +209,7 @@
         <mxCell id="69" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.117581">
           <mxGeometry x="709.32" y="275.73" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="70" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.004864">
+        <mxCell id="70" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.004864">
           <mxGeometry x="549.65" y="275.73" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="71" value="&lt;b&gt;95.86%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 95.86%">
@@ -224,7 +224,7 @@
         <mxCell id="74" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.157261">
           <mxGeometry x="723.90" y="317.65" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="75" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.004335">
+        <mxCell id="75" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.004335">
           <mxGeometry x="543.88" y="317.65" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="76" value="&lt;b&gt;97.24%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 97.24%">
@@ -239,7 +239,7 @@
         <mxCell id="79" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.156535">
           <mxGeometry x="723.66" y="359.58" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="80" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.002307">
+        <mxCell id="80" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.002307">
           <mxGeometry x="512.26" y="359.58" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="81" value="&lt;b&gt;98.53%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.53%">
@@ -254,7 +254,7 @@
         <mxCell id="84" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.077804">
           <mxGeometry x="688.62" y="401.50" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="85" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.004525">
+        <mxCell id="85" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.004525">
           <mxGeometry x="546.03" y="401.50" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="86" value="&lt;b&gt;94.18%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 94.18%">
@@ -269,7 +269,7 @@
         <mxCell id="89" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.158673">
           <mxGeometry x="724.34" y="443.42" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="90" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.005819">
+        <mxCell id="90" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.005819">
           <mxGeometry x="558.64" y="443.42" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="91" value="&lt;b&gt;96.33%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 96.33%">
@@ -284,7 +284,7 @@
         <mxCell id="94" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.083854">
           <mxGeometry x="692.37" y="485.35" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="95" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.007897">
+        <mxCell id="95" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.007897">
           <mxGeometry x="573.94" y="485.35" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="96" value="&lt;b&gt;90.58%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 90.58%">
@@ -299,7 +299,7 @@
         <mxCell id="99" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.161330">
           <mxGeometry x="725.18" y="527.27" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="100" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.001803">
+        <mxCell id="100" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.001803">
           <mxGeometry x="499.90" y="527.27" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="101" value="&lt;b&gt;98.88%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.88%">
@@ -314,7 +314,7 @@
         <mxCell id="104" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.096915">
           <mxGeometry x="699.63" y="569.19" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="105" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.002092">
+        <mxCell id="105" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.002092">
           <mxGeometry x="507.36" y="569.19" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="106" value="&lt;b&gt;97.84%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 97.84%">
@@ -329,7 +329,7 @@
         <mxCell id="109" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.203833">
           <mxGeometry x="736.90" y="611.12" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="110" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.005157">
+        <mxCell id="110" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.005157">
           <mxGeometry x="552.58" y="611.12" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="111" value="&lt;b&gt;97.47%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 97.47%">
@@ -344,7 +344,7 @@
         <mxCell id="114" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.167769">
           <mxGeometry x="727.14" y="653.04" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="115" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.015057">
+        <mxCell id="115" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.015057">
           <mxGeometry x="606.29" y="653.04" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="116" value="&lt;b&gt;91.02%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 91.02%">
@@ -491,7 +491,7 @@
         <mxCell id="163" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.157132">
           <mxGeometry x="1233.86" y="149.96" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="164" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000572">
+        <mxCell id="164" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000572">
           <mxGeometry x="952.35" y="149.96" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="165" value="&lt;b&gt;99.64%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.64%">
@@ -503,7 +503,7 @@
         <mxCell id="167" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.132757">
           <mxGeometry x="1225.41" y="191.88" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="168" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000896">
+        <mxCell id="168" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000896">
           <mxGeometry x="974.85" y="191.88" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="169" value="&lt;b&gt;99.33%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.33%">
@@ -515,7 +515,7 @@
         <mxCell id="171" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.137993">
           <mxGeometry x="1227.34" y="233.81" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="172" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.001805">
+        <mxCell id="172" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.001805">
           <mxGeometry x="1009.96" y="233.81" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="173" value="&lt;b&gt;98.69%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.69%">
@@ -527,7 +527,7 @@
         <mxCell id="175" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.075369">
           <mxGeometry x="1197.03" y="275.73" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="176" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000197">
+        <mxCell id="176" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000197">
           <mxGeometry x="898.92" y="275.73" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="177" value="&lt;b&gt;99.74%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.74%">
@@ -539,7 +539,7 @@
         <mxCell id="179" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.133456">
           <mxGeometry x="1225.67" y="317.65" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="180" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000743">
+        <mxCell id="180" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000743">
           <mxGeometry x="965.46" y="317.65" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="181" value="&lt;b&gt;99.44%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.44%">
@@ -551,7 +551,7 @@
         <mxCell id="183" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.133968">
           <mxGeometry x="1225.86" y="359.58" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="184" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000949">
+        <mxCell id="184" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000949">
           <mxGeometry x="977.73" y="359.58" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="185" value="&lt;b&gt;99.29%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.29%">
@@ -563,7 +563,7 @@
         <mxCell id="187" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.041619">
           <mxGeometry x="1167.26" y="401.50" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="188" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000711">
+        <mxCell id="188" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000711">
           <mxGeometry x="963.26" y="401.50" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="189" value="&lt;b&gt;98.29%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 98.29%">
@@ -575,7 +575,7 @@
         <mxCell id="191" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.135078">
           <mxGeometry x="1226.27" y="443.42" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="192" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000822">
+        <mxCell id="192" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000822">
           <mxGeometry x="970.53" y="443.42" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="193" value="&lt;b&gt;99.39%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.39%">
@@ -587,7 +587,7 @@
         <mxCell id="195" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.062389">
           <mxGeometry x="1187.55" y="485.35" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="196" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000068">
+        <mxCell id="196" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000068">
           <mxGeometry x="845.60" y="485.35" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="197" value="&lt;b&gt;99.89%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.89%">
@@ -599,7 +599,7 @@
         <mxCell id="199" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.138172">
           <mxGeometry x="1227.41" y="527.27" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="200" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.001076">
+        <mxCell id="200" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.001076">
           <mxGeometry x="984.03" y="527.27" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="201" value="&lt;b&gt;99.22%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.22%">
@@ -611,7 +611,7 @@
         <mxCell id="203" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.017828">
           <mxGeometry x="1124.76" y="569.19" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="204" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000612">
+        <mxCell id="204" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000612">
           <mxGeometry x="955.74" y="569.19" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="205" value="&lt;b&gt;96.57%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 96.57%">
@@ -623,7 +623,7 @@
         <mxCell id="207" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.176382">
           <mxGeometry x="1239.65" y="611.12" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="208" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000208">
+        <mxCell id="208" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000208">
           <mxGeometry x="901.64" y="611.12" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="209" value="&lt;b&gt;99.88%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.88%">
@@ -635,7 +635,7 @@
         <mxCell id="211" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4E79A7;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="No-training checkpoint: 0.135167">
           <mxGeometry x="1226.31" y="653.04" width="12.00" height="12.00" as="geometry" />
         </mxCell>
-        <mxCell id="212" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="Baihu-trained checkpoint: 0.000282">
+        <mxCell id="212" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F28E2B;strokeColor=#FFFFFF;strokeWidth=1.2;" vertex="1" parent="1" tooltip="WhiteTiger-trained checkpoint: 0.000282">
           <mxGeometry x="916.90" y="653.04" width="12.00" height="12.00" as="geometry" />
         </mxCell>
         <mxCell id="213" value="&lt;b&gt;99.79%&lt;/b&gt;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D4DAE0;strokeWidth=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#222222;fontFamily=Helvetica;" vertex="1" parent="1" tooltip="Relative MSE reduction: 99.79%">

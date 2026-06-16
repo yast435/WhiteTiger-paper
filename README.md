@@ -1,14 +1,14 @@
-# Whitetiger Paper
+# WhiteTiger Paper
 
-This repository tracks the LaTeX draft and supporting materials for the Whitetiger dataset paper.
+This repository tracks the LaTeX draft and supporting materials for the WhiteTiger dataset paper.
 
 ## Working title
 
-**Whitetiger: A Billion-Frame Multi-Embodiment Robot Manipulation Dataset for Embodied Foundation Models**
+**WhiteTiger: A Billion-Frame Multi-Embodiment Robot Manipulation Dataset for Embodied Foundation Models**
 
 ## Current paper direction
 
-The current paper positions Whitetiger as a large-scale, fully human-teleoperated, LeRobot v2.1-standardized, multi-platform robot manipulation dataset for robot foundation-model adaptation, offline zero-shot evaluation, and event-aware robot learning. The draft emphasizes two complementary dataset strengths: (1) large-scale dense trajectories for adapting pretrained robot foundation models and improving offline zero-shot generalization, and (2) event/keyframe-level temporal annotations for keyframe-aware and goal-oriented learning.
+The current paper positions WhiteTiger as a large-scale, fully human-teleoperated, LeRobot v2.1-standardized, multi-platform robot manipulation dataset for robot foundation-model adaptation, offline zero-shot evaluation, and event-aware robot learning. The draft emphasizes two complementary dataset strengths: (1) large-scale dense trajectories for adapting pretrained robot foundation models and improving offline zero-shot generalization, and (2) event/keyframe-level temporal annotations for keyframe-aware and goal-oriented learning.
 
 The draft emphasizes:
 
@@ -61,9 +61,9 @@ For an internal non-anonymous or camera-ready-style draft with page numbers, cha
 \usepackage[pagenumbers]{cvpr}
 ```
 
-## Whitetiger facts used in the current draft
+## WhiteTiger facts used in the current draft
 
-- Primary dataset version: `WHITETIGER_v2.0`
+- Primary dataset version: `WhiteTiger_v2.0`
 - Status: completed
 - Collection protocol: fully human teleoperation on physical robot platforms
 - Duration: 9521.75 hours
@@ -80,7 +80,7 @@ For an internal non-anonymous or camera-ready-style draft with page numbers, cha
 
 - Model family: GR00T N1.6
 - Baseline model: no-training GR00T N1.6 baseline
-- Whitetiger-trained model: GR00T N1.6 fully fine-tuned on `WHITETIGER_v2.0` for one epoch
+- WhiteTiger-trained model: GR00T N1.6 fully fine-tuned on `WhiteTiger_v2.0` for one epoch
 - Evaluation type: offline open-loop zero-shot evaluation
 - Evaluation scope: 13 platforms and 42 paired task-dataset records
 - Overall Normalized ALL MSE reduction: 96.79%

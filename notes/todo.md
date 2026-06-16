@@ -1,8 +1,8 @@
-# Baihu Paper TODO
+# WhiteTiger Paper TODO
 
 ## Highest priority
 
-- [ ] Verify the final data-source description for Baihu v2.0.
+- [ ] Verify the final data-source description for WhiteTiger v2.0.
   - Current ambiguity: internal model-demand data + Ant-delivered data vs. internal model-demand data + Dwheel-filtered data.
 - [ ] Add platform descriptions for the 14 embodiment tags.
   - `arx_loong`
@@ -33,7 +33,7 @@
 ## Completed draft components
 
 - [x] Working title
-- [x] Abstract with Baihu v2.0 scale and benchmark result
+- [x] Abstract with WhiteTiger v2.0 scale and benchmark result
 - [x] Introduction
 - [x] Related Work draft
 - [x] Dataset Overview draft
@@ -49,19 +49,19 @@
 
 ## Dataset section refinements
 
-- [ ] Confirm all Baihu v2.0 numbers:
+- [ ] Confirm all WhiteTiger v2.0 numbers:
   - 9521.75 hours;
   - 2989 tasks;
   - 513575 episodes;
   - 1028349814 frames.
-- [ ] Decide whether to keep Baihu v1.1 / v1.2 as a combined row or separate rows.
+- [ ] Decide whether to keep WhiteTiger v1.1 / v1.2 as a combined row or separate rows.
 - [ ] Convert embodiment distribution table into final publication format.
 - [ ] Add concise platform descriptions for each embodiment tag.
 - [ ] Remove or rewrite any sentence that still sounds like an internal note.
 
 ## Figures
 
-- [x] Figure 1: Baihu data construction and evaluation pipeline.
+- [x] Figure 1: WhiteTiger data construction and evaluation pipeline.
 - [x] Figure 2: embodiment duration distribution editable figure.
 - [x] Figure 3: benchmark overview / result editable figure.
 - [ ] Figure: example trajectory or multi-view observation panel, if screenshots are available.
@@ -69,7 +69,7 @@
 
 ## Tables
 
-- [x] Table: Baihu version comparison.
+- [x] Table: WhiteTiger version comparison.
 - [x] Table: embodiment-level statistics.
 - [x] Table: dataset comparison with representative datasets.
 - [x] Table: overall offline zero-shot benchmark results.
@@ -96,7 +96,7 @@
 - [ ] Create `references.bib`.
 - [ ] Add figure/table references into the section text.
 - [ ] Check consistency of terminology:
-  - Baihu v2.0 / BAIHU_v2.0;
+  - WhiteTiger v2.0 / WhiteTiger_v2.0;
   - LeRobot v2.1;
   - HDF5-to-LeRobot conversion;
   - 13 platforms and 42 paired task-dataset records;

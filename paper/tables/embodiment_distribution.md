@@ -1,4 +1,4 @@
-# Table 2. Embodiment-level distribution of Baihu v2.0
+# Table 2. Embodiment-level distribution of WhiteTiger v2.0
 
 The table reports tasks, episodes, frames, hours, and duration percentage for each of the 14 embodiment tags.
 

@@ -1,5 +1,5 @@
 <mxfile host="app.diagrams.net">
-  <diagram name="Baihu Data Processing Pipeline" id="e9La-IIqyrwo50qnRQKf">
+  <diagram name="WhiteTiger Data Processing Pipeline" id="e9La-IIqyrwo50qnRQKf">
     <mxGraphModel dx="1984" dy="1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -7,7 +7,7 @@
         <mxCell id="BpPJwRzbyKyDOfho30D1-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7FAFD;strokeColor=none;" value="" vertex="1">
           <mxGeometry height="850" width="1720" x="40" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="BpPJwRzbyKyDOfho30D1-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="Baihu Data Processing Pipeline" vertex="1">
+        <mxCell id="BpPJwRzbyKyDOfho30D1-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="WhiteTiger Data Processing Pipeline" vertex="1">
           <mxGeometry height="55" width="800" x="70" y="87" as="geometry" />
         </mxCell>
         <mxCell id="BpPJwRzbyKyDOfho30D1-3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontColor=#597086;" value="From heterogeneous human-teleoperated HDF5 trajectories to a unified, model-ready LeRobot v2.1 dataset" vertex="1">

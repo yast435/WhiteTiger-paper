@@ -1,5 +1,5 @@
 <mxfile host="app.diagrams.net" agent="Codex">
-  <diagram id="baihu-skill-taxonomy" name="Baihu Skill Taxonomy">
+  <diagram id="WhiteTiger-skill-taxonomy" name="WhiteTiger Skill Taxonomy">
     <mxGraphModel dx="2088" dy="1219" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
@@ -7,7 +7,7 @@
         <mxCell id="background" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7FAFD;strokeColor=none;" value="" vertex="1">
           <mxGeometry height="860" width="1340" x="260" y="160" as="geometry" />
         </mxCell>
-        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="Baihu Skill Taxonomy" vertex="1">
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=36;fontStyle=1;fontColor=#17324D;" value="WhiteTiger Skill Taxonomy" vertex="1">
           <mxGeometry height="55" width="650" x="270" y="164" as="geometry" />
         </mxCell>
         <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontFamily=Arial;fontSize=18;fontColor=#597086;" value="64 manipulation skills grouped into seven action-semantic categories used during data collection and annotation" vertex="1">

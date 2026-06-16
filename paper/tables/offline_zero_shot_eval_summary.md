@@ -6,9 +6,9 @@ This table records the current benchmark setting described by the source materia
 
 | Item | Description |
 |---|---|
-| Training dataset | BAIHU_v2.0 |
+| Training dataset | WhiteTiger_v2.0 |
 | Base model / no-training checkpoint | GR00T N1.6 / checkpoint-1 |
-| Baihu-trained checkpoint | GR00T N1.6 / checkpoint-390000 |
+| WhiteTiger-trained checkpoint | GR00T N1.6 / checkpoint-390000 |
 | Training status | checkpoint-390000 is the complete 1-epoch checkpoint |
 | Evaluation type | Offline open-loop zero-shot evaluation |
 | Evaluation scope | 13 embodiments / platforms, 39 unseen tasks |
