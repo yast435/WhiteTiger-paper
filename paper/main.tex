@@ -1,19 +1,30 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,twocolumn,letterpaper]{article}
 
-\usepackage[margin=1in]{geometry}
+% CVPR-style draft. For a camera-ready/internal non-anonymous draft, replace
+% [review] with [pagenumbers] or [final,pagenumbers].
+\usepackage[review]{cvpr}
+
+\def\paperID{0000}
+\def\confName{CVPR}
+\def\confYear{2026}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{booktabs}
-\usepackage{graphicx}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{longtable}
 \usepackage{pdflscape}
 \usepackage{adjustbox}
-\usepackage{caption}
-\usepackage{subcaption}
 \usepackage{float}
-\usepackage{hyperref}
+\usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
+
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=cvprblue,
+  citecolor=cvprblue,
+  urlcolor=cvprblue
+}
 
 \title{Baihu: A Billion-Frame Multi-Embodiment Robot Manipulation Dataset for Embodied Foundation Models}
 \author{}
@@ -28,13 +39,17 @@
 \input{body_discussion}
 \input{body_conclusion}
 
+{\small
+\bibliographystyle{plainnat}
+\bibliography{references,event_references}
+}
+
+\clearpage
+\onecolumn
 \appendix
 \section{Task-level benchmark results}
 \label{app:task-level}
 
 \input{tables/task_level_table_a4}
-
-\bibliographystyle{plain}
-\bibliography{references,event_references}
 
 \end{document}
