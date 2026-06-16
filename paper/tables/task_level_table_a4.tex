@@ -1,13 +1,12 @@
-% Landscape appendix table for task-level benchmark results.
-% Required packages: booktabs, longtable, array, pdflscape.
+% Portrait appendix table for task-level benchmark results.
+% Required packages: booktabs, longtable, array.
 
 \begingroup
-\begin{landscape}
 \section{Task-level benchmark results}
 \label{app:task-level}
-\vspace{-0.75em}
+\vspace{0.5em}
 \tiny
-\setlength{\tabcolsep}{2pt}
+\setlength{\tabcolsep}{1.8pt}
 \renewcommand{\arraystretch}{1.00}
 \setlength{\LTleft}{0pt}
 \setlength{\LTright}{0pt}
@@ -17,12 +16,12 @@
 \begin{longtable}{@{}p{0.085\linewidth}p{0.300\linewidth}p{0.070\linewidth}rrrrrr@{}}
 \caption{Task-level offline zero-shot evaluation results. The table reports Normalized ALL MSE, Normalized Joint MSE, and relative improvement for each of the 42 paired task-dataset records. Lower is better.}\label{tab:task-level}\\
 \toprule
-Platform & Task & Type & ALL-Base & ALL-Baihu & $\Delta$ALL & Joint-Base & Joint-Baihu & $\Delta$Joint \\
+Platform & Task & Type & ALL-Base & ALL-WhiteTiger & $\Delta$ALL & Joint-Base & Joint-WhiteTiger & $\Delta$Joint \\
 \midrule
 \endfirsthead
 \caption[]{Task-level offline zero-shot evaluation results (continued).}\\
 \toprule
-Platform & Task & Type & ALL-Base & ALL-Baihu & $\Delta$ALL & Joint-Base & Joint-Baihu & $\Delta$Joint \\
+Platform & Task & Type & ALL-Base & ALL-WhiteTiger & $\Delta$ALL & Joint-Base & Joint-WhiteTiger & $\Delta$Joint \\
 \midrule
 \endhead
 \midrule
@@ -73,5 +72,4 @@ AGIBOT G1 & Install a bracket & Right-arm & 0.167892 & 0.013138 & 92.17\% & 0.13
 AGIBOT G1 & Install a power module & Dual-arm & 0.165634 & 0.012706 & 92.33\% & 0.135268 & 0.000291 & 99.78\% \\
 AGIBOT G1 & Assemble a touchpad & Dual-arm & 0.169781 & 0.019328 & 88.62\% & 0.134856 & 0.000146 & 99.89\% \\
 \end{longtable}
-\end{landscape}
 \endgroup
