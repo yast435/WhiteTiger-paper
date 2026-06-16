@@ -8,6 +8,7 @@
 
 \RequirePackage{times}
 \RequirePackage{xspace}
+\RequirePackage{xparse}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
@@ -27,13 +28,16 @@
 \newif\ifcvprfinal
 \newif\ifcvprreview
 \newif\ifcvprpagenumbers
+\newif\ifbaihufullwidthfloats
 \cvprfinaltrue
 \cvprreviewfalse
 \cvprpagenumbersfalse
+\baihufullwidthfloatsfalse
 
 \DeclareOption{review}{\cvprfinalfalse\cvprreviewtrue\cvprpagenumberstrue}
 \DeclareOption{final}{\cvprfinaltrue\cvprreviewfalse}
 \DeclareOption{pagenumbers}{\cvprpagenumberstrue}
+\DeclareOption{fullwidthfloats}{\baihufullwidthfloatstrue}
 \DeclareOption*{\PackageWarning{cvpr}{Unknown option `\CurrentOption'}}
 \ProcessOptions\relax
 
@@ -145,6 +149,14 @@
   ]%
 }
 \makeatother
+
+% Optional project-specific switch: make ordinary figure/table floats span both
+% CVPR columns. This keeps the body source clean while allowing large charts and
+% tables to use the full page width.
+\ifbaihufullwidthfloats
+  \RenewDocumentEnvironment{figure}{O{t}}{\begin{figure*}[#1]}{\end{figure*}}
+  \RenewDocumentEnvironment{table}{O{t}}{\begin{table*}[#1]}{\end{table*}}
+\fi
 
 % Figure placement settings used by the CVPR author kit.
 \renewcommand{\textfraction}{0.01}
