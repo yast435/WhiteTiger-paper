@@ -1,0 +1,158 @@
+% CVPR-compatible local style for the Baihu paper draft.
+% This file follows the CVPR/CVF author-kit layout conventions:
+% 10pt Times, letter paper, two columns, CVPR text block, compact headings,
+% CVPR-like captions, numeric compressed citations, and optional review line numbers.
+
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{cvpr}[2026/06/16 CVPR-compatible style for Baihu draft]
+
+\RequirePackage{times}
+\RequirePackage{xspace}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{booktabs}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage[format=plain,labelformat=simple,labelsep=period,font=small,compatibility=false]{caption}
+\RequirePackage[font=footnotesize,skip=3pt,subrefformat=parens]{subcaption}
+\RequirePackage[shortlabels,inline]{enumitem}
+\RequirePackage[hyphens]{url}
+
+\setlength{\bibsep}{1pt plus 1pt minus 1pt}
+\Urlmuskip=0mu plus 1mu\relax
+\setlist[itemize]{noitemsep,leftmargin=*,topsep=0em}
+\setlist[enumerate]{noitemsep,leftmargin=*,topsep=0em}
+
+\newif\ifcvprfinal
+\newif\ifcvprreview
+\newif\ifcvprpagenumbers
+\cvprfinaltrue
+\cvprreviewfalse
+\cvprpagenumbersfalse
+
+\DeclareOption{review}{\cvprfinalfalse\cvprreviewtrue\cvprpagenumberstrue}
+\DeclareOption{final}{\cvprfinaltrue\cvprreviewfalse}
+\DeclareOption{pagenumbers}{\cvprpagenumberstrue}
+\DeclareOption*{\PackageWarning{cvpr}{Unknown option `\CurrentOption'}}
+\ProcessOptions\relax
+
+\providecommand{\paperID}{0000}
+\providecommand{\confName}{CVPR}
+\providecommand{\confYear}{2026}
+
+% CVPR/CVF page layout: 8.5 x 11 in, 6.875 in text width, 0.3125 in column gap.
+\setlength{\textheight}{8.875in}
+\setlength{\textwidth}{6.875in}
+\setlength{\columnsep}{0.3125in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\parindent}{1pc}
+\setlength{\oddsidemargin}{-0.1875in}
+\setlength{\evensidemargin}{-0.1875in}
+
+\ifcvprpagenumbers
+  \pagestyle{plain}
+\else
+  \pagestyle{empty}
+\fi
+
+\ifcvprreview
+  \RequirePackage[switch,mathlines]{lineno}
+  \renewcommand\linenumberfont{\normalfont\scriptsize\color[rgb]{.5,.5,1}}
+  \AtBeginDocument{\linenumbers}
+\fi
+
+\makeatletter
+\AtBeginDocument{%
+  \@ifclassloaded{article}{}{%
+    \PackageError{cvpr}{Package only meant to be used with document class `article'}{Change document class to `article'.}%
+  }%
+  \@ifclasswith{article}{10pt}{}{%
+    \PackageWarningNoLine{cvpr}{CVPR requires 10-point fonts. Use \string\documentclass[10pt,twocolumn,letterpaper]{article}}%
+  }%
+  \@ifclasswith{article}{twocolumn}{}{%
+    \PackageWarningNoLine{cvpr}{CVPR requires two-column layout. Use \string\documentclass[10pt,twocolumn,letterpaper]{article}}%
+  }%
+  \@ifclasswith{article}{letterpaper}{}{%
+    \PackageWarningNoLine{cvpr}{CVPR uses letter paper. Use \string\documentclass[10pt,twocolumn,letterpaper]{article}}%
+  }%
+}
+
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip .375in
+  \begin{center}%
+    {\Large\bfseries \@title \par}%
+    \vspace*{24pt}%
+    {\large
+      \lineskip .5em
+      \begin{tabular}[t]{c}%
+        \ifcvprfinal
+          \@author
+        \else
+          Anonymous \confName~submission\\
+          \vspace*{1pt}\\
+          Paper ID \paperID
+        \fi
+      \end{tabular}\par}%
+    \vskip .5em
+    \vspace*{12pt}%
+  \end{center}%
+}
+
+\renewenvironment{abstract}{%
+  \ifcvprpagenumbers\else\thispagestyle{empty}\fi
+  \centerline{\large\bfseries Abstract}%
+  \vspace*{12pt}\noindent\itshape\ignorespaces
+}{%
+  \vspace*{12pt}%
+}
+
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-10pt plus -2pt minus -2pt}{7pt}{\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-8pt plus -2pt minus -2pt}{5pt}{\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-6pt plus -2pt minus -2pt}{3pt}{\bfseries}}
+
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{\emph{e.g}\onedot}
+\def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot}
+\def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{cf}\onedot}
+\def\Cf{\emph{Cf}\onedot}
+\def\etc{\emph{etc}\onedot}
+\def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot}
+\def\dof{d.o.f\onedot}
+\def\iid{i.i.d\onedot}
+\def\etal{\emph{et al}\onedot}
+
+\let\titleold\title
+\renewcommand{\title}[1]{\titleold{#1}\gdef\thetitle{#1}}
+\newcommand{\maketitlesupplementary}{%
+  \newpage
+  \twocolumn[
+    \centering
+    \Large \textbf{\thetitle}\\
+    \vspace{0.5em}Supplementary Material\\
+    \vspace{1.0em}
+  ]%
+}
+\makeatother
+
+% Figure placement settings used by the CVPR author kit.
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\dblfloatpagefraction}{0.99}
+\renewcommand{\dbltopfraction}{0.99}
+\setcounter{totalnumber}{99}
+\setcounter{topnumber}{99}
+\setcounter{bottomnumber}{99}
