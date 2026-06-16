@@ -1,16 +1,16 @@
 \subsection{Data collection protocol}
 
-All trajectories in WhiteTiger are collected through human teleoperation. Human teleoperation is a widely used approach for collecting action-labeled robot demonstrations for imitation learning in fixed-base, bimanual, in-the-wild, and mobile manipulation settings~\cite{mandlekar2018roboturk,sharma2018mime,zhao2023aloha,fu2024mobilealoha,khazatsky2024droid}. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
+WhiteTiger trajectories are collected through human teleoperation on physical robot platforms. Human teleoperation is widely used for action-labeled robot demonstrations in fixed-base, bimanual, in-the-wild, and mobile manipulation settings~\cite{mandlekar2018roboturk,sharma2018mime,zhao2023aloha,fu2024mobilealoha,khazatsky2024droid}. The released corpus excludes scripted rollouts, simulation trajectories, and internet-sourced robot videos. Each episode records an operator controlling a real robot to complete a requested manipulation task under a specified scene configuration.
 
-Task annotations are provided manually by the task requester when the collection requirement is proposed. The task label or instruction therefore reflects the intended task specification before data collection, rather than being generated automatically from the robot logs after collection. The task description defines the expected scene setup, objects or tools, target state, and manipulation procedure for each collection requirement.
+Task annotations are provided manually by the task requester before collection. The task label or instruction therefore encodes the intended scene setup, object set, target state, and manipulation procedure rather than a post hoc caption inferred from logs. This protocol aligns language supervision with the collection requirement and supports conditioning by task semantics during model training.
 
-Because WhiteTiger spans 13 robot platforms, the observation and action spaces are platform-specific. Camera count, camera viewpoint, camera model, and sensor configuration depend on the robot platform and collection setup. Similarly, action representations are not forced into a single universal schema. Different platforms may use different combinations of arm joints, end-effector commands, gripper or hand commands, and other platform-specific control dimensions. WhiteTiger therefore preserves platform-level schema information while converting the data into a standardized training format.
+Observation and action spaces remain platform-specific across the 13 robots. Camera count, viewpoint, camera model, proprioceptive fields, and sensor configuration depend on the platform and collection setup. Action representations may include arm joints, end-effector commands, gripper states, dexterous-hand controls, mobile-base commands, or other platform-specific dimensions. WhiteTiger preserves these native schemas inside a standardized dataset interface, avoiding artificial control-space collapse across embodiments with different physical constraints.
 
 \subsection{Skill taxonomy}
 
-WhiteTiger covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
+WhiteTiger covers 64 manipulation skills across 2989 tasks. The taxonomy groups task executions by reusable action semantics rather than treating every task string as an isolated category. Skill labels span object acquisition, placement, handover, articulated-object interaction, contact-driven motion, tool use, material manipulation, and navigation-related actions.
 
-Figure~\ref{fig:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. The category counts indicate the number of defined skill labels rather than their occurrence frequencies in the dataset, helping characterize the manipulation diversity of WhiteTiger beyond simple task count.
+Figure~\ref{fig:skill-taxonomy} organizes the 64 skills into seven action-semantic categories. The taxonomy provides an intermediate representation between task names and raw trajectories. A single task may require multiple skills, while a single skill may appear across objects, scenes, and robot embodiments. Category counts denote defined labels rather than occurrence frequencies, thereby characterizing behavioral coverage without conflating taxonomy size with sampling density.
 
 \begin{figure}[t]
 \centering
@@ -21,11 +21,11 @@ Figure~\ref{fig:skill-taxonomy} summarizes the 64 skills according to seven acti
 
 \subsection{Scenario and task coverage}
 
-Beyond scale and embodiment diversity, WhiteTiger is designed to cover a broad range of manipulation scenarios and task structures. The dataset is organized into five major scenario categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose scenarios. Figure~\ref{fig:scenario-task-coverage} summarizes the distribution of tasks across these scenario categories.
+WhiteTiger covers manipulation scenarios organized into five categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose settings. Figure~\ref{fig:scenario-task-coverage} reports the task distribution across these scenario categories.
 
-These scenario categories provide a practical organization for analyzing how robot policies transfer across environments, object types, and manipulation contexts. At the task level, WhiteTiger contains 2989 tasks, including both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
+Scenario coverage determines how policy learning encounters variation in environment layout, object affordance, task objective, and interaction context. WhiteTiger contains 2989 tasks spanning short-horizon primitives and longer task chains. Many tasks compose lower-level manipulation skills such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This compositional structure supports direct action prediction, skill abstraction, temporal segmentation, and analysis of how reusable sensorimotor routines transfer across physical contexts.
 
-WhiteTiger also contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Figure~\ref{fig:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
+Task duration provides a quantitative view of temporal structure. For each task, the mean trajectory duration is computed over all associated trajectories and assigned to a duration bin. Figure~\ref{fig:task-duration} shows that 40.55\% of tasks have a mean duration below 60 seconds, 74.94\% fall below 180 seconds, and 92.17\% fall below 300 seconds. Tasks with mean duration above 300 seconds account for 7.83\%, including 1.27\% with mean duration of at least 600 seconds. The median task lies within the 60--90 second interval.
 
 \begin{figure}[t]
 \centering
@@ -42,23 +42,23 @@ WhiteTiger also contains tasks spanning a broad range of temporal durations. For
     \caption{Task-level mean trajectory duration.}
     \label{fig:task-duration}
 \end{subfigure}
-\caption{Task coverage and temporal diversity of WhiteTiger. The left panel shows the distribution of tasks across the five scenario categories, while the right panel shows the distribution of task-level mean trajectory duration.}
+\caption{Task coverage and temporal diversity of WhiteTiger. The left panel reports task distribution across five scenario categories, and the right panel reports task-level mean trajectory duration.}
 \label{fig:WhiteTiger-task-coverage}
 \end{figure}
 
-This distribution shows that WhiteTiger covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
+The duration distribution shows that WhiteTiger includes local manipulation behaviors and extended multi-stage interactions. Duration does not fully determine task complexity, but it exposes the control horizons and temporal variation that affect policy learning, event annotation, and open-loop evaluation.
 
 \subsection{Event-level temporal annotations}
 
-WhiteTiger provides event-level temporal annotations in addition to dense observation-action trajectories. WhiteTiger treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a temporally localized task-progress signal, such as a subgoal achievement, a task-phase transition, or an important object-state change. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
+WhiteTiger provides event-level temporal annotations alongside dense observation-action trajectories. Events are semantic temporal milestones rather than actuator-state labels. An event marks localized task progress, including subgoal achievement, task-phase transition, contact transition, alignment state, boundary crossing, or object-state change. Gripper and dexterous-hand opening or closing can define events in contact-rich manipulation, but many physical interaction states are not directly recoverable from hand actuation alone.
 
-For example, in cloth folding, the moment when the robot lifts the cloth to the highest point is annotated as an event because it marks the transition from lifting to folding. In container placement, the moment when the object clears the container rim can be annotated as an event. In insertion tasks, pre-insertion alignment and fully seated states can be annotated. In bimanual handover, the handover pose and load-transfer moment can be annotated as events. These examples show that WhiteTiger events capture task progress and semantic state transitions beyond low-level actuator commands.
+In cloth folding, the lifting peak marks the transition from lifting to folding. In container placement, the rim-clearing frame marks an object crossing a spatial boundary. In insertion, pre-insertion alignment and fully seated states mark distinct physical constraints. In bimanual handover, the transfer pose and load-transfer moment define interaction states between two effectors. These examples show that WhiteTiger events encode task progress and object-state transitions beyond low-level commands.
 
-Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. The visual frame, robot state, and robot or end-effector pose at an event can be used as event attributes by downstream methods that require keyframe or keypose targets, but WhiteTiger stores them under a unified event annotation interface. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
+Each event annotation includes an episode index, frame index, event label, event type, and annotation source. Event types include gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. The visual frame, robot state, and robot or end-effector pose at an event can be used as attributes by methods requiring keyframe or keypose targets. The unified event interface preserves dense trajectory supervision while exposing the temporal structure required for event-conditioned policies and phase-aware evaluation.
 
 \begin{table}[t]
 \centering
-\caption{Examples of event-level temporal annotations in WhiteTiger. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
+\caption{Examples of event-level temporal annotations in WhiteTiger. Events are defined as task-dependent semantic milestones rather than only gripper or dexterous-hand state changes.}
 \label{tab:event-keyframe-examples}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -81,11 +81,11 @@ Flexible-object insertion & \texttt{compression\_peak} & Soft object reaches max
 \end{adjustbox}
 \end{table}
 
-WhiteTiger's event annotations support a broad family of event-aware learning methods. Event frames can serve as sparse targets for next-event prediction, waypoints or subgoals for goal-conditioned policies, boundaries for skill segmentation and hierarchical policy learning, anchors for event-to-event action generation, intermediate visual targets for future-state prediction, progress signals for value-guided policy improvement, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
+Event frames can serve as sparse targets for next-event prediction, waypoints or subgoals for goal-conditioned policies, boundaries for skill segmentation and hierarchical policy learning, anchors for event-to-event action generation, intermediate visual targets for future-state prediction, progress signals for value-guided policy improvement, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. The annotations are therefore algorithm-agnostic temporal supervision for goal-oriented robot learning rather than labels tied to a single reinforcement-learning formulation.
 
 \subsection{Robot platform composition}
 
-WhiteTiger contains human-teleoperated data from 13 robot platforms, covering diverse robot embodiments, sensor configurations, and task settings. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
+WhiteTiger contains human-teleoperated data from 13 robot platforms with heterogeneous embodiments, sensor configurations, end effectors, and task settings. Table~\ref{tab:platform-comp} reports platform-level task count, episode count, frame count, and total duration. Platform-level reporting exposes sampling imbalance and clarifies how the aggregate corpus is distributed across embodiments.
 
 \begin{table}[t]
 \centering
@@ -114,37 +114,37 @@ AGIBOT A2 & 119 & 34675 & 69847611 & 646.74 \\
 \end{tabular}
 \end{table}
 
-The platform composition in Table~\ref{tab:platform-comp} shows that WhiteTiger integrates human-teleoperated robot data from multiple platforms with different embodiments, control interfaces, sensor configurations, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
+The platform composition shows that WhiteTiger integrates physical demonstration data across robots with different control interfaces, sensor layouts, and task distributions. This coverage supports unified data access and cross-platform evaluation while retaining platform-specific state and action schemas.
 
 \subsection{Robot configurations and visual coverage}
 
-The 13 platforms also differ substantially in robot morphology, end-effector design, and recorded visual configuration. As summarized in Table~\ref{tab:robot-config}, WhiteTiger includes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms use grippers, while Fourier GR-2 and AGIBOT A2 use dexterous hands. The recorded camera configurations range from two to four views and include head, wrist, torso, chest, and high-view perspectives.
+The 13 platforms differ in morphology, end-effector design, and visual sensing. Table~\ref{tab:robot-config} summarizes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms use grippers, while Fourier GR-2 and AGIBOT A2 use dexterous hands. Recorded camera configurations range from two to four views and include head, wrist, torso, chest, and high-view perspectives.
 
 \input{tables/robot_configuration}
 
-Figure~\ref{fig:camera-configurations} provides representative examples of two-camera, three-camera, and four-camera recordings. These examples illustrate several view layouts present in WhiteTiger, but they are not intended to enumerate every robot platform or sensor configuration in the dataset.
+Figure~\ref{fig:camera-configurations} provides examples of two-camera, three-camera, and four-camera recordings. These examples illustrate view layouts present in WhiteTiger without enumerating every platform or sensor configuration.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/camera_configuration_overview_frameless.jpg}
-\caption{Representative examples of multi-camera visual observations in WhiteTiger, including a three-camera configuration (left), a two-camera configuration (upper right), and a four-camera configuration (lower right). The examples illustrate possible view layouts and do not cover every robot platform or sensor configuration in the dataset.}
+\caption{Representative multi-camera visual observations in WhiteTiger, including a three-camera configuration on the left, a two-camera configuration in the upper right, and a four-camera configuration in the lower right. The examples illustrate view layouts without enumerating every platform or sensor configuration.}
 \label{fig:camera-configurations}
 \end{figure}
 
-This diversity extends beyond platform count and exposes learning systems to different physical embodiments, manipulation interfaces, and visual observation layouts. It also motivates the use of platform-specific modality schemas within the shared LeRobot v2.1 representation.
+Morphology, visual viewpoint, end-effector type, and action dimensionality jointly determine the sensorimotor grounding available to a policy. WhiteTiger therefore uses platform-specific modality schemas within the shared LeRobot v2.1 representation rather than imposing a single universal observation-action layout.
 
 \subsection{Object and interaction diversity}
 
-WhiteTiger contains robot interactions with diverse real-world objects. The objects span household items, kitchen utensils, retail goods, packages, industrial parts, tools, flexible materials, and irregularly shaped objects. These objects differ in size, shape, material, rigidity, surface texture, and manipulation affordance. Such object diversity is important for learning policies that do not overfit to a small set of familiar objects.
+WhiteTiger records interactions with household items, kitchen utensils, retail goods, packages, industrial parts, tools, flexible materials, and irregular objects. These objects vary in size, shape, material, rigidity, texture, and manipulation affordance. Object diversity is required for policies that must transfer beyond a fixed object inventory.
 
-The dataset also includes different interaction patterns between robots and objects. Some trajectories involve single-object pick-and-place behaviors, while others involve object sorting, tool use, assembly-like manipulation, container interaction, drawer or door operation, and multi-object organization. This diversity supports the study of generalization across objects, tasks, and physical interaction types.
+Interaction patterns include single-object pick-and-place, sorting, tool use, assembly-like manipulation, container interaction, drawer and door operation, and multi-object organization. These patterns impose different contact modes, spatial constraints, and failure conditions, supporting analysis of generalization across objects, tasks, environments, and physical interaction types.
 
 \subsection{Data format}
 
-WhiteTiger is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, event annotations, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
+WhiteTiger converts HDF5 source records into LeRobot v2.1. Each episode is represented as a temporally ordered trajectory of observation-action pairs. Depending on platform and task setup, a trajectory may contain visual observations, proprioceptive state, action commands, task labels, event annotations, timestamps, and episode metadata. The standardized format supports direct loading by robot learning pipelines and large-scale model training systems while retaining platform-specific observation and action schemas.
 
-A typical WhiteTiger trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, event records when available, episode metadata, and frame-level timestamps or ordering information.
+A typical trajectory contains a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, optional event records, episode metadata, and frame-level temporal ordering.
 
 \subsection{Data availability}
 
-Dataset access information, platform-specific modality definitions, event annotation schema, and accompanying benchmark resources will be provided through the official WhiteTiger repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
+Dataset access information, platform-specific modality definitions, event annotation schema, and benchmark resources will be provided through the official WhiteTiger repository. Licensing, permitted-use conditions, and access requirements will be documented with the released resources.
