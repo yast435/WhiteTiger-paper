@@ -1,31 +1,31 @@
 \subsection{Data collection protocol}
 
-All trajectories in Baihu are collected through human teleoperation. Human teleoperation is a widely used approach for collecting action-labeled robot demonstrations for imitation learning in fixed-base, bimanual, in-the-wild, and mobile manipulation settings~\cite{mandlekar2018roboturk,sharma2018mime,zhao2023aloha,fu2024mobilealoha,khazatsky2024droid}. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
+All trajectories in Whitetiger are collected through human teleoperation. Human teleoperation is a widely used approach for collecting action-labeled robot demonstrations for imitation learning in fixed-base, bimanual, in-the-wild, and mobile manipulation settings~\cite{mandlekar2018roboturk,sharma2018mime,zhao2023aloha,fu2024mobilealoha,khazatsky2024droid}. The dataset does not include scripted robot rollouts, simulation trajectories, or internet-sourced robot videos. Each episode records a human operator controlling a physical robot platform to complete a requested manipulation task under a specified scene setup.
 
 Task annotations are provided manually by the task requester when the collection requirement is proposed. The task label or instruction therefore reflects the intended task specification before data collection, rather than being generated automatically from the robot logs after collection. The task description defines the expected scene setup, objects or tools, target state, and manipulation procedure for each collection requirement.
 
-Because Baihu spans 13 robot platforms, the observation and action spaces are platform-specific. Camera count, camera viewpoint, camera model, and sensor configuration depend on the robot platform and collection setup. Similarly, action representations are not forced into a single universal schema. Different platforms may use different combinations of arm joints, end-effector commands, gripper or hand commands, and other platform-specific control dimensions. Baihu therefore preserves platform-level schema information while converting the data into a standardized training format.
+Because Whitetiger spans 13 robot platforms, the observation and action spaces are platform-specific. Camera count, camera viewpoint, camera model, and sensor configuration depend on the robot platform and collection setup. Similarly, action representations are not forced into a single universal schema. Different platforms may use different combinations of arm joints, end-effector commands, gripper or hand commands, and other platform-specific control dimensions. Whitetiger therefore preserves platform-level schema information while converting the data into a standardized training format.
 
 \subsection{Skill taxonomy}
 
-Baihu covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
+Whitetiger covers 64 manipulation skills across 2989 tasks. Rather than treating tasks as isolated labels, the dataset organizes manipulation behaviors through a reusable set of skill-level action semantics. These skills describe both low-level motion primitives and higher-level manipulation interactions, including object acquisition, placement, handover, articulated object interaction, contact-based motion, tool and material manipulation, and navigation-related actions.
 
-Figure~\ref{fig:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. The category counts indicate the number of defined skill labels rather than their occurrence frequencies in the dataset, helping characterize the manipulation diversity of Baihu beyond simple task count.
+Figure~\ref{fig:skill-taxonomy} summarizes the 64 skills according to seven action-semantic categories. This taxonomy provides an intermediate level between individual task names and raw action trajectories: a single task may involve multiple skills, and the same skill can appear across different objects, scenes, and robot embodiments. The category counts indicate the number of defined skill labels rather than their occurrence frequencies in the dataset, helping characterize the manipulation diversity of Whitetiger beyond simple task count.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/skill_taxonomy2.png}
-\caption{Skill taxonomy of Baihu. The 64 manipulation skills are grouped into seven action-semantic categories used during data collection and annotation. Each skill label can occur across different objects, scenes, and robot embodiments, while a single task may comprise multiple skills. Category counts denote defined skill labels rather than dataset occurrence frequencies.}
+\caption{Skill taxonomy of Whitetiger. The 64 manipulation skills are grouped into seven action-semantic categories used during data collection and annotation. Each skill label can occur across different objects, scenes, and robot embodiments, while a single task may comprise multiple skills. Category counts denote defined skill labels rather than dataset occurrence frequencies.}
 \label{fig:skill-taxonomy}
 \end{figure}
 
 \subsection{Scenario and task coverage}
 
-Beyond scale and embodiment diversity, Baihu is designed to cover a broad range of manipulation scenarios and task structures. The dataset is organized into five major scenario categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose scenarios. Figure~\ref{fig:scenario-task-coverage} summarizes the distribution of tasks across these scenario categories.
+Beyond scale and embodiment diversity, Whitetiger is designed to cover a broad range of manipulation scenarios and task structures. The dataset is organized into five major scenario categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose scenarios. Figure~\ref{fig:scenario-task-coverage} summarizes the distribution of tasks across these scenario categories.
 
-These scenario categories provide a practical organization for analyzing how robot policies transfer across environments, object types, and manipulation contexts. At the task level, Baihu contains 2989 tasks, including both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
+These scenario categories provide a practical organization for analyzing how robot policies transfer across environments, object types, and manipulation contexts. At the task level, Whitetiger contains 2989 tasks, including both short-horizon primitive behaviors and longer-horizon task chains. Many tasks can be viewed as compositions of lower-level manipulation skills, such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This composition makes the dataset useful not only for direct action prediction, but also for studying how low-level manipulation skills combine into longer task sequences.
 
-Baihu also contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Figure~\ref{fig:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
+Whitetiger also contains tasks spanning a broad range of temporal durations. For each of the 2989 tasks, we compute the mean trajectory duration over all trajectories associated with that task and group tasks according to this value. As shown in Figure~\ref{fig:task-duration}, 40.55\% of tasks have a mean trajectory duration below 60 seconds, 74.94\% are below 180 seconds, and 92.17\% are below 300 seconds. Meanwhile, 7.83\% of tasks exceed 300 seconds, including 1.27\% with mean durations of at least 600 seconds. The median task lies within the 60--90 second interval.
 
 \begin{figure}[t]
 \centering
@@ -42,23 +42,23 @@ Baihu also contains tasks spanning a broad range of temporal durations. For each
     \caption{Task-level mean trajectory duration.}
     \label{fig:task-duration}
 \end{subfigure}
-\caption{Task coverage and temporal diversity of Baihu. The left panel shows the distribution of tasks across the five scenario categories, while the right panel shows the distribution of task-level mean trajectory duration.}
-\label{fig:baihu-task-coverage}
+\caption{Task coverage and temporal diversity of Whitetiger. The left panel shows the distribution of tasks across the five scenario categories, while the right panel shows the distribution of task-level mean trajectory duration.}
+\label{fig:whitetiger-task-coverage}
 \end{figure}
 
-This distribution shows that Baihu covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
+This distribution shows that Whitetiger covers both short local manipulation behaviors and extended multi-stage interactions. Duration alone does not fully characterize task complexity, but it provides a quantitative view of the temporal diversity represented in the dataset.
 
 \subsection{Event-level temporal annotations}
 
-Baihu provides event-level temporal annotations in addition to dense observation-action trajectories. Baihu treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a temporally localized task-progress signal, such as a subgoal achievement, a task-phase transition, or an important object-state change. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
+Whitetiger provides event-level temporal annotations in addition to dense observation-action trajectories. Whitetiger treats events as semantic temporal milestones rather than simple actuator-state changes. An event marks a temporally localized task-progress signal, such as a subgoal achievement, a task-phase transition, or an important object-state change. For contact-rich manipulation, gripper and dexterous-hand opening or closing naturally form important events, such as grasping, releasing, pinching, or switching hand configurations. However, many manipulation tasks contain meaningful temporal nodes that are not directly reflected by gripper or hand commands.
 
-For example, in cloth folding, the moment when the robot lifts the cloth to the highest point is annotated as an event because it marks the transition from lifting to folding. In container placement, the moment when the object clears the container rim can be annotated as an event. In insertion tasks, pre-insertion alignment and fully seated states can be annotated. In bimanual handover, the handover pose and load-transfer moment can be annotated as events. These examples show that Baihu events capture task progress and semantic state transitions beyond low-level actuator commands.
+For example, in cloth folding, the moment when the robot lifts the cloth to the highest point is annotated as an event because it marks the transition from lifting to folding. In container placement, the moment when the object clears the container rim can be annotated as an event. In insertion tasks, pre-insertion alignment and fully seated states can be annotated. In bimanual handover, the handover pose and load-transfer moment can be annotated as events. These examples show that Whitetiger events capture task progress and semantic state transitions beyond low-level actuator commands.
 
-Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. The visual frame, robot state, and robot or end-effector pose at an event can be used as event attributes by downstream methods that require keyframe or keypose targets, but Baihu stores them under a unified event annotation interface. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
+Each event annotation is associated with an episode index, frame index, event label, event type, and annotation source. We categorize events into several types, including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events. The visual frame, robot state, and robot or end-effector pose at an event can be used as event attributes by downstream methods that require keyframe or keypose targets, but Whitetiger stores them under a unified event annotation interface. This design preserves the original dense trajectory representation while exposing the temporal structure of manipulation tasks.
 
 \begin{table}[t]
 \centering
-\caption{Examples of event-level temporal annotations in Baihu. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
+\caption{Examples of event-level temporal annotations in Whitetiger. Events are defined as task-dependent semantic milestones, rather than only gripper or dexterous-hand state changes.}
 \label{tab:event-keyframe-examples}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -81,15 +81,15 @@ Flexible-object insertion & \texttt{compression\_peak} & Soft object reaches max
 \end{adjustbox}
 \end{table}
 
-Baihu's event annotations support a broad family of event-aware learning methods. Event frames can serve as sparse targets for next-event prediction, waypoints or subgoals for goal-conditioned policies, boundaries for skill segmentation and hierarchical policy learning, anchors for event-to-event action generation, intermediate visual targets for future-state prediction, progress signals for value-guided policy improvement, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
+Whitetiger's event annotations support a broad family of event-aware learning methods. Event frames can serve as sparse targets for next-event prediction, waypoints or subgoals for goal-conditioned policies, boundaries for skill segmentation and hierarchical policy learning, anchors for event-to-event action generation, intermediate visual targets for future-state prediction, progress signals for value-guided policy improvement, stage rewards for reward shaping, and diagnostic checkpoints for phase-aware evaluation. In this sense, the annotations are not tied to a single reinforcement-learning algorithm; they provide general temporal structure supervision for goal-oriented robot learning and evaluation.
 
 \subsection{Robot platform composition}
 
-Baihu contains human-teleoperated data from 13 robot platforms, covering diverse robot embodiments, sensor configurations, and task settings. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
+Whitetiger contains human-teleoperated data from 13 robot platforms, covering diverse robot embodiments, sensor configurations, and task settings. Table~\ref{tab:platform-comp} summarizes the platform-level composition of the dataset in terms of task count, episode count, frame count, and total duration. This platform-level reporting provides transparency about the dataset composition while keeping the main emphasis on overall scale, platform coverage, and standardized data organization.
 
 \begin{table}[t]
 \centering
-\caption{Platform-level composition of Baihu. The table reports tasks, episodes, frames, and hours for each of the 13 robot platforms.}
+\caption{Platform-level composition of Whitetiger. The table reports tasks, episodes, frames, and hours for each of the 13 robot platforms.}
 \label{tab:platform-comp}
 \scriptsize
 \begin{tabular}{lrrrr}
@@ -114,20 +114,20 @@ AGIBOT A2 & 119 & 34675 & 69847611 & 646.74 \\
 \end{tabular}
 \end{table}
 
-The platform composition in Table~\ref{tab:platform-comp} shows that Baihu integrates human-teleoperated robot data from multiple platforms with different embodiments, control interfaces, sensor configurations, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
+The platform composition in Table~\ref{tab:platform-comp} shows that Whitetiger integrates human-teleoperated robot data from multiple platforms with different embodiments, control interfaces, sensor configurations, and task settings. This coverage supports unified data standardization and cross-platform model evaluation while preserving platform-specific state and action schemas.
 
 \subsection{Robot configurations and visual coverage}
 
-The 13 platforms also differ substantially in robot morphology, end-effector design, and recorded visual configuration. As summarized in Table~\ref{tab:robot-config}, Baihu includes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms use grippers, while Fourier GR-2 and AGIBOT A2 use dexterous hands. The recorded camera configurations range from two to four views and include head, wrist, torso, chest, and high-view perspectives.
+The 13 platforms also differ substantially in robot morphology, end-effector design, and recorded visual configuration. As summarized in Table~\ref{tab:robot-config}, Whitetiger includes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms use grippers, while Fourier GR-2 and AGIBOT A2 use dexterous hands. The recorded camera configurations range from two to four views and include head, wrist, torso, chest, and high-view perspectives.
 
 \input{tables/robot_configuration}
 
-Figure~\ref{fig:camera-configurations} provides representative examples of two-camera, three-camera, and four-camera recordings. These examples illustrate several view layouts present in Baihu, but they are not intended to enumerate every robot platform or sensor configuration in the dataset.
+Figure~\ref{fig:camera-configurations} provides representative examples of two-camera, three-camera, and four-camera recordings. These examples illustrate several view layouts present in Whitetiger, but they are not intended to enumerate every robot platform or sensor configuration in the dataset.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/camera_configuration_overview_frameless.jpg}
-\caption{Representative examples of multi-camera visual observations in Baihu, including a three-camera configuration (left), a two-camera configuration (upper right), and a four-camera configuration (lower right). The examples illustrate possible view layouts and do not cover every robot platform or sensor configuration in the dataset.}
+\caption{Representative examples of multi-camera visual observations in Whitetiger, including a three-camera configuration (left), a two-camera configuration (upper right), and a four-camera configuration (lower right). The examples illustrate possible view layouts and do not cover every robot platform or sensor configuration in the dataset.}
 \label{fig:camera-configurations}
 \end{figure}
 
@@ -135,16 +135,16 @@ This diversity extends beyond platform count and exposes learning systems to dif
 
 \subsection{Object and interaction diversity}
 
-Baihu contains robot interactions with diverse real-world objects. The objects span household items, kitchen utensils, retail goods, packages, industrial parts, tools, flexible materials, and irregularly shaped objects. These objects differ in size, shape, material, rigidity, surface texture, and manipulation affordance. Such object diversity is important for learning policies that do not overfit to a small set of familiar objects.
+Whitetiger contains robot interactions with diverse real-world objects. The objects span household items, kitchen utensils, retail goods, packages, industrial parts, tools, flexible materials, and irregularly shaped objects. These objects differ in size, shape, material, rigidity, surface texture, and manipulation affordance. Such object diversity is important for learning policies that do not overfit to a small set of familiar objects.
 
 The dataset also includes different interaction patterns between robots and objects. Some trajectories involve single-object pick-and-place behaviors, while others involve object sorting, tool use, assembly-like manipulation, container interaction, drawer or door operation, and multi-object organization. This diversity supports the study of generalization across objects, tasks, and physical interaction types.
 
 \subsection{Data format}
 
-Baihu is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, event annotations, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
+Whitetiger is converted from HDF5 source records into the LeRobot v2.1 format. Each episode is represented as a trajectory consisting of temporally ordered observation-action pairs. Depending on the robot platform and task setup, each trajectory may include platform-specific visual observations, robot state information, action commands, task labels, event annotations, and metadata. The standardized format is intended to support direct loading by robot learning pipelines and large-scale model training systems while retaining the platform-specific observation and action schema required by each robot.
 
-A typical Baihu trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, event records when available, episode metadata, and frame-level timestamps or ordering information.
+A typical Whitetiger trajectory can be represented as a task instruction or task label, synchronized visual observations, robot proprioceptive states, robot actions, event records when available, episode metadata, and frame-level timestamps or ordering information.
 
 \subsection{Data availability}
 
-Dataset access information, platform-specific modality definitions, event annotation schema, and accompanying benchmark resources will be provided through the official Baihu repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
+Dataset access information, platform-specific modality definitions, event annotation schema, and accompanying benchmark resources will be provided through the official Whitetiger repository. Detailed licensing, permitted-use conditions, and any access requirements will be documented alongside the released resources.
