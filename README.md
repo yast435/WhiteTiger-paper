@@ -66,13 +66,13 @@ For an internal non-anonymous or camera-ready-style draft with page numbers, cha
 - Primary dataset version: `WhiteTiger_v2.0`
 - Status: completed
 - Collection protocol: fully human teleoperation on physical robot platforms
-- Duration: 9521.75 hours
-- Tasks: 2989
-- Episodes: 513575
-- Frames: 1028349814
+- Duration: 12877.59 hours
+- Tasks: 6195
+- Episodes: 737575
+- Frames: 1390781176
 - Source format: HDF5
 - Training format: LeRobot v2.1
-- Robot platforms: 13
+- Robot platforms: 14
 - Manipulation skills: 64
 - Event/keyframe annotations: semantic temporal milestones including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events
 
