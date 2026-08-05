@@ -27,7 +27,7 @@ Task and episode metadata are standardized for dataset analysis and model condit
 
 State and action schemas differ across robot platforms. Joint layouts, gripper structures, dexterous-hand dimensions, mobile-base commands, control frequencies, and action semantics are platform-dependent. WhiteTiger preserves schemas that identify arm joints, grippers, hands, bases, and other controllable components within each platform.
 
-Schema alignment enables unified dataset loading without erasing native control spaces. It also defines evaluation metrics: Joint MSE uses only joint-related action dimensions, while ALL MSE uses the complete action vector for each platform. End-effector values are stored according to the physical travel range of each platform. WhiteTiger does not impose a universal gripper or hand scale across robots, preserving the action values used by the original controllers.
+Schema alignment enables unified dataset loading without erasing native control spaces. For the planned offline evaluation, Joint MSE will use only joint-related action dimensions, while ALL MSE will use the complete action vector for each platform. End-effector values are stored according to the physical travel range of each platform. WhiteTiger does not impose a universal gripper or hand scale across robots, preserving the action values used by the original controllers.
 
 \subsection{HDF5-to-LeRobot v2.1 conversion}
 
@@ -35,78 +35,24 @@ After validation and schema alignment, source HDF5 records are converted into Le
 
 WhiteTiger does not force every platform into an identical observation or action vector. Each robot retains its modality-specific state, action, and camera schema within the shared LeRobot v2.1 interface. This design supports consistent data access across platforms while preserving the physical control semantics required for cross-embodiment policy learning.
 
-\section{Benchmark Experiments}
+\section{Planned Benchmark Evaluations}
 
-The benchmark evaluates whether WhiteTiger fine-tuning improves offline action prediction on external robot demonstration datasets. The evaluation datasets are excluded from the WhiteTiger training corpus. The protocol therefore measures dataset-level transfer from WhiteTiger fine-tuning to separately collected held-out trajectories, not reconstruction of WhiteTiger training data.
+\subsection{Planned offline open-loop zero-shot evaluation}
 
-\subsection{Offline open-loop zero-shot evaluation}
+We plan to conduct an offline open-loop zero-shot action-prediction evaluation to assess whether WhiteTiger fine-tuning improves transfer to robot demonstration datasets that are external to, and excluded from, the WhiteTiger training corpus. The planned comparison will use the same foundation-model architecture for a pretrained baseline and a WhiteTiger-fine-tuned model. Neither model will be adapted on the external evaluation datasets. Zero-shot will therefore refer to dataset-level transfer from WhiteTiger training to separately collected evaluation trajectories.
 
-Open-loop evaluation compares model-predicted actions with reference actions from human-teleoperated demonstrations under recorded observations. The benchmark compares a no-training GR00T N1.6 baseline~\cite{nvidia2025grootn1} with the same model after one epoch of full fine-tuning on WhiteTiger. The evaluation covers \textbf{13 platforms} and \textbf{42 paired task-dataset records} from datasets external to WhiteTiger and excluded from WhiteTiger training. No additional fine-tuning is performed on these evaluation datasets. Zero-shot therefore denotes dataset-level transfer from WhiteTiger training to external evaluation records.
+Under recorded observations, each model will predict robot actions that will be compared with the corresponding human-teleoperation actions. The same held-out trajectories will be used for both models to form paired comparisons. The evaluation scope, trajectory-sampling rules, prediction horizon, and aggregation procedure will be fixed before the results are analyzed.
 
-\subsection{Evaluation protocol}
-
-For each task-dataset record, five trajectories are randomly sampled from the corresponding external evaluation dataset. The same sampled trajectories are used for both models, producing a paired comparison between the no-training baseline and the WhiteTiger-trained model. The model predicts actions from recorded observations, and prediction error is computed against the associated human-teleoperation actions. Predictions use an action horizon of 30. Each trajectory is evaluated over its available length up to 3000 steps. The task-level result is the mean of trajectory-level MSE values over the five sampled trajectories.
-
-Per-platform results are unweighted means over task-dataset records associated with each platform. The overall benchmark result is the unweighted mean across all 42 paired task-dataset records. This design gives equal weight to each task-dataset record independent of platform-specific data volume.
-
-\subsection{Evaluation metrics}
-
-All reported MSE values are normalized by action range to improve comparability across platforms with different action scales. For a trajectory with $T$ evaluated timesteps and a selected set of $D$ action dimensions, normalized MSE is defined as
-
-\begin{equation}
-\mathrm{NMSE}
-=
-\frac{1}{TD}
-\sum_{t=1}^{T}
-\sum_{d=1}^{D}
-\left(
-\frac{\hat{a}_{t,d}-a_{t,d}}
-{a_{d}^{\max}-a_{d}^{\min}}
-\right)^{2},
-\label{eq:normalized-mse}
-\end{equation}
-
-where $a_{t,d}$ and $\hat{a}_{t,d}$ denote the reference and predicted action values for dimension $d$ at timestep $t$, and $a_{d}^{\max}-a_{d}^{\min}$ denotes the corresponding action range. The no-training baseline and the WhiteTiger-trained model use identical action normalization statistics.
-
-\textbf{Normalized ALL MSE} is the primary evaluation metric. In Eq.~\ref{eq:normalized-mse}, $D$ includes the complete action vector, consisting of robot joint actions and end-effector actuation dimensions such as grippers or dexterous hands.
-
-\textbf{Normalized Joint MSE} is an auxiliary diagnostic metric. In this case, $D$ includes only robot joint action dimensions and excludes end-effector actuation dimensions. The separation allows joint-motion prediction to be analyzed independently from platform-specific gripper or dexterous-hand control.
-
-\subsection{Overall results}
-
-One epoch of full-parameter fine-tuning on WhiteTiger reduces normalized offline open-loop prediction error across the 13 evaluated platforms and 42 external paired task-dataset records. At the aggregate level, the WhiteTiger-trained model reduces Normalized ALL MSE from 0.157283 to 0.005051, corresponding to a \textbf{96.79\%} relative reduction. It reduces Normalized Joint MSE from 0.116746 to 0.000680, corresponding to a \textbf{99.42\%} relative reduction. Fig.~\ref{fig:per-platform-zero-shot} reports per-platform comparisons.
-
-These results show that WhiteTiger supplies supervision that improves full-vector and joint-related action prediction on evaluation trajectories excluded from the training corpus.
-
-\subsection{Per-platform results}
-
-Aggregate metrics are insufficient for a multi-embodiment dataset because action spaces, control frequencies, end-effector structures, and task distributions differ by platform. Per-platform analysis therefore reports Normalized ALL MSE and Normalized Joint MSE for each evaluated robot. Across all 13 platforms, the WhiteTiger-trained model obtains lower error than the no-training baseline under both metrics.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/per_platform_zero_shot_dumbbell.jpg}
-\caption{Per-platform offline zero-shot evaluation on datasets external to WhiteTiger. Each row compares the no-training GR00T N1.6 baseline with the WhiteTiger-trained model after one epoch of full fine-tuning on WhiteTiger for Normalized ALL MSE and Normalized Joint MSE. Connected markers show the change after WhiteTiger fine-tuning, with lower values indicating lower prediction error. Each platform value is the unweighted mean over its paired task-dataset records. QingLong contains six records, while each remaining platform contains three.}
-\label{fig:per-platform-zero-shot}
-\end{figure}
-
-Fig.~\ref{fig:per-platform-zero-shot} shows that the reduction is not concentrated in a single embodiment subset. Relative reductions range from 90.58\% to 98.88\% for Normalized ALL MSE and from 96.57\% to 99.89\% for Normalized Joint MSE. Joint prediction is more uniform across platforms, while residual ALL MSE varies because the metric includes platform-specific end-effector dimensions such as grippers and dexterous hands. These results support the use of WhiteTiger as a shared adaptation corpus for heterogeneous robot embodiments.
-
-\subsection{Task-level analysis}
-
-Task-level results measure whether WhiteTiger fine-tuning improves normalized offline prediction across the 42 external paired task-dataset records. This granularity is necessary because platform-specific action spaces, control rates, and end-effectors can obscure task-level behavior in aggregate averages.
-
-Table~\ref{tab:task-level} reports Normalized ALL MSE, Normalized Joint MSE, and relative reduction for each paired task-dataset record. The full task-level table is provided in Appendix~\ref{app:task-level}.
-
-The largest reductions occur on records where the no-training checkpoint has high action prediction error. Residual errors after WhiteTiger fine-tuning remain small in absolute value but vary across platforms and tasks due to action representation, task dynamics, and end-effector control differences.
+The planned primary metric is normalized full-action MSE, computed over the complete platform-specific action vector. A joint-only normalized MSE will provide an auxiliary diagnostic that excludes gripper or dexterous-hand actuation dimensions. Results are planned to be reported at task, platform, and overall levels, together with sampling variability or confidence intervals where appropriate. Because this evaluation has not yet been completed, the current paper does not report quantitative offline zero-shot results or make performance-improvement claims from this protocol.
 
 \subsection{Planned real-world evaluation of event-guided value learning}
 
-The offline zero-shot benchmark evaluates the dense-trajectory function of WhiteTiger for foundation-model adaptation and cross-dataset action prediction. Event- and keyframe-level annotations target a separate question: whether explicit task-progress supervision improves closed-loop execution. A reserved real-world protocol will compare policies trained with and without event-derived value supervision.
+The planned offline evaluation will assess the dense-trajectory function of WhiteTiger for foundation-model adaptation and cross-dataset action prediction. Event- and keyframe-level annotations target a separate question: whether explicit task-progress supervision improves closed-loop execution. A planned real-world protocol will compare policies trained with and without event-derived value supervision.
 
-Both policies will start from the same supervised fine-tuned model and will be evaluated on the same real-robot tasks under randomized initial configurations. The baseline policy will use dense trajectory supervision without event-derived value learning. The event-guided policy will use WhiteTiger event and keyframe annotations to construct task-progress supervision from subgoal and event completion. This design isolates the contribution of temporal annotations under real execution.
+Both policies will start from the same supervised fine-tuned model and will be evaluated on the same real-robot tasks under randomized initial configurations. The baseline policy will use dense trajectory supervision without event-derived value learning. The event-guided policy will use WhiteTiger event and keyframe annotations to construct task-progress supervision from subgoal and event completion. This design is intended to isolate the contribution of temporal annotations under real execution.
 
-The planned evaluation will cover one to three robot embodiments and one to three representative manipulation tasks. Execution success rate will be the primary metric. Event completion rate, failure stage distribution, and time to completion will provide diagnostic measures. Until these experiments are completed, event-guided value learning remains a reserved evaluation direction rather than a demonstrated performance claim.
+The planned evaluation will cover representative robot embodiments and manipulation tasks. Execution success rate will be the primary metric. Event completion rate, failure-stage distribution, and time to completion will provide diagnostic measures. Until these experiments are completed, event-guided value learning remains a planned evaluation direction rather than a demonstrated performance claim.
 
-\subsection{Additional benchmark extensions}
+\subsection{Future benchmark extensions}
 
-The current benchmark provides dataset-level held-out offline zero-shot comparison. Natural extensions include data-scaling curves for policy scaling-law analysis, held-out-platform evaluation for cross-embodiment generalization, closed-loop simulation evaluation, and real-world rollout success-rate experiments for event-guided learning.
+Natural extensions include data-scaling curves for policy scaling-law analysis, held-out-platform evaluation for cross-embodiment generalization, closed-loop simulation evaluation, additional policy families, and real-world rollout success-rate experiments. These extensions will complement the planned offline open-loop zero-shot evaluation by testing generalization under broader model and execution settings.
