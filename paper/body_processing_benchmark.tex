@@ -4,7 +4,9 @@ WhiteTiger transforms heterogeneous human-teleoperated robot operation records i
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/pipeline2.png}
+\scalebox{1}[0.9]{%
+    \includegraphics[width=\textwidth]{figures/data_processing.jpg}%
+}
 \caption{Data processing pipeline of WhiteTiger. Platform-specific HDF5 trajectories collected through human teleoperation are validated and filtered, standardized with task and platform metadata, aligned with embodiment-specific state and action schemas, and converted into LeRobot v2.1. The pipeline rejects trajectories with invalid scene setup, incomplete execution, corrupted recordings, metadata mismatch, missing modality fields, or observation-action misalignment, while preserving native control semantics for downstream imitation learning, vision-language-action adaptation, event-aware learning, and benchmark evaluation.}
 \label{fig:data-processing-pipeline}
 \end{figure}
