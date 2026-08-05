@@ -8,7 +8,7 @@ This repository tracks the LaTeX draft and supporting materials for the WhiteTig
 
 ## Current paper direction
 
-The current paper positions WhiteTiger as a large-scale, fully human-teleoperated, LeRobot v2.1-standardized, multi-platform robot manipulation dataset for robot foundation-model adaptation, offline zero-shot evaluation, and event-aware robot learning. The draft emphasizes two complementary dataset strengths: (1) large-scale dense trajectories for adapting pretrained robot foundation models and improving offline zero-shot generalization, and (2) event/keyframe-level temporal annotations for keyframe-aware and goal-oriented learning.
+The current paper positions WhiteTiger as a large-scale, fully human-teleoperated, LeRobot v2.1-standardized, multi-platform robot manipulation dataset for robot foundation-model adaptation and event-aware robot learning. The draft emphasizes two complementary dataset strengths: (1) large-scale dense trajectories for adapting pretrained robot foundation models, and (2) event/keyframe-level temporal annotations for keyframe-aware and goal-oriented learning. An offline open-loop zero-shot evaluation is planned to assess transfer to external robot datasets, but the current version does not report results from that evaluation.
 
 The draft emphasizes:
 
@@ -18,8 +18,8 @@ The draft emphasizes:
 - task, scenario, skill, robot-category, end-effector, and camera-configuration characterization;
 - event- and keyframe-level temporal annotations that capture task progress and semantic milestones beyond gripper or dexterous-hand state changes;
 - HDF5-to-LeRobot v2.1 data standardization;
-- offline open-loop zero-shot benchmark evaluation with GR00T N1.6;
-- reserved real-world evaluation protocol for event-guided value learning.
+- a planned offline open-loop zero-shot evaluation on external datasets;
+- a planned real-world evaluation protocol for event-guided value learning.
 
 ## Repository structure
 
@@ -29,11 +29,11 @@ paper/
   cvpr.sty                         # Local CVPR-compatible style file
   body_main.tex                    # Abstract, introduction, related work, and dataset scale
   body_dataset_rest.tex            # Data collection protocol, skill taxonomy, platform composition, robot configurations, scenarios, objects, data format, and event/keyframe annotations
-  body_processing_benchmark.tex    # Data processing pipeline and benchmark experiments
+  body_processing_benchmark.tex    # Data processing pipeline and planned benchmark protocols
   body_discussion.tex              # Discussion and limitations
   body_conclusion.tex              # Conclusion
   references.bib                   # Bibliography entries
-  tables/                          # Dataset, skill taxonomy, robot configuration, platform, and benchmark tables
+  tables/                          # Dataset, skill taxonomy, robot configuration, platform, and supporting tables
 
 materials/                         # Source materials and experiment records
 notes/                             # Notes and remaining tasks
@@ -47,7 +47,7 @@ The current paper draft should be built from:
 paper/main.tex
 ```
 
-`main.tex` imports the paper body from the modular `body_*.tex` files and uses a CVPR-compatible layout: 10 pt Times-style font, two-column letter-paper formatting, CVPR-like margins, compact section spacing, CVPR-style captions, and numeric compressed citations. The main bibliography appears before the appendix. The task-level benchmark table remains in the appendix and is switched to a single-column supplementary-style section because the table is too wide for CVPR's two-column body layout.
+`main.tex` imports the paper body from the modular `body_*.tex` files and uses a CVPR-compatible layout: 10 pt Times-style font, two-column letter-paper formatting, CVPR-like margins, compact section spacing, CVPR-style captions, and numeric compressed citations.
 
 By default, `main.tex` uses review mode:
 
@@ -76,15 +76,14 @@ For an internal non-anonymous or camera-ready-style draft with page numbers, cha
 - Manipulation skills: 64
 - Event/keyframe annotations: semantic temporal milestones including gripper events, contact events, motion events, alignment events, boundary-crossing events, object-state events, handover events, and deformation-related events
 
-## Benchmark facts used in the current draft
+## Planned benchmark direction
 
-- Model family: GR00T N1.6
-- Baseline model: no-training GR00T N1.6 baseline
-- WhiteTiger-trained model: GR00T N1.6 fully fine-tuned on `WhiteTiger_v2.0` for one epoch
-- Evaluation type: offline open-loop zero-shot evaluation
-- Evaluation scope: 13 platforms and 42 paired task-dataset records
-- Overall Normalized ALL MSE reduction: 96.79%
-- Overall Normalized Joint MSE reduction: 99.42%
+- Planned model family: a foundation-model checkpoint such as GR00T N1.6
+- Planned comparison: a pretrained baseline and a WhiteTiger-fine-tuned model using the same architecture
+- Planned evaluation type: offline open-loop zero-shot action prediction
+- Evaluation data: external robot datasets excluded from WhiteTiger training
+- Planned metrics: normalized full-action MSE and normalized joint-only MSE, reported at task, platform, and overall levels
+- Current status: the offline evaluation has not yet been completed, and the paper reports no quantitative results or improvement claims from it
 - Planned event-guided evaluation: real-world comparison between dense-trajectory-only training and event-derived value supervision
 
 ## Important open issues
@@ -96,4 +95,5 @@ The final paper should still verify or refine:
 3. data quality control rules and filtering statistics;
 4. formal citations and BibTeX entries for related datasets and model/tooling dependencies;
 5. final figure/table captions and target submission formatting;
-6. completed closed-loop, held-out-platform, data-scaling, or event-guided real-world rollout experiments.
+6. completion of the planned offline open-loop zero-shot evaluation;
+7. completed closed-loop, held-out-platform, data-scaling, or event-guided real-world rollout experiments.
