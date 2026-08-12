@@ -1,28 +1,28 @@
 \begin{table}[t]
 \centering
-\caption{Robot platform categories, end effectors, and recorded camera configurations in WhiteTiger.}
+\caption{Embodiment configurations in WhiteTiger. ``State/action dim.'' reports the dimensionality of the recorded platform-specific state and action schemas; the two dimensions are equal within each listed schema. QingLong appears in two collection configurations with 16D and 33D schemas. All trajectories are recorded at 30~Hz.}
 \label{tab:robot-config}
 \scriptsize
 \renewcommand{\arraystretch}{1.08}
 \begin{adjustbox}{max width=\textwidth,center}
-\begin{tabular}{llll}
+\begin{tabular}{lllllll}
 \toprule
-Platform & Robot category & End effector & Recorded cameras \\
+Platform & Robot category & Arm DoF & End effector & State/action dim. & Additional recorded components & Recorded cameras \\
 \midrule
-ARX-Loong & Fixed-base bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-Astribot S1 & Wheeled mobile bimanual manipulator & Grippers & 1 head + 2 wrist + 1 torso \\
-Agilex Cobot Magic & Mobile bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-UR5e & Fixed-base bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-D-Wheel & Wheeled mobile manipulator & Grippers & 1 high-view + 2 wrist \\
-Franka & Fixed-base bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-AGIBOT G1 & Wheeled mobile bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-Fourier GR-2 & Humanoid robot & Dexterous hands & 2 head views \\
-Leju KUAVO & Humanoid robot & Grippers & 1 head + 2 wrist \\
-QingLong & Humanoid robot & Grippers & 1 head + 2 wrist \\
-Tianji & Fixed-base bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-Galaxea R1 & Mobile bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
-AGIBOT A2 & Humanoid robot & Dexterous hands & 1 head + 2 chest \\
-LingLong & Wheeled mobile bimanual manipulator & Grippers & 1 high-view + 2 wrist \\
+ARX-Loong & Fixed-base bimanual & $6+6$ & Grippers & 14D & -- & 1 high-view + 2 wrist \\
+Astribot S1 & Wheeled mobile bimanual & $7+7$ & Grippers & 25D & Neck 2D + waist 4D + base 3D & 1 head + 2 wrist + 1 torso \\
+Agilex Cobot Magic & Mobile bimanual & $6+6$ & Grippers & 20D & Mobile-base representation 6D & 1 high-view + 2 wrist \\
+UR5e & Fixed-base bimanual & $6+6$ & Grippers & 14D & -- & 1 high-view + 2 wrist \\
+D-Wheel & Wheeled mobile & $7+7$ & Grippers & 20D & Waist 2D + mobile-base representation 2D & 1 high-view + 2 wrist \\
+Franka & Fixed-base bimanual & $7+7$ & Grippers & 30D & EEF position 6D + orientation 8D & 1 high-view + 2 wrist \\
+AGIBOT G1 & Wheeled mobile bimanual & $7+7$ & Grippers & 16D & -- & 1 high-view + 2 wrist \\
+Fourier GR-2 & Humanoid & $7+7$ & Dexterous hands & 41D & Head 2D + legs 12D + waist 1D & 2 head views \\
+Leju KUAVO & Humanoid & $7+7$ & Grippers & 30D & Neck 2D + legs 12D & 1 head + 2 wrist \\
+QingLong & Humanoid & $7+7$ & Grippers & 16D / 33D & \shortstack[l]{16D: arm + gripper only;\\33D: neck 2D + waist 3D + legs 12D} & 1 head + 2 wrist \\
+Tianji & Fixed-base bimanual & $7+7$ & Grippers & 16D & -- & 1 high-view + 2 wrist \\
+Galaxea R1 & Mobile bimanual & $6+6$ & Grippers & 14D & -- & 1 high-view + 2 wrist \\
+AGIBOT A2 & Humanoid & $7+7$ & Dexterous hands & 28D & Head 2D & 1 head + 2 chest \\
+LingLong & Wheeled mobile bimanual & $7+7$ & Grippers & 24D & Head 2D + waist 4D + hip 2D & 1 head + 2 wrist \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
