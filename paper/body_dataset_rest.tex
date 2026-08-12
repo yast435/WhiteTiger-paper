@@ -8,7 +8,7 @@ Observation and action spaces remain platform-specific across the 14 robots. Cam
 
 \subsection{Skill taxonomy}
 
-WhiteTiger covers 64 manipulation skills across 6195 tasks. The taxonomy groups task executions by reusable action semantics rather than treating every task string as an isolated category. Skill labels span object acquisition, placement, handover, articulated-object interaction, contact-driven motion, tool use, material manipulation, and navigation-related actions.
+WhiteTiger covers 64 manipulation skills across 6193 tasks. The taxonomy groups task executions by reusable action semantics rather than treating every task string as an isolated category. Skill labels span object acquisition, placement, handover, articulated-object interaction, contact-driven motion, tool use, material manipulation, and navigation-related actions.
 
 Figure~\ref{fig:skill-taxonomy} organizes the 64 skills into seven action-semantic categories. The taxonomy provides an intermediate representation between task names and raw trajectories. A single task may require multiple skills, while a single skill may appear across objects, scenes, and robot embodiments. Category counts denote defined labels rather than occurrence frequencies, thereby characterizing behavioral coverage without conflating taxonomy size with sampling density.
 
@@ -21,13 +21,13 @@ Figure~\ref{fig:skill-taxonomy} organizes the 64 skills into seven action-semant
 
 \subsection{Scenario and task coverage}
 
-WhiteTiger covers manipulation scenarios organized into five categories: household service, retail and pharmacy, catering service, industrial manufacturing, and other general-purpose settings. Figure~\ref{fig:scenario-task-coverage} reports the task distribution across these scenario categories.
+WhiteTiger contains 6193 tasks organized into eight scenario categories: Kitchen and Dining (1304 tasks), Home Living (1136), Office and Education (972), General Manipulation (838), Retail and Healthcare (765), Industrial Manufacturing (577), Agriculture and Fresh Produce (475), and Warehousing, Packaging, and Logistics (126). Figure~\ref{fig:scenario-task-coverage} reports the task distribution across these scenario categories.
 
-Scenario coverage determines how policy learning encounters variation in environment layout, object affordance, task objective, and interaction context. WhiteTiger contains 6195 tasks spanning short-horizon primitives and longer task chains. Many tasks compose lower-level manipulation skills such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This compositional structure supports direct action prediction, skill abstraction, temporal segmentation, and analysis of how reusable sensorimotor routines transfer across physical contexts.
+Scenario coverage determines how policy learning encounters variation in environment layout, object affordance, task objective, and interaction context. WhiteTiger contains 6193 tasks spanning short-horizon primitives and longer task chains. Many tasks compose lower-level manipulation skills such as grasping, placing, pushing, pulling, handing over, inserting, pressing, opening, closing, sorting, and arranging. This compositional structure supports direct action prediction, skill abstraction, temporal segmentation, and analysis of how reusable sensorimotor routines transfer across physical contexts.
 
 Task duration provides a quantitative view of temporal structure. For each task, the mean trajectory duration is computed over all associated trajectories and assigned to a duration bin. Figure~\ref{fig:task-duration} summarizes the resulting task-level duration distribution, exposing the range of control horizons represented by short local behaviors and extended multi-stage interactions.
 
-% TODO: Regenerate scenario_task_coverage3.png and task_duration_distribution2.png using the expanded 6195-task dataset inventory.
+% TODO: Regenerate scenario_task_coverage3.png and task_duration_distribution2.png using the updated 6193-task dataset inventory.
 \begin{figure}[t]
 \centering
 \begin{subfigure}[t]{0.46\textwidth}
@@ -43,7 +43,7 @@ Task duration provides a quantitative view of temporal structure. For each task,
     \caption{Task-level mean trajectory duration.}
     \label{fig:task-duration}
 \end{subfigure}
-\caption{Task coverage and temporal diversity of WhiteTiger. The left panel reports task distribution across five scenario categories, and the right panel reports task-level mean trajectory duration.}
+\caption{Task coverage and temporal diversity of WhiteTiger. The left panel reports task distribution across eight scenario categories, and the right panel reports task-level mean trajectory duration.}
 \label{fig:WhiteTiger-task-coverage}
 \end{figure}
 
@@ -111,7 +111,7 @@ Tianji & 285 & 18239 & 22944534 & 212.45 \\
 Galaxea R1 & 444 & 82011 & 123548480 & 1143.97 \\
 AGIBOT A2 & 299 & 45381 & 87864471 & 813.56 \\
 LingLong & 2 & 120 & 446919 & 4.14 \\
-\textbf{Total} & \textbf{6195} & \textbf{737575} & \textbf{1390781176} & \textbf{12877.59} \\
+\textbf{Total} & \textbf{6193} & \textbf{737455} & \textbf{1390532587} & \textbf{12875.3} \\
 \bottomrule
 \end{tabular}
 \end{table}
