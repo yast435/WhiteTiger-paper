@@ -120,7 +120,9 @@ The platform composition shows that WhiteTiger integrates physical demonstration
 
 \subsection{Robot configurations and visual coverage}
 
-The 14 platforms differ in morphology, end-effector design, and visual sensing. Table~\ref{tab:robot-config} summarizes fixed-base bimanual manipulators, wheeled or mobile bimanual manipulators, and humanoid robots. Most platforms with finalized configuration metadata use grippers, while Fourier GR-2 and AGIBOT A2 use dexterous hands. LingLong is included in the platform inventory, while its end-effector and recorded-camera metadata remain to be finalized in the paper.
+The 14 platforms differ in morphology, end-effector design, visual sensing, and recorded state/action dimensionality. Table~\ref{tab:robot-config} summarizes robot category, arm degrees of freedom, end-effector type, platform-specific state/action dimension, additional recorded body components, and camera layout. Across WhiteTiger, these schemas range from compact 14D dual-arm-and-gripper representations to 41D whole-body representations. All trajectories are recorded at 30~Hz.
+
+The modality schemas expose substantial embodiment heterogeneity beyond platform identity alone. ARX-Loong, UR5e, and Galaxea R1 use 14D arm-and-gripper schemas; Astribot S1 records a 25D schema that additionally includes neck, waist, and mobile-base components; Franka records a 30D schema containing dual-arm joints, grippers, end-effector positions, and orientations; AGIBOT A2 records a 28D schema with dexterous hands and head joints; and Fourier GR-2 reaches 41D by additionally representing head, legs, and waist. QingLong appears in two collection configurations: a 16D arm-and-gripper schema and a 33D whole-body schema that additionally includes neck, waist, and leg components. WhiteTiger retains these configuration-dependent native schemas rather than projecting them into an artificially shared control space.
 
 \input{tables/robot_configuration}
 
@@ -133,7 +135,7 @@ Figure~\ref{fig:camera-configurations} provides examples of two-camera, three-ca
 \label{fig:camera-configurations}
 \end{figure}
 
-Morphology, visual viewpoint, end-effector type, and action dimensionality jointly determine the sensorimotor grounding available to a policy. WhiteTiger therefore uses platform-specific modality schemas within the shared LeRobot v2.1 representation rather than imposing a single universal observation-action layout.
+Morphology, visual viewpoint, end-effector type, body-part coverage, and state/action dimensionality jointly determine the sensorimotor grounding available to a policy. WhiteTiger therefore uses platform-specific modality schemas within the shared LeRobot v2.1 representation rather than imposing a single universal observation-action layout.
 
 \subsection{Object and interaction diversity}
 
