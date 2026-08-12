@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Embodiment configurations in WhiteTiger. ``State/action dim.'' reports the dimensionality of the recorded platform-specific state and action schemas; the two dimensions are equal within each listed schema. QingLong appears in two collection configurations with 16D and 33D schemas. All trajectories are recorded at 30~Hz.}
+\caption{Embodiment configurations in WhiteTiger. ``State/action dim.'' reports the dimensionality of the recorded platform-specific state and action schemas; the two dimensions are equal within each listed schema. QingLong is one physical platform represented by two collection configurations, shown as separate rows for clarity. All trajectories are recorded at 30~Hz.}
 \label{tab:robot-config}
 \scriptsize
 \renewcommand{\arraystretch}{1.08}
@@ -18,7 +18,10 @@ Franka & Fixed-base bimanual & $7+7$ & Grippers & 30D & EEF position 6D + orient
 AGIBOT G1 & Wheeled mobile bimanual & $7+7$ & Grippers & 16D & -- & 1 high-view + 2 wrist \\
 Fourier GR-2 & Humanoid & $7+7$ & Dexterous hands & 41D & Head 2D + legs 12D + waist 1D & 2 head views \\
 Leju KUAVO & Humanoid & $7+7$ & Grippers & 30D & Neck 2D + legs 12D & 1 head + 2 wrist \\
-QingLong & Humanoid & $7+7$ & Grippers & 16D / 33D & \shortstack[l]{16D: arm + gripper only;\\33D: neck 2D + waist 3D + legs 12D} & 1 head + 2 wrist \\
+\addlinespace[1pt]
+QingLong (16D config.) & Humanoid & $7+7$ & Grippers & 16D & -- & 1 head + 2 wrist \\
+QingLong (33D config.) & Humanoid & $7+7$ & Grippers & 33D & Neck 2D + waist 3D + legs 12D & 1 head + 2 wrist \\
+\addlinespace[1pt]
 Tianji & Fixed-base bimanual & $7+7$ & Grippers & 16D & -- & 1 high-view + 2 wrist \\
 Galaxea R1 & Mobile bimanual & $6+6$ & Grippers & 14D & -- & 1 high-view + 2 wrist \\
 AGIBOT A2 & Humanoid & $7+7$ & Dexterous hands & 28D & Head 2D & 1 head + 2 chest \\
